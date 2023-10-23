@@ -15,13 +15,13 @@ This is a recriation of the first four fases of Eggerland Mystery, programmed by
 
 ```bash
     # Clone the project
-    $ git clone https://github.com/marceloreginato/ProjetoEggerlandMistery.git
+    $ git clone https://github.com/marceloreginato/EggerlandMistery.git
 
 ```
 
 ```bash
     # Enter directory
-    cd ProjetoEggerlandMistery/src
+    cd EggerlandMistery/src
 ```
 
 ```bash
