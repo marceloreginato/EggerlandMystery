@@ -1,20 +1,46 @@
-# SCC0604-2023
-Repositório para trabalho de Programação Orientada a Objetos - SCC0604-2023
+<h1 align="center">
+    <img src = "./imgs/eggerlandTitle.png"/>
+    <p> An Object-Oriented Programming Project! 👾 </p>
+</h1>
 
-Marcelo Eduardo Reginato - 13676965
+## 🚨 About
 
-Rhayna Christiani Vasconcelos Marques Casado - 13676429
+This is a recriation of the first four fases of Eggerland Mystery, programmed by Object-Oriented Programming on Java!
 
-Trello: https://trello.com/b/O1CR4XKw/eggerlandmistery 
+## 🔨 Tools
 
-Drive: https://drive.google.com/drive/folders/1jZGmg1upqm86mh_-i4Ap5uc_y1xX3w1c?usp=sharing 
+- Add moving by WASD
 
-Github: https://github.com/marceloreginato/SCC0604-2023
+## 🕹️ How to run
 
-Instruções para compilar e rodar:
+```bash
+    # Clone the project
+    $ git clone https://github.com/marceloreginato/ProjetoEggerlandMistery.git
 
-cd ProjetoEggerlandMistery/src
+```
 
-javac Main.java
+```bash
+    # Enter directory
+    cd ProjetoEggerlandMistery/src
+```
 
-java Main
+```bash
+    # Compile and run
+    javac Main.java
+    java Main
+```
+
+## 📄 Work Organization
+
+- Trello: https://trello.com/b/O1CR4XKw/eggerlandmistery 
+
+- Drive: https://drive.google.com/drive/folders/1jZGmg1upqm86mh_-i4Ap5uc_y1xX3w1c?usp=sharing 
+
+- Github: https://github.com/marceloreginato/SCC0604-2023
+
+
+## 👥 Project Owners
+
+- Marcelo Eduardo Reginato 13676965
+
+- Rhayna Christiani Vasconcelos Marques Casado 13676429
