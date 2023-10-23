@@ -10,3 +10,9 @@ Trello: https://trello.com/b/O1CR4XKw/eggerlandmistery
 Drive: https://drive.google.com/drive/folders/1jZGmg1upqm86mh_-i4Ap5uc_y1xX3w1c?usp=sharing 
 
 Github: https://github.com/marceloreginato/SCC0604-2023
+
+Instruções para compilar e rodar:
+
+cd ProjetoEggerlandMistery/src
+javac Main.java
+java Main
