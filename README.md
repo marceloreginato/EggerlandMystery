@@ -14,5 +14,7 @@ Github: https://github.com/marceloreginato/SCC0604-2023
 Instruções para compilar e rodar:
 
 cd ProjetoEggerlandMistery/src
+
 javac Main.java
+
 java Main
