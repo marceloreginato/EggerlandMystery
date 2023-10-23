@@ -5,7 +5,7 @@
 
 ## 🚨 About
 
-This is a recriation of the first four fases of Eggerland Mystery, programmed by Object-Oriented Programming on Java!
+This is a recreation of the first four fases of the game Eggerland Mystery, programmed by Object-Oriented Programming on Java!
 
 ## 🔨 Tools
 
@@ -21,13 +21,13 @@ This is a recriation of the first four fases of Eggerland Mystery, programmed by
 
 ```bash
     # Enter directory
-    cd EggerlandMystery/src
+    $ cd EggerlandMystery/src
 ```
 
 ```bash
     # Compile and run
-    javac Main.java
-    java Main
+    $ javac Main.java
+    $ java Main
 ```
 
 ## 📄 Work Organization
