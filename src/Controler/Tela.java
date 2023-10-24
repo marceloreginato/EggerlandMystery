@@ -2,6 +2,7 @@ package Controler;
 
 import Modelo.Personagem;
 import Modelo.InimigoAtirador;
+import Modelo.AtiraNaVisao;
 import Modelo.Hero;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
@@ -53,13 +54,17 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         hero.setPosicao(0, 7);
         this.addPersonagem(hero);
         
-        ZigueZague zz1 = new ZigueZague("robo.png");
-        zz1.setPosicao(5, 5);
-        this.addPersonagem(zz1);
+        // ZigueZague zz1 = new ZigueZague("robo.png");
+        // zz1.setPosicao(5, 5);
+        // this.addPersonagem(zz1);
 
-        InimigoAtirador bV = new InimigoAtirador("caveira.png");
-        bV.setPosicao(9, 1);
-        this.addPersonagem(bV);
+        // InimigoAtirador bV = new InimigoAtirador("caveira.png");
+        // bV.setPosicao(9, 1);
+        // this.addPersonagem(bV);
+
+        AtiraNaVisao anv1 = new AtiraNaVisao("caveira.png", hero);
+        anv1.setPosicao(10, 8);
+        this.addPersonagem(anv1);
     }
 
     public boolean ehPosicaoValida(Posicao p){

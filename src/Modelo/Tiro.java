@@ -11,7 +11,6 @@ public class Tiro extends Personagem implements Serializable {
         this.bMortal = true;
     }
 
-    @Override
     public void autoDesenho() {
         super.autoDesenho();
         if(!this.moveRight())

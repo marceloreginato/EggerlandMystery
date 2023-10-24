@@ -22,7 +22,7 @@ public class InimigoAtirador extends Personagem implements Serializable {
         if(this.iContaIntervalos == Consts.TIMER){
             this.iContaIntervalos = 0;
             Tiro t = new Tiro("fire.png");
-            t.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
+            //t.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
             Desenho.acessoATelaDoJogo().addPersonagem(t);
         }
     }  
