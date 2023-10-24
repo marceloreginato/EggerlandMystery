@@ -63,7 +63,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         // this.addPersonagem(bV);
 
         AtiraNaVisao anv1 = new AtiraNaVisao("caveira.png", hero);
-        anv1.setPosicao(10, 8);
+        anv1.setPosicao(10, 3);
         this.addPersonagem(anv1);
     }
 
