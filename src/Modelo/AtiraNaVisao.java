@@ -18,7 +18,7 @@ public class AtiraNaVisao extends InimigoAtirador implements Serializable{
         this.bTransponivel = false;
         this.hero = hero;
     }
-
+    
     public void autoDesenho(){
         super.autoDesenho();
 

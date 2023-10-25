@@ -50,20 +50,20 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         faseAtual = new ArrayList<Personagem>();
 
         /*Cria faseAtual adiciona personagens*/
-        hero = new Hero("skoot.png");
+        hero = new Hero("HeroEstaticFace.png"); 
         hero.setPosicao(0, 7);
         this.addPersonagem(hero);
         
-        // ZigueZague zz1 = new ZigueZague("robo.png");
-        // zz1.setPosicao(5, 5);
-        // this.addPersonagem(zz1);
+        ZigueZague zz1 = new ZigueZague("robo.png");
+        zz1.setPosicao(5, 5);
+        this.addPersonagem(zz1);
 
         // InimigoAtirador bV = new InimigoAtirador("caveira.png");
         // bV.setPosicao(9, 1);
         // this.addPersonagem(bV);
 
         AtiraNaVisao anv1 = new AtiraNaVisao("caveira.png", hero);
-        anv1.setPosicao(10, 3);
+        anv1.setPosicao(7, 7);
         this.addPersonagem(anv1);
     }
 
@@ -79,7 +79,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public Graphics getGraphicsBuffer(){
-        return g2;
+        return g2;  
     }
     public void paint(Graphics gOld) {
         Graphics g = this.getBufferStrategy().getDrawGraphics();

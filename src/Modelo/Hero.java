@@ -13,8 +13,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Hero extends Personagem implements Serializable {
+
+    private int iUp = 0;
+    private int iDown = 0;
+    private int iRight = 0;
+    private int iLeft = 0;
+
+
     public Hero(String sNomeImagePNG) {
-        super(sNomeImagePNG);
+        super(sNomeImagePNG, 'h');
     }
 
     public void voltaAUltimaPosicao(){
@@ -42,26 +49,82 @@ public class Hero extends Personagem implements Serializable {
     }
     
     public boolean moveUp() {
-        if(super.moveUp())
+        iLeft = 0;
+        iDown = 0;
+        iRight = 0;
+        if(super.moveUp()){
+            if(iUp == 0){
+                this.SkinPersonagem("HeroEstaticBack.png", 'h');
+                iUp++;
+            }
+            else if(iUp == 1){
+                this.SkinPersonagem("HeroMovingBack-1.png", 'h');
+                iUp++;
+            }
+            else if(iUp == 2){
+                this.SkinPersonagem("HeroMovingBack-2.png", 'h');
+                iUp = 0;
+            }
             return validaPosicao();
+        }
         return false;
     }
 
     public boolean moveDown() {
-        if(super.moveDown())
+        iLeft = 0;
+        iUp = 0;
+        iRight = 0;
+        if(super.moveDown()){
+            if(iDown == 0){
+                this.SkinPersonagem("HeroEstaticFace.png", 'h');
+                iDown++;
+            }
+            else if(iDown == 1){
+                this.SkinPersonagem("HeroEstaticFace-1.png", 'h');
+                iDown++;
+            }
+            else if(iDown == 2){
+                this.SkinPersonagem("HeroEstaticFace-2.png", 'h');
+                iDown = 0;
+            }
             return validaPosicao();
+        }
         return false;
     }
 
     public boolean moveRight() {
-        if(super.moveRight())
+        iLeft = 0;
+        iDown = 0;
+        iUp = 0;
+        if(super.moveRight()){
+            if(iRight == 0){
+                this.SkinPersonagem("HeroEstaticRight.png", 'h');
+                iRight++;
+            }
+            else if(iRight == 1){
+                this.SkinPersonagem("HeroMovingRight.png", 'h');
+                iRight = 0;
+            }
             return validaPosicao();
+        }
         return false;
     }
 
     public boolean moveLeft() {
-        if(super.moveLeft())
+        iDown = 0;
+        iUp = 0;
+        iRight = 0;
+        if(super.moveLeft()){
+            if(iLeft == 0){
+                this.SkinPersonagem("HeroEstaticLeft.png", 'h');
+                iLeft++;
+            }
+            else if(iLeft == 1){
+                this.SkinPersonagem("HeroMovingLeft.png", 'h');
+                iLeft = 0;
+            }
             return validaPosicao();
+        }
         return false;
     }    
 

@@ -20,14 +20,39 @@ public abstract class Personagem implements Serializable{
     protected Posicao pPosicao;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
+    private char c;
 
 
-    protected Personagem(String sNomeImagePNG) {
+    protected Personagem(String sNomeImagePNG, char c) {
         this.pPosicao = new Posicao(1, 1);
         this.bTransponivel = true;
         this.bMortal = false;
+        this.c = c;
         try {
-            iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
+            if(this.c == 'h')
+                iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_HERO + sNomeImagePNG);
+            else if(this.c == 't')
+                iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_FOGO + sNomeImagePNG);
+            else
+                iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
+            
+            Image img = iImage.getImage();
+            BufferedImage bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
+            Graphics g = bi.createGraphics();
+            g.drawImage(img, 0, 0, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
+            iImage = new ImageIcon(bi); 
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public void SkinPersonagem(String sNomeImagePNG, char c){
+        try {
+            if(this.c == 'h')
+                iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_HERO + sNomeImagePNG);
+            else
+                iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
+
             Image img = iImage.getImage();
             BufferedImage bi = new BufferedImage(Consts.CELL_SIDE, Consts.CELL_SIDE, BufferedImage.TYPE_INT_ARGB);
             Graphics g = bi.createGraphics();
@@ -35,7 +60,7 @@ public abstract class Personagem implements Serializable{
             iImage = new ImageIcon(bi);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
-        }
+        }   
     }
 
     public Posicao getPosicao() {
