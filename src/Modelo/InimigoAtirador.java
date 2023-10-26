@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class InimigoAtirador extends Personagem implements Serializable {
     
     public InimigoAtirador(String sNomeImagePNG) {
-        super(sNomeImagePNG, 'a');
+        super(sNomeImagePNG, 'i');
         this.bTransponivel = false;
     }
 

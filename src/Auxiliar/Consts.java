@@ -9,5 +9,6 @@ public class Consts {
     public static final String PATH = File.separator+"imgs"+File.separator;
     public static final String PATH_HERO = File.separator+"imgs"+File.separator+"Hero"+File.separator;
     public static final String PATH_FOGO = File.separator+"imgs"+File.separator+"Fogo"+File.separator;
+    public static final String PATH_INIMIGO = File.separator+"imgs"+File.separator+"Inimigo"+File.separator;
     public static final int TIMER = 10;
 }
