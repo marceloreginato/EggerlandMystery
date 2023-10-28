@@ -20,6 +20,7 @@ public abstract class Personagem implements Serializable{
     protected Posicao pPosicao;
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
+    protected boolean bEmpurravel;
     private char c;
 
 
@@ -27,6 +28,7 @@ public abstract class Personagem implements Serializable{
         this.pPosicao = new Posicao(1, 1);
         this.bTransponivel = true;
         this.bMortal = false;
+        this.bEmpurravel = false;
         this.c = c;
         try {
             if(this.c == 'h')
@@ -64,19 +66,27 @@ public abstract class Personagem implements Serializable{
             System.out.println(ex.getMessage());
         }   
     }
-
+    
     public Posicao getPosicao() {
         /*TODO: Retirar este método para que objetos externos nao possam operar
          diretamente sobre a posição do Personagem*/
         return pPosicao;
     }
-
+    
     public boolean isbTransponivel() {
         return bTransponivel;
     }
 
+    public boolean isbEmpurravel() {
+        return bEmpurravel;
+    }
+
     public void setbTransponivel(boolean bTransponivel) {
         this.bTransponivel = bTransponivel;
+    }
+
+    public void setbEmpurravel(boolean bEmpurravel) {
+        this.bEmpurravel = bEmpurravel;
     }
 
     public void autoDesenho(){

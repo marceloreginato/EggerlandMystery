@@ -31,7 +31,7 @@ public class Hero extends Personagem implements Serializable {
     
     public boolean setPosicao(int linha, int coluna){
         if(this.pPosicao.setPosicao(linha, coluna)){
-            if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao())) {
+            if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao(), 'z')) {
                 this.voltaAUltimaPosicao();
             }
             return true;
@@ -40,8 +40,8 @@ public class Hero extends Personagem implements Serializable {
     }
 
     /*TO-DO: este metodo pode ser interessante a todos os personagens que se movem*/
-    private boolean validaPosicao(){
-        if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao())) {
+    private boolean validaPosicao(char c){
+        if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao(), c)) {
             this.voltaAUltimaPosicao();
             return false;
         }
@@ -65,7 +65,7 @@ public class Hero extends Personagem implements Serializable {
                 this.SkinPersonagem("HeroMovingBack-2.png", 'h');
                 iUp = 0;
             }
-            return validaPosicao();
+            return validaPosicao('u');
         }
         return false;
     }
@@ -87,7 +87,7 @@ public class Hero extends Personagem implements Serializable {
                 this.SkinPersonagem("HeroEstaticFace-2.png", 'h');
                 iDown = 0;
             }
-            return validaPosicao();
+            return validaPosicao('d');
         }
         return false;
     }
@@ -105,7 +105,7 @@ public class Hero extends Personagem implements Serializable {
                 this.SkinPersonagem("HeroMovingRight.png", 'h');
                 iRight = 0;
             }
-            return validaPosicao();
+            return validaPosicao('r');
         }
         return false;
     }
@@ -123,7 +123,7 @@ public class Hero extends Personagem implements Serializable {
                 this.SkinPersonagem("HeroMovingLeft.png", 'h');
                 iLeft = 0;
             }
-            return validaPosicao();
+            return validaPosicao('l');
         }
         return false;
     }    

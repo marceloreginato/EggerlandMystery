@@ -3,6 +3,9 @@ package Controler;
 import Modelo.Personagem;
 import Modelo.InimigoAtirador;
 import Modelo.AtiraNaVisao;
+import Modelo.Coletavel;
+import Modelo.Empurravel;
+import Modelo.Estatico;
 import Modelo.Hero;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
@@ -64,15 +67,27 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         AtiraNaVisao anv1 = new AtiraNaVisao("PlantinhaDormindo.png", hero);
         anv1.setPosicao(7, 7);
-        this.addPersonagem(anv1);       
-    }
+        this.addPersonagem(anv1);
+        
+        Estatico est1 = new Estatico("caveira.png");
+        est1.setPosicao(2, 2);
+        this.addPersonagem(est1);
 
-    public boolean ehPosicaoValida(Posicao p){
-        return cj.ehPosicaoValida(this.faseAtual, p);
+        Coletavel col1 = new Coletavel("coracao.png");
+        col1.setPosicao(4, 4);
+        this.addPersonagem(col1);
+
+        Empurravel emp1 = new Empurravel("skoot.png");
+        emp1.setPosicao(3, 3);
+        this.addPersonagem(emp1);   
+    }   
+
+    public boolean ehPosicaoValida(Posicao p, char c){
+        return cj.ehPosicaoValida(this.faseAtual, p, c);
     }
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
-    }
+    }           
 
     public void removePersonagem(Personagem umPersonagem) {
         faseAtual.remove(umPersonagem);
