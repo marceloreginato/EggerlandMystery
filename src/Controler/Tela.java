@@ -39,7 +39,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
-
+    
     public Tela() {
         Desenho.setCenario(this);
         initComponents();
@@ -50,15 +50,50 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
+        // Fase1 fase1 = new Fase1();
+        // faseAtual = fase1.getArray();
         faseAtual = new ArrayList<Personagem>();
 
-        /*Cria faseAtual adiciona personagens*/
         hero = new Hero("HeroEstaticFace.png"); 
-        hero.setPosicao(0, 7);
-        this.addPersonagem(hero);
+        hero.setPosicao(1, 1);
+        this.addPersonagem(hero);;
+
+        for(int i = 2; i < Consts.RES - 2; i++){
+            Estatico brick3 = new Estatico("bricks.png");
+            brick3.setPosicao(i, 3);
+            this.addPersonagem(brick3);
+            Estatico brick7 = new Estatico("bricks.png");
+            brick7.setPosicao(i, 7);
+            this.addPersonagem(brick7);
+            Estatico brick11 = new Estatico("bricks.png");
+            brick11.setPosicao(i, 11);
+            this.addPersonagem(brick11);
+        }
+
+        for(int i = 1; i < Consts.RES - 1; i++){
+            if(i == Consts.RES/2)
+                continue;
+            Estatico brick5 = new Estatico("bricks.png");
+            brick5.setPosicao(i, 5);
+            faseAtual.add(brick5);
+            Estatico brick9 = new Estatico("bricks.png");
+            brick9.setPosicao(i, 9);
+            faseAtual.add(brick9);
+        }
+
+        for(int j = 7; j < 9; j++){
+            Estatico bricktop = new Estatico("bricks.png");
+            bricktop.setPosicao(2, j);
+            faseAtual.add(bricktop);
+        }   
+
+        // /*Cria faseAtual adiciona personagens*/
+        // hero = new Hero("HeroEstaticFace.png"); 
+        // hero.setPosicao(1, 7);
+        // this.addPersonagem(hero);
         
         ZigueZague zz1 = new ZigueZague("robo.png");
-        zz1.setPosicao(5, 5);
+        zz1.setPosicao(8, 8);
         this.addPersonagem(zz1);
 
         // InimigoAtirador bV = new InimigoAtirador("caveira.png");
@@ -66,19 +101,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         // this.addPersonagem(bV);
 
         AtiraNaVisao anv1 = new AtiraNaVisao("PlantinhaDormindo.png", hero);
-        anv1.setPosicao(7, 7);
+        anv1.setPosicao(6, 6);
         this.addPersonagem(anv1);
-        
-        Estatico est1 = new Estatico("caveira.png");
-        est1.setPosicao(2, 2);
-        this.addPersonagem(est1);
 
-        Coletavel col1 = new Coletavel("coracao.png");
+        Coletavel col1 = new Coletavel("moeda.png");
         col1.setPosicao(4, 4);
         this.addPersonagem(col1);
 
-        Empurravel emp1 = new Empurravel("skoot.png");
-        emp1.setPosicao(3, 3);
+        Empurravel emp1 = new Empurravel("caixa.png");
+        emp1.setPosicao(2, 2);
         this.addPersonagem(emp1);   
     }   
 
@@ -104,7 +135,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         for (int i = 0; i < Consts.RES; i++) {
             for (int j = 0; j < Consts.RES; j++) {
                 try {
-                    Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File("..").getCanonicalPath() + Consts.PATH + "bricks.png");
+                    Image newImage = Toolkit.getDefaultToolkit().getImage(new java.io.File("..").getCanonicalPath() + Consts.PATH + "black.png");
                     g2.drawImage(newImage,
                             j * Consts.CELL_SIDE, i * Consts.CELL_SIDE, Consts.CELL_SIDE, Consts.CELL_SIDE, null);
 
@@ -113,6 +144,18 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 }
             }
         }
+
+        for (int i = 0; i < Consts.RES; i++){
+            for (int j = 0; j < Consts.RES; j++){
+                if(i == 0 || j == 0 || i == Consts.RES - 1 || j == Consts.RES - 1 || j == Consts.RES - 4 || (i == 6 && j > Consts.RES - 4) || (i == 11 && j > Consts.RES - 4)){
+                    Estatico est = new Estatico("bricks.png");
+                    est.setPosicao(i, j);
+                    faseAtual.add(est);
+                }
+            }
+        }
+
+
         if (!this.faseAtual.isEmpty()) {
             this.cj.desenhaTudo(faseAtual);
             this.cj.processaTudo(faseAtual);

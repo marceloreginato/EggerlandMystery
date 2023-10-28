@@ -41,7 +41,6 @@ public class ControleDeJogo {
     }
 
     public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p, char c) {
-        System.out.println("char: " + c);
         Personagem pIesimoPersonagem;
         for (int i = 1; i < umaFase.size(); i++) {
             pIesimoPersonagem = umaFase.get(i);
