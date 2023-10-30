@@ -37,6 +37,7 @@ import javax.swing.JButton;
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
     private Hero hero;
     private ArrayList<Personagem> faseAtual;
+    private ArrayList<ArrayList<Personagem>> fasesJogo;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
     
@@ -50,67 +51,111 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
-        // Fase1 fase1 = new Fase1();
-        // faseAtual = fase1.getArray();
+        
+        // ArrayList<ArrayList<Personagem>> fasesJogo = new ArrayList<ArrayList<Personagem>>();
         faseAtual = new ArrayList<Personagem>();
 
-        hero = new Hero("HeroEstaticFace.png"); 
-        hero.setPosicao(1, 1);
-        this.addPersonagem(hero);;
+        // hero = new Hero("HeroEstaticFace.png"); 
+        // hero.setPosicao(1, 1);
+        // this.addPersonagem(hero);
 
-        for(int i = 2; i < Consts.RES - 2; i++){
-            Estatico brick3 = new Estatico("bricks.png");
-            brick3.setPosicao(i, 3);
-            this.addPersonagem(brick3);
-            Estatico brick7 = new Estatico("bricks.png");
-            brick7.setPosicao(i, 7);
-            this.addPersonagem(brick7);
-            Estatico brick11 = new Estatico("bricks.png");
-            brick11.setPosicao(i, 11);
-            this.addPersonagem(brick11);
-        }
+        // for(int i = 2; i < Consts.RES - 2; i++){
+        //     Estatico brick3 = new Estatico("bricks.png");
+        //     brick3.setPosicao(i, 3);
+        //     fase1.add(brick3);
+        //     Estatico brick7 = new Estatico("bricks.png");
+        //     brick7.setPosicao(i, 7);
+        //     fase1.add(brick7);
+        //     Estatico brick11 = new Estatico("bricks.png");
+        //     brick11.setPosicao(i, 11);
+        //     fase1.add(brick11);
+        // }
 
-        for(int i = 1; i < Consts.RES - 1; i++){
-            if(i == Consts.RES/2)
-                continue;
-            Estatico brick5 = new Estatico("bricks.png");
-            brick5.setPosicao(i, 5);
-            faseAtual.add(brick5);
-            Estatico brick9 = new Estatico("bricks.png");
-            brick9.setPosicao(i, 9);
-            faseAtual.add(brick9);
-        }
+        // for(int i = 1; i < Consts.RES - 1; i++){
+        //     if(i == Consts.RES/2)
+        //         continue;
+        //     Estatico brick5 = new Estatico("bricks.png");
+        //     brick5.setPosicao(i, 5);
+        //     fase1.add(brick5);
+        //     Estatico brick9 = new Estatico("bricks.png");
+        //     brick9.setPosicao(i, 9);
+        //     fase1.add(brick9);
+        // }
 
-        for(int j = 7; j < 9; j++){
-            Estatico bricktop = new Estatico("bricks.png");
-            bricktop.setPosicao(2, j);
-            faseAtual.add(bricktop);
-        }   
+        // for(int j = 7; j < 9; j++){
+        //     Estatico bricktop = new Estatico("bricks.png");
+        //     bricktop.setPosicao(2, j);
+        //     fase1.add(bricktop);
+        // }   
+        
+        // fasesJogo.add(fase1);
+        
 
         // /*Cria faseAtual adiciona personagens*/
         // hero = new Hero("HeroEstaticFace.png"); 
         // hero.setPosicao(1, 7);
         // this.addPersonagem(hero);
         
-        ZigueZague zz1 = new ZigueZague("robo.png");
-        zz1.setPosicao(8, 8);
-        this.addPersonagem(zz1);
+        // ZigueZague zz1 = new ZigueZague("robo.png");
+        // zz1.setPosicao(8, 8);
+        // this.addPersonagem(zz1);
 
-        // InimigoAtirador bV = new InimigoAtirador("caveira.png");
-        // bV.setPosicao(9, 1);
-        // this.addPersonagem(bV);
+        // // InimigoAtirador bV = new InimigoAtirador("caveira.png");
+        // // bV.setPosicao(9, 1);
+        // // this.addPersonagem(bV);
 
-        AtiraNaVisao anv1 = new AtiraNaVisao("PlantinhaDormindo.png", hero);
-        anv1.setPosicao(6, 6);
-        this.addPersonagem(anv1);
+        // AtiraNaVisao anv1 = new AtiraNaVisao("PlantinhaDormindo.png", hero);
+        // anv1.setPosicao(6, 6);
+        // this.addPersonagem(anv1);
 
-        Coletavel col1 = new Coletavel("moeda.png");
-        col1.setPosicao(4, 4);
-        this.addPersonagem(col1);
+        // Coletavel col1 = new Coletavel("moeda.png");
+        // col1.setPosicao(4, 4);
+        // this.addPersonagem(col1);
 
-        Empurravel emp1 = new Empurravel("caixa.png");
-        emp1.setPosicao(2, 2);
-        this.addPersonagem(emp1);   
+        // Empurravel emp1 = new Empurravel("caixa.png");
+        // emp1.setPosicao(2, 2);
+        // this.addPersonagem(emp1);   
+
+        // fasesJogo.add(fase1);
+
+        // ArrayList<Personagem> fase2 = new ArrayList<Personagem>();
+
+        hero = new Hero("HeroEstaticFace.png"); 
+        hero.setPosicao(1, 1);
+        this.addPersonagem(hero);;
+
+        for(int i = 2; i < Consts.RES - 3; i++){
+            Estatico brick3 = new Estatico("bricks.png");
+            brick3.setPosicao(i, 3);
+            this.addPersonagem(brick3);
+            Estatico brick5 = new Estatico("bricks.png");
+            brick5.setPosicao(i, 5);
+            this.addPersonagem(brick5);
+        }
+
+        for(int i = 4; i < Consts.RES - 4; i++){
+            if(i == Consts.RES/2)
+                continue;
+            Estatico brick11 = new Estatico("bricks.png");
+            brick11.setPosicao(i, 11);
+            this.addPersonagem(brick11);
+            Estatico brick9 = new Estatico("bricks.png");
+            brick9.setPosicao(i, 9);
+            this.addPersonagem(brick9);
+        }
+
+        for(int j = 7; j < 9; j++){
+            Estatico bricktop = new Estatico("bricks.png");
+            bricktop.setPosicao(2, j);
+            this.addPersonagem(bricktop);
+        }   
+
+        // fasesJogo.add(fase2);
+
+        // ArrayList<Personagem> faseAtual = new ArrayList<Personagem>();
+
+        // faseAtual = fasesJogo.get(0);
+        // faseAtual = fase1;
     }   
 
     public boolean ehPosicaoValida(Posicao p, char c){
