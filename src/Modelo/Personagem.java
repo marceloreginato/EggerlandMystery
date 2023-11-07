@@ -21,6 +21,7 @@ public abstract class Personagem implements Serializable{
     protected boolean bTransponivel; /*Pode passar por cima?*/
     protected boolean bMortal;       /*Se encostar, morre?*/
     protected boolean bEmpurravel;
+    protected boolean bColetavel;
     private char c;
 
 
@@ -79,6 +80,10 @@ public abstract class Personagem implements Serializable{
 
     public boolean isbEmpurravel() {
         return bEmpurravel;
+    }
+
+    public boolean isbColetavel() {
+        return bColetavel;
     }
 
     public void setbTransponivel(boolean bTransponivel) {

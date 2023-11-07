@@ -41,6 +41,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
     private int fase = 1;
+    public int qntmoedas = 0;
     
     public Tela() {
         Desenho.setCenario(this);
@@ -89,6 +90,17 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     bricktop.setPosicao(2, j);
                     this.addPersonagem(bricktop);
                 }
+                
+                Coletavel m1 = new Coletavel("moeda.png");
+                m1.setPosicao(2, 1);
+                this.addPersonagem(m1);
+                Coletavel m2 = new Coletavel("moeda.png");
+                m2.setPosicao(1, 2);
+                this.addPersonagem(m2);
+                Coletavel m3 = new Coletavel("moeda.png");
+                m3.setPosicao(7, 8);
+                this.addPersonagem(m3);
+
                 break;
             
             case 2:
@@ -147,7 +159,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public boolean ehPosicaoValida(Posicao p, char c){
-        return cj.ehPosicaoValida(this.faseAtual, p, c);
+        return cj.ehPosicaoValida(this.faseAtual, p, c, this);
     }
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
@@ -155,6 +167,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public void removePersonagem(Personagem umPersonagem) {
         faseAtual.remove(umPersonagem);
+    }
+
+    public void setMoedas(){
+        qntmoedas++;
     }
 
     public Graphics getGraphicsBuffer(){
