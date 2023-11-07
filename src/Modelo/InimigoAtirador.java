@@ -18,25 +18,25 @@ public class InimigoAtirador extends Personagem implements Serializable {
     }
 
     public void atiraRight(){
-        Tiro t1 = new Tiro("fireRight.png", 'r');
+        Tiro t1 = new Tiro("TiroHorizontal.png", 'r');
         t1.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()+1);
         Desenho.acessoATelaDoJogo().addPersonagem(t1);      
     }
 
     public void atiraLeft(){
-        Tiro t2 = new Tiro("fireLeft.png", 'l');
+        Tiro t2 = new Tiro("TiroHorizontal.png", 'l');
         t2.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()-1);
         Desenho.acessoATelaDoJogo().addPersonagem(t2);
     }
 
     public void atiraUp(){
-        Tiro t3 = new Tiro("fireUp.png", 'u');
+        Tiro t3 = new Tiro("TiroVertical.png", 'u');
         t3.setPosicao(pPosicao.getLinha()-1,pPosicao.getColuna());
         Desenho.acessoATelaDoJogo().addPersonagem(t3);
     }
 
     public void atiraDown(){
-        Tiro t4 = new Tiro("fireDown.png", 'd');
+        Tiro t4 = new Tiro("TiroVertical.png", 'd');
         t4.setPosicao(pPosicao.getLinha()+1,pPosicao.getColuna());
         Desenho.acessoATelaDoJogo().addPersonagem(t4);
     }       

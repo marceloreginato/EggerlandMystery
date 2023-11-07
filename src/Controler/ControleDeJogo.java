@@ -1,6 +1,7 @@
 package Controler;
 
 import Modelo.Personagem;
+import Modelo.Tiro;
 import Modelo.Hero;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
@@ -8,9 +9,10 @@ import Auxiliar.Consts;
 
 public class ControleDeJogo {
     public void desenhaTudo(ArrayList<Personagem> e) {
-        for (int i = 0; i < e.size(); i++) {
+        for (int i = 1; i < e.size(); i++) {
             e.get(i).autoDesenho();
         }
+        e.get(0).autoDesenho();
     }
 
     public void processaTudo(ArrayList<Personagem> umaFase) {
@@ -47,11 +49,11 @@ public class ControleDeJogo {
             if (pIesimoPersonagem.getPosicao().igual(p)) {
                 // System.out.println("arraylist posicao: (" + pIesimoPersonagem.getPosicao().getLinha() + ", " + pIesimoPersonagem.getPosicao().getColuna() + ")");
                 if (!pIesimoPersonagem.isbTransponivel()) {
-                    if (pIesimoPersonagem.isbEmpurravel()) {
+                    if (pIesimoPersonagem.isbEmpurravel() && !(pIesimoPersonagem instanceof Tiro)) {
                         int linha = pIesimoPersonagem.getPosicao().getLinha();
                         int coluna = pIesimoPersonagem.getPosicao().getColuna();
                         // System.out.println("eh empurravel");
-                        switch (c) {
+                        switch (c) {            
                             case 'u':
                                 if(linha == 0)
                                     return false;

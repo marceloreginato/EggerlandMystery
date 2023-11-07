@@ -18,7 +18,15 @@ public class Hero extends Personagem implements Serializable {
     private int iDown = 0;
     private int iRight = 0;
     private int iLeft = 0;
+    private char lastMovment;
 
+    public char getLastMovment() {
+        return lastMovment;
+    }
+
+    public void setLastMovment(char lastMovment) {
+        this.lastMovment = lastMovment;
+    }
 
     public Hero(String sNomeImagePNG) {
         super(sNomeImagePNG, 'h');
@@ -45,13 +53,14 @@ public class Hero extends Personagem implements Serializable {
             this.voltaAUltimaPosicao();
             return false;
         }
-        return true;       
+        return true;         
     }
     
     public boolean moveUp() {
         iLeft = 0;
         iDown = 0;
         iRight = 0;
+        lastMovment = 'u';
         if(super.moveUp()){
             if(iUp == 0){
                 this.SkinPersonagem("HeroEstaticBack.png", 'h');
@@ -74,6 +83,7 @@ public class Hero extends Personagem implements Serializable {
         iLeft = 0;
         iUp = 0;
         iRight = 0;
+        lastMovment = 'd';
         if(super.moveDown()){
             if(iDown == 0){
                 this.SkinPersonagem("HeroEstaticFace.png", 'h');
@@ -96,6 +106,7 @@ public class Hero extends Personagem implements Serializable {
         iLeft = 0;
         iDown = 0;
         iUp = 0;
+        lastMovment = 'r';
         if(super.moveRight()){
             if(iRight == 0){
                 this.SkinPersonagem("HeroEstaticRight.png", 'h');
@@ -114,6 +125,7 @@ public class Hero extends Personagem implements Serializable {
         iDown = 0;
         iUp = 0;
         iRight = 0;
+        lastMovment = 'l';
         if(super.moveLeft()){
             if(iLeft == 0){
                 this.SkinPersonagem("HeroEstaticLeft.png", 'h');
@@ -126,6 +138,34 @@ public class Hero extends Personagem implements Serializable {
             return validaPosicao('l');
         }
         return false;
+    }
+
+
+    public void atira(char c){
+
+        if(c == 'r'){
+        Tiro t1 = new Tiro("TiroHorizontal.png", 'r');
+        t1.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
+        Desenho.acessoATelaDoJogo().addPersonagem(t1);
+        }
+        
+        if(c == 'l'){
+        Tiro t2 = new Tiro("TiroHorizontal.png", 'l');
+        t2.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
+        Desenho.acessoATelaDoJogo().addPersonagem(t2);
+        }
+
+        if(c == 'u'){
+        Tiro t3 = new Tiro("TiroVertical.png", 'u');
+        t3.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
+        Desenho.acessoATelaDoJogo().addPersonagem(t3);
+        }
+
+        if(c == 'd'){
+        Tiro t4 = new Tiro("TiroVertical.png", 'd');
+        t4.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
+        Desenho.acessoATelaDoJogo().addPersonagem(t4);
+        }
     }    
 
 }

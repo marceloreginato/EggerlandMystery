@@ -122,13 +122,21 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
         hero = new Hero("HeroEstaticFace.png"); 
         hero.setPosicao(1, 1);
-        this.addPersonagem(hero);;
+        this.addPersonagem(hero);   
+
+        Coletavel c1 = new Coletavel("moeda.png"); 
+        c1.setPosicao(4, 1);
+        this.addPersonagem(c1);
+
+        Empurravel e1 = new Empurravel("caixa.png");
+        e1.setPosicao(7, 4);    
+        this.addPersonagem(e1);
 
         for(int i = 2; i < Consts.RES - 3; i++){
-            Estatico brick3 = new Estatico("bricks.png");
+            Estatico brick3 = new Estatico("TijoloRoxo.png");
             brick3.setPosicao(i, 3);
             this.addPersonagem(brick3);
-            Estatico brick5 = new Estatico("bricks.png");
+            Estatico brick5 = new Estatico("TijoloRoxo.png");
             brick5.setPosicao(i, 5);
             this.addPersonagem(brick5);
         }
@@ -136,16 +144,16 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         for(int i = 4; i < Consts.RES - 4; i++){
             if(i == Consts.RES/2)
                 continue;
-            Estatico brick11 = new Estatico("bricks.png");
+            Estatico brick11 = new Estatico("TijoloRoxo.png");
             brick11.setPosicao(i, 11);
             this.addPersonagem(brick11);
-            Estatico brick9 = new Estatico("bricks.png");
+            Estatico brick9 = new Estatico("TijoloRoxo.png");
             brick9.setPosicao(i, 9);
             this.addPersonagem(brick9);
         }
 
         for(int j = 7; j < 9; j++){
-            Estatico bricktop = new Estatico("bricks.png");
+            Estatico bricktop = new Estatico("TijoloRoxo.png");
             bricktop.setPosicao(2, j);
             this.addPersonagem(bricktop);
         }   
@@ -158,7 +166,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         // faseAtual = fase1;
     }   
 
-    public boolean ehPosicaoValida(Posicao p, char c){
+    public boolean ehPosicaoValida(Posicao p, char c){         
         return cj.ehPosicaoValida(this.faseAtual, p, c);
     }
     public void addPersonagem(Personagem umPersonagem) {
@@ -193,7 +201,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         for (int i = 0; i < Consts.RES; i++){
             for (int j = 0; j < Consts.RES; j++){
                 if(i == 0 || j == 0 || i == Consts.RES - 1 || j == Consts.RES - 1 || j == Consts.RES - 4 || (i == 6 && j > Consts.RES - 4) || (i == 11 && j > Consts.RES - 4)){
-                    Estatico est = new Estatico("bricks.png");
+                    Estatico est = new Estatico("TijoloRoxo.png");
                     est.setPosicao(i, j);
                     faseAtual.add(est);
                 }
@@ -234,6 +242,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             hero.moveLeft();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
             hero.moveRight();
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+            hero.atira(hero.getLastMovment());  
         }
 
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", "
