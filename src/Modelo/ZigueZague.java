@@ -6,6 +6,7 @@ import java.util.Random;
 public class ZigueZague extends Personagem {
     public ZigueZague(String sNomeImagePNG) {
         super(sNomeImagePNG, 'z');
+        this.bTransponivel = false;
     }
 
     public void autoDesenho(){

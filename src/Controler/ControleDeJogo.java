@@ -44,23 +44,26 @@ public class ControleDeJogo {
         Personagem pIesimoPersonagem;
         for (int i = 1; i < umaFase.size(); i++) {
             pIesimoPersonagem = umaFase.get(i);
+
             if (pIesimoPersonagem.getPosicao().igual(p)) {
-                // System.out.println("arraylist posicao: (" + pIesimoPersonagem.getPosicao().getLinha() + ", " + pIesimoPersonagem.getPosicao().getColuna() + ")");
+
                 if (!pIesimoPersonagem.isbTransponivel()) {
+
                     if (pIesimoPersonagem.isbEmpurravel()) {
+
                         int linha = pIesimoPersonagem.getPosicao().getLinha();
                         int coluna = pIesimoPersonagem.getPosicao().getColuna();
-                        // System.out.println("eh empurravel");
+
                         switch (c) {
                             case 'u':
                                 if(linha == 0)
                                     return false;
                                 Posicao posicaoU = new Posicao(linha - 1, coluna);
-                                // System.out.println("posicaoU: (" + posicaoU.getLinha() + ", " + posicaoU.getColuna() + ")");
-                                if(!this.ehPosicaoValida(umaFase, posicaoU, 'u', tela))
+                                if(!this.ehPosicaoValida(umaFase, posicaoU, 'u'))
                                     return false;
                                 pIesimoPersonagem.setPosicao(linha - 1, coluna);
                                 break;
+
                             case 'd':
                                 if(linha == Consts.RES - 1)
                                     return false;
@@ -69,6 +72,7 @@ public class ControleDeJogo {
                                     return false;
                                 pIesimoPersonagem.setPosicao(linha + 1, coluna);
                                 break;
+
                             case 'l':
                                 if(coluna == 0)
                                     return false;
@@ -77,6 +81,7 @@ public class ControleDeJogo {
                                     return false;
                                 pIesimoPersonagem.setPosicao(linha, coluna - 1);
                                 break;
+
                             case 'r':
                                 if(coluna == Consts.RES - 1)
                                     return false;
@@ -85,11 +90,14 @@ public class ControleDeJogo {
                                     return false;    
                                 pIesimoPersonagem.setPosicao(linha, coluna + 1);
                                 break;
+
                             default:
                                 break;
                         }
+
                         return true;
                     }
+                    
                     return false;
                 }
                 if(pIesimoPersonagem.isbColetavel()){
