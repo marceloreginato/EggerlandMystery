@@ -18,7 +18,7 @@ public class Fase {
                     Desenho.acessoATelaDoJogo().addPersonagem(est);
                 }
             }
-        }
+        }   
 
         // porta = new Porta("Porta.png");
         // porta.setPosicao();

@@ -132,7 +132,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             }
         }
 
-        if(qntmoedas == 3 && fase == 1){
+        if(qntmoedas == 1 && fase == 1){
             fase++;
             criaFase();
         }
