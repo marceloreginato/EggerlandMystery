@@ -22,6 +22,8 @@ public abstract class Personagem implements Serializable{
     protected boolean bMortal;       /*Se encostar, morre?*/
     protected boolean bEmpurravel;  /*Se encostar empurra o objeto*/
     protected boolean bColetavel;   /*Se encostar coleta o objeto*/
+    protected boolean bPorta;
+    protected boolean bMorrivel;
     private char c;
 
 
@@ -31,6 +33,7 @@ public abstract class Personagem implements Serializable{
         this.bMortal = false;
         this.bEmpurravel = false;
         this.bColetavel = false;
+        this.bMorrivel = false;
         this.c = c;
         try {
             if(this.c == 'h')
@@ -89,6 +92,14 @@ public abstract class Personagem implements Serializable{
 
     public boolean isbMortal() {
         return bMortal;
+    }
+
+    public boolean isbPorta() {
+        return bPorta;
+    }
+
+    public boolean isbMorrivel() {
+        return bMorrivel;
     }
 
     public void setbTransponivel(boolean bTransponivel) {

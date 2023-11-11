@@ -92,6 +92,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 }   
                 
                 for(int z = 3; z < 10; z = z+4){
+                    Empurravel emp1 = new Empurravel("caixa.png");
+                    emp1.setPosicao(Consts.RES/2 - 2, z);
+                    this.addPersonagem(emp1);
+                    Empurravel emp2 = new Empurravel("caixa.png");
+                    emp2.setPosicao(Consts.RES/2 - 1, z);
+                    this.addPersonagem(emp2);
                     Empurravel emp = new Empurravel("caixa.png");
                     emp.setPosicao(Consts.RES/2, z);
                     this.addPersonagem(emp);
@@ -106,11 +112,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     this.addPersonagem(inimigo);
                 }
 
+                Inimigo inimigo = new Inimigo("skoot.png");
+                inimigo.setPosicao(Consts.RES/2, 1);
+                this.addPersonagem(inimigo);
+
                 Coletavel moeda = new Coletavel("moeda.png");
                 moeda.setPosicao(2, 1);
                 // moeda.setPosicao((Consts.RES/2)-1, 3);
                 this.addPersonagem(moeda);
-
+                    
                 break;
             
             case 2:
@@ -168,8 +178,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         // this.addPersonagem(emp1);   
     }
 
-    public boolean ehPosicaoValida(Posicao p, char c){
-        return cj.ehPosicaoValida(this.faseAtual, p, c, this, 'h');
+    public boolean ehPosicaoValida(Posicao p, char c, char tipoPersonagem){
+        return cj.ehPosicaoValida(this.faseAtual, p, c, this, tipoPersonagem);
     }
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);

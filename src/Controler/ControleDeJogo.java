@@ -87,9 +87,26 @@ public class ControleDeJogo {
             pIesimoPersonagem = umaFase.get(i);
 
             if (pIesimoPersonagem.getPosicao().igual(p)) {
+                if (tipoPersonagem == 't') {
+                    if (pIesimoPersonagem.isbMorrivel()) {
+                        umaFase.remove(pIesimoPersonagem);
+                        return false;
+                    }
+                    if(pIesimoPersonagem.isbEmpurravel())
+                        return false;
+                    if(pIesimoPersonagem.isbColetavel())
+                        return false;
+                    // if(pIesimoPersonagem.isbTransponivel())
+                    //     return false;
+                    // if(pIesimoPersonagem.isbMortal())
+                    //     return false;
+                    // if(pIesimoPersonagem.isbPorta())
+                    //     return false;
+                    return true;
+                }
                 if (!pIesimoPersonagem.isbTransponivel()) {
                     if (pIesimoPersonagem.isbEmpurravel())
-                        processaEmpurravel(sentidoMovimento, pIesimoPersonagem, tela, umaFase);
+                        return processaEmpurravel(sentidoMovimento, pIesimoPersonagem, tela, umaFase);
                     return false;
                 }
                 if(pIesimoPersonagem.isbColetavel()){
