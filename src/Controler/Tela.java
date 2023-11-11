@@ -279,14 +279,14 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
          this.hero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
          
         repaint();
-    }
+    }   
 
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("POO2023-1 - Skooter");
+        setTitle("POO2023 - Eggerland Mystery - Marcelo e Rhayna");
         setAlwaysOnTop(true);
         setAutoRequestFocus(false);
         setResizable(false);

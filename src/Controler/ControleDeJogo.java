@@ -92,14 +92,14 @@ public class ControleDeJogo {
                         umaFase.remove(pIesimoPersonagem);
                         return false;
                     }
-                    if(pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbPorta())
+                    if(pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbPorta() || !pIesimoPersonagem.isbTransponivel())
                         return false;
                     // if(pIesimoPersonagem.isbTransponivel())
                     //     return false;
                     // if(pIesimoPersonagem.isbMortal())
                     //     return false;
                     return true;
-                }
+                }   
                 if (!pIesimoPersonagem.isbTransponivel()) {
                     if (pIesimoPersonagem.isbEmpurravel())
                         return processaEmpurravel(sentidoMovimento, pIesimoPersonagem, tela, umaFase);
