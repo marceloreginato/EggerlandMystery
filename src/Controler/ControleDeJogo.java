@@ -20,7 +20,7 @@ public class ControleDeJogo {
         Personagem pIesimoPersonagem;
         for (int i = 1; i < umaFase.size(); i++) {
             pIesimoPersonagem = umaFase.get(i);
-            if (hero.getPosicao().igual(pIesimoPersonagem.getPosicao()))
+            if (hero.getPosicao().igual(pIesimoPersonagem.getPosicao())) 
                 if (pIesimoPersonagem.isbTransponivel())
                     /* TO-DO: verificar se o personagem eh mortal antes de retirar */
                     umaFase.remove(pIesimoPersonagem);
@@ -31,85 +31,78 @@ public class ControleDeJogo {
      * Retorna true se a posicao p é válida para Hero com relacao a todos os
      * personagens no array
      */
-    public boolean ehPosicaoValida_Antigo(ArrayList<Personagem> umaFase, Posicao p, char c) {
-        Personagem pIesimoPersonagem;
-        for (int i = 1; i < umaFase.size(); i++) {
-            pIesimoPersonagem = umaFase.get(i);
-            if (!pIesimoPersonagem.isbTransponivel())
-                if (pIesimoPersonagem.getPosicao().igual(p))
+    // public boolean ehPosicaoValida_Antigo(ArrayList<Personagem> umaFase, Posicao p, char c) {
+    //     Personagem pIesimoPersonagem;
+    //     for (int i = 1; i < umaFase.size(); i++) {
+    //         pIesimoPersonagem = umaFase.get(i);
+    //         if (!pIesimoPersonagem.isbTransponivel())
+    //             if (pIesimoPersonagem.getPosicao().igual(p))
+    //                 return false;
+    //     }
+    //     return true;    
+    // }
+
+    public boolean processaEmpurravel(char sentidoMovimento, Personagem personagemEmpurravel, Tela tela, ArrayList<Personagem> umaFase){
+        int linha = personagemEmpurravel.getPosicao().getLinha();
+        int coluna = personagemEmpurravel.getPosicao().getColuna();
+
+        switch (sentidoMovimento) {
+            case 'u':
+                Posicao posicaoU = new Posicao(linha - 1, coluna);
+                if(!this.ehPosicaoValida(umaFase, posicaoU, 'u', tela, 'e'))
                     return false;
+                personagemEmpurravel.moveUp();
+                break;
+
+            case 'd':
+                Posicao posicaoD = new Posicao(linha + 1, coluna);
+                if(!this.ehPosicaoValida(umaFase, posicaoD, 'd', tela, 'e'))
+                    return false;
+                personagemEmpurravel.moveDown();
+                break;
+
+            case 'l':
+                Posicao posicaoL = new Posicao(linha, coluna - 1);
+                if(!this.ehPosicaoValida(umaFase, posicaoL, 'l', tela, 'e'))
+                    return false;
+                personagemEmpurravel.moveLeft();
+                break;
+
+            case 'r':
+                Posicao posicaoR = new Posicao(linha - 1, coluna + 1);
+                if(!this.ehPosicaoValida(umaFase, posicaoR, 'r', tela, 'e'))
+                    return false;    
+                personagemEmpurravel.moveRight();
+                break;
+
+            default:
+                break;
         }
-        return true;    
+        return true;
     }
 
-    public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p, char c, Tela tela) {
+    public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p, char sentidoMovimento, Tela tela, char tipoPersonagem) {
         Personagem pIesimoPersonagem;
         for (int i = 1; i < umaFase.size(); i++) {
             pIesimoPersonagem = umaFase.get(i);
 
             if (pIesimoPersonagem.getPosicao().igual(p)) {
-
                 if (!pIesimoPersonagem.isbTransponivel()) {
-
-                    if (pIesimoPersonagem.isbEmpurravel()) {
-
-                        int linha = pIesimoPersonagem.getPosicao().getLinha();
-                        int coluna = pIesimoPersonagem.getPosicao().getColuna();
-
-                        switch (c) {
-                            case 'u':
-                                if(linha == 0)
-                                    return false;
-                                Posicao posicaoU = new Posicao(linha - 1, coluna);
-                                if(!this.ehPosicaoValida(umaFase, posicaoU, 'u', tela))
-                                    return false;
-                                pIesimoPersonagem.setPosicao(linha - 1, coluna);
-                                break;
-
-                            case 'd':
-                                if(linha == Consts.RES - 1)
-                                    return false;
-                                Posicao posicaoD = new Posicao(linha + 1, coluna);
-                                if(!this.ehPosicaoValida(umaFase, posicaoD, 'd', tela))
-                                    return false;
-                                pIesimoPersonagem.setPosicao(linha + 1, coluna);
-                                break;
-
-                            case 'l':
-                                if(coluna == 0)
-                                    return false;
-                                Posicao posicaoL = new Posicao(linha, coluna - 1);
-                                if(!this.ehPosicaoValida(umaFase, posicaoL, 'l', tela))
-                                    return false;
-                                pIesimoPersonagem.setPosicao(linha, coluna - 1);
-                                break;
-
-                            case 'r':
-                                if(coluna == Consts.RES - 1)
-                                    return false;
-                                Posicao posicaoR = new Posicao(linha - 1, coluna + 1);
-                                if(!this.ehPosicaoValida(umaFase, posicaoR, 'r', tela))
-                                    return false;    
-                                pIesimoPersonagem.setPosicao(linha, coluna + 1);
-                                break;
-
-                            default:
-                                break;
-                        }
-
-                        return true;
-                    }
-                    
+                    if (pIesimoPersonagem.isbEmpurravel())
+                        processaEmpurravel(sentidoMovimento, pIesimoPersonagem, tela, umaFase);
                     return false;
                 }
                 if(pIesimoPersonagem.isbColetavel()){
+                    if(tipoPersonagem != 'h')
+                        return false;
                     tela.setMoedas();
                 }
+                return true;
             }
-            if (!pIesimoPersonagem.isbTransponivel())
-                if (pIesimoPersonagem.getPosicao().igual(p))
-                    return false;
         }
         return true;
     }
+
+    
+
 }

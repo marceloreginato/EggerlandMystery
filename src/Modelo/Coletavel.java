@@ -5,5 +5,6 @@ public class Coletavel extends Personagem {
         super(sNomeImagemPNG, 'z');
         this.bColetavel = true;
         this.bTransponivel = true;
+        // this.bMortal = true;
     }
 }

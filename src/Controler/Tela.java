@@ -89,17 +89,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     Estatico bricktop = new Estatico("bricks.png");
                     bricktop.setPosicao(1, j);
                     this.addPersonagem(bricktop);
-                }
-                
-                Coletavel m1 = new Coletavel("moeda.png");
-                m1.setPosicao(6, 4);
-                this.addPersonagem(m1);
-                Coletavel m2 = new Coletavel("moeda.png");
-                m2.setPosicao(8, 4);
-                this.addPersonagem(m2);
-                Coletavel m3 = new Coletavel("moeda.png");
-                m3.setPosicao(8, 8);
-                this.addPersonagem(m3);
+                }   
                 
                 for(int z = 3; z < 10; z = z+4){
                     Empurravel emp = new Empurravel("caixa.png");
@@ -179,7 +169,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public boolean ehPosicaoValida(Posicao p, char c){
-        return cj.ehPosicaoValida(this.faseAtual, p, c, this);
+        return cj.ehPosicaoValida(this.faseAtual, p, c, this, 'h');
     }
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
