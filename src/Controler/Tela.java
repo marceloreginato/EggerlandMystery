@@ -3,11 +3,11 @@ package Controler;
 import Modelo.Personagem;
 import Modelo.InimigoAtirador;
 import Modelo.AtiraNaVisao;
-import Modelo.Coletavel;
+import Modelo.Coletavel;        
 import Modelo.Empurravel;
 import Modelo.Estatico;
-import Modelo.Fase1;
 import Modelo.Hero;
+import Modelo.Inimigo;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Modelo.ZigueZague;
@@ -63,31 +63,31 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         switch (fase) {
             case 1:
                 for(int i = 2; i < Consts.RES - 2; i++){
-                    Estatico brick3 = new Estatico("TijoloRoxo.png");
-                    brick3.setPosicao(i, 3);
+                    Estatico brick3 = new Estatico("bricks.png");
+                    brick3.setPosicao(i, 2);
                     this.addPersonagem(brick3);
-                    Estatico brick7 = new Estatico("TijoloRoxo.png");
-                    brick7.setPosicao(i, 7);
+                    Estatico brick7 = new Estatico("bricks.png");
+                    brick7.setPosicao(i, 6);
                     this.addPersonagem(brick7);
-                    Estatico brick11 = new Estatico("TijoloRoxo.png");
-                    brick11.setPosicao(i, 11);
+                    Estatico brick11 = new Estatico("bricks.png");
+                    brick11.setPosicao(i, 10);
                     this.addPersonagem(brick11);
                 }
 
                 for(int i = 1; i < Consts.RES - 1; i++){
                     if(i == Consts.RES/2)
                         continue;
-                    Estatico brick5 = new Estatico("TijoloRoxo.png");
-                    brick5.setPosicao(i, 5); 
+                    Estatico brick5 = new Estatico("bricks.png");
+                    brick5.setPosicao(i, 4);
                     this.addPersonagem(brick5);
-                    Estatico brick9 = new Estatico("TijoloRoxo.png");
-                    brick9.setPosicao(i, 9);
+                    Estatico brick9 = new Estatico("bricks.png");
+                    brick9.setPosicao(i, 8);
                     this.addPersonagem(brick9);
                 }
 
-                for(int j = 7; j < 9; j++){
-                    Estatico bricktop = new Estatico("TijoloRoxo.png.png");
-                    bricktop.setPosicao(2, j);
+                for(int j = 6; j < 8; j++){
+                    Estatico bricktop = new Estatico("bricks.png");
+                    bricktop.setPosicao(1, j);
                     this.addPersonagem(bricktop);
                 }
                 
@@ -100,12 +100,26 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 Coletavel m3 = new Coletavel("moeda.png");
                 m3.setPosicao(8, 8);
                 this.addPersonagem(m3);
-                Empurravel emp1 = new Empurravel("caixa.png");
-                emp1.setPosicao(7, 4);
-                this.addPersonagem(emp1);
-                Empurravel emp2 = new Empurravel("caixa.png");
-                emp2.setPosicao(7, 8);
-                this.addPersonagem(emp2);  
+                
+                for(int z = 3; z < 10; z = z+4){
+                    Empurravel emp = new Empurravel("caixa.png");
+                    emp.setPosicao(Consts.RES/2, z);
+                    this.addPersonagem(emp);
+                    Coletavel moeda = new Coletavel("moeda.png");
+                    moeda.setPosicao((Consts.RES/2)+1, z);
+                    this.addPersonagem(moeda);
+                }
+
+                for(int z = 2; z < 7; z = z+4){
+                    Inimigo inimigo = new Inimigo("skoot.png");
+                    inimigo.setPosicao(Consts.RES - 2, z);
+                    this.addPersonagem(inimigo);
+                }
+
+                Coletavel moeda = new Coletavel("moeda.png");
+                moeda.setPosicao(2, 1);
+                // moeda.setPosicao((Consts.RES/2)-1, 3);
+                this.addPersonagem(moeda);
 
                 break;
             

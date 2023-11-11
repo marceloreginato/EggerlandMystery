@@ -30,8 +30,9 @@ public abstract class Personagem implements Serializable{
         this.bTransponivel = true;
         this.bMortal = false;
         this.bEmpurravel = false;
-        this.c = c; 
-        try {       
+        this.bColetavel = false;
+        this.c = c;
+        try {
             if(this.c == 'h')
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_HERO + sNomeImagePNG);
             else if(this.c == 't')
