@@ -90,7 +90,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     bricktop.setPosicao(1, j);
                     this.addPersonagem(bricktop);
                 }   
-                
+
                 for(int z = 3; z < 10; z = z+4){
                     Empurravel emp1 = new Empurravel("caixa.png");
                     emp1.setPosicao(Consts.RES/2 - 2, z);

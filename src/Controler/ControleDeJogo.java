@@ -92,15 +92,11 @@ public class ControleDeJogo {
                         umaFase.remove(pIesimoPersonagem);
                         return false;
                     }
-                    if(pIesimoPersonagem.isbEmpurravel())
-                        return false;
-                    if(pIesimoPersonagem.isbColetavel())
+                    if(pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbPorta())
                         return false;
                     // if(pIesimoPersonagem.isbTransponivel())
                     //     return false;
                     // if(pIesimoPersonagem.isbMortal())
-                    //     return false;
-                    // if(pIesimoPersonagem.isbPorta())
                     //     return false;
                     return true;
                 }
