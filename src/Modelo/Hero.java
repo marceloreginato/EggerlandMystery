@@ -148,7 +148,7 @@ public class Hero extends Personagem implements Serializable {
         t1.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
         Desenho.acessoATelaDoJogo().addPersonagem(t1);
         }
-        
+         
         if(c == 'l'){
         Tiro t2 = new Tiro("TiroHorizontal.png", 'l');
         t2.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());

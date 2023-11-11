@@ -31,7 +31,7 @@ public class ControleDeJogo {
      * Retorna true se a posicao p é válida para Hero com relacao a todos os
      * personagens no array
      */
-    public boolean ehPosicaoValida_Antigo(ArrayList<Personagem> umaFase, Posicao p, char c  ) {
+    public boolean ehPosicaoValida_Antigo(ArrayList<Personagem> umaFase, Posicao p, char c) {
         Personagem pIesimoPersonagem;
         for (int i = 1; i < umaFase.size(); i++) {
             pIesimoPersonagem = umaFase.get(i);
@@ -42,14 +42,14 @@ public class ControleDeJogo {
         return true;    
     }
 
-    public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p, char c) {
+    public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p, char c, Tela tela) {
         Personagem pIesimoPersonagem;
         for (int i = 1; i < umaFase.size(); i++) {
             pIesimoPersonagem = umaFase.get(i);
             if (pIesimoPersonagem.getPosicao().igual(p)) {
                 // System.out.println("arraylist posicao: (" + pIesimoPersonagem.getPosicao().getLinha() + ", " + pIesimoPersonagem.getPosicao().getColuna() + ")");
                 if (!pIesimoPersonagem.isbTransponivel()) {
-                    if (pIesimoPersonagem.isbEmpurravel() && !(pIesimoPersonagem instanceof Tiro)) {
+                    if (pIesimoPersonagem.isbEmpurravel() && !(pIesimoPersonagem instanceof Tiro)){
                         int linha = pIesimoPersonagem.getPosicao().getLinha();
                         int coluna = pIesimoPersonagem.getPosicao().getColuna();
                         // System.out.println("eh empurravel");
@@ -59,7 +59,7 @@ public class ControleDeJogo {
                                     return false;
                                 Posicao posicaoU = new Posicao(linha - 1, coluna);
                                 // System.out.println("posicaoU: (" + posicaoU.getLinha() + ", " + posicaoU.getColuna() + ")");
-                                if(!this.ehPosicaoValida(umaFase, posicaoU, 'u'))
+                                if(!this.ehPosicaoValida(umaFase, posicaoU, 'u', tela))
                                     return false;
                                 pIesimoPersonagem.setPosicao(linha - 1, coluna);
                                 break;
@@ -67,7 +67,7 @@ public class ControleDeJogo {
                                 if(linha == Consts.RES - 1)
                                     return false;
                                 Posicao posicaoD = new Posicao(linha + 1, coluna);
-                                if(!this.ehPosicaoValida(umaFase, posicaoD, 'd'))
+                                if(!this.ehPosicaoValida(umaFase, posicaoD, 'd', tela))
                                     return false;
                                 pIesimoPersonagem.setPosicao(linha + 1, coluna);
                                 break;
@@ -75,7 +75,7 @@ public class ControleDeJogo {
                                 if(coluna == 0)
                                     return false;
                                 Posicao posicaoL = new Posicao(linha, coluna - 1);
-                                if(!this.ehPosicaoValida(umaFase, posicaoL, 'l'))
+                                if(!this.ehPosicaoValida(umaFase, posicaoL, 'l', tela))
                                     return false;
                                 pIesimoPersonagem.setPosicao(linha, coluna - 1);
                                 break;
@@ -83,7 +83,7 @@ public class ControleDeJogo {
                                 if(coluna == Consts.RES - 1)
                                     return false;
                                 Posicao posicaoR = new Posicao(linha - 1, coluna + 1);
-                                if(!this.ehPosicaoValida(umaFase, posicaoR, 'r'))
+                                if(!this.ehPosicaoValida(umaFase, posicaoR, 'r', tela))
                                     return false;    
                                 pIesimoPersonagem.setPosicao(linha, coluna + 1);
                                 break;
@@ -93,6 +93,9 @@ public class ControleDeJogo {
                         return true;
                     }
                     return false;
+                }
+                if(pIesimoPersonagem.isbColetavel()){
+                    tela.setMoedas();
                 }
             }
             if (!pIesimoPersonagem.isbTransponivel())

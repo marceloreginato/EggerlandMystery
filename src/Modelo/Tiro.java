@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Tiro extends Personagem implements Serializable {
 
     private char c;
-
+ 
     public Tiro(String sNomeImagePNG, char c) {
         super(sNomeImagePNG, 't');
         this.bMortal = true;    
