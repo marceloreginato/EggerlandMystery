@@ -27,7 +27,6 @@ public abstract class Personagem implements Serializable{
     protected boolean bEstatico;
     private char c;
 
-
     protected Personagem(String sNomeImagePNG, char c) {
         this.pPosicao = new Posicao(1, 1);
         this.bTransponivel = true;

@@ -26,11 +26,11 @@ public class Fase4 extends Fase {
         Desenho.acessoATelaDoJogo().addPersonagem(emp2);
 
         Empurravel emp3 = new Empurravel("caixa.png");
-        emp3.setPosicao(6, 3);
+        emp3.setPosicao(6, 2);
         Desenho.acessoATelaDoJogo().addPersonagem(emp3);
 
         Empurravel emp4 = new Empurravel("caixa.png");
-        emp4.setPosicao(5, Consts.RES - 5);
+        emp4.setPosicao(5, Consts.RES - 6);
         Desenho.acessoATelaDoJogo().addPersonagem(emp4);
 
         Empurravel empmeio = new Empurravel("caixa.png");
