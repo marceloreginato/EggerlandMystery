@@ -41,13 +41,13 @@ import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;  
 import javax.swing.JButton;                 
-
+    
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
     private Hero hero;
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
-    private int fase = 3;                                 
+    private int fase = 1;                                 
     private int qntmoedas;  
     
     public Tela() {
