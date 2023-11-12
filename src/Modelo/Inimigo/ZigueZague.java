@@ -7,7 +7,7 @@ import Modelo.Personagem;
 public class ZigueZague extends Personagem {
     public ZigueZague(String sNomeImagePNG) {
         super(sNomeImagePNG, 'z');
-        this.bTransponivel = false;
+        this.bMortal = true;
     }
 
 

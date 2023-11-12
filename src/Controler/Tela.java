@@ -1,5 +1,5 @@
 package Controler;
-
+    
 import Modelo.Inimigo.AtiraNaVisao;  
 import Modelo.Inimigo.AtiraPelaMoeda;  
 import Modelo.Blocos.Coletavel;  
@@ -54,12 +54,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Personagem> faseAtual;    
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;    
-    private int fase;                                
+    private int fase;                               
     private int qntmoedas;
     private int moedasColetadas;
     private int qntvidas;
     private Progresso progresso = new Progresso(this);
-
+ 
     public Tela() {
         Desenho.setCenario(this);           
         initComponents();
@@ -184,9 +184,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 new Fase4(hero);
                 break;
         
-            // case 5:
-            //     new Fim();
-            //     break;
+            case 5:
+                new Fase1(hero);
+                break;
 
             default:
                 break;

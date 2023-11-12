@@ -19,7 +19,7 @@ public class Progresso {
     public Progresso(Tela tela){
         this.tela = tela;
         file = ".." + File.separator + "save.dat";
-        currentfase = 1;
+        currentfase = 3;
         currentvidas = 5;
     }
     

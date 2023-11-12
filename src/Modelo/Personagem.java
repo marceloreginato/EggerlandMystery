@@ -25,6 +25,7 @@ public abstract class Personagem implements Serializable{
     protected boolean bPorta;
     protected boolean bMorrivel;
     protected boolean bEstatico;
+    protected boolean bTiro;
     private char c;
 
     protected Personagem(String sNomeImagePNG, char c) {
@@ -35,6 +36,7 @@ public abstract class Personagem implements Serializable{
         this.bColetavel = false;
         this.bMorrivel = false;
         this.bEstatico = false;
+        this.bTiro = false;
         this.c = c;
         try {
             if(this.c == 'h')       
@@ -107,6 +109,10 @@ public abstract class Personagem implements Serializable{
 
     public boolean isbEstatico() {
         return bEstatico;
+    }
+    
+    public boolean isbTiro() {
+        return bTiro;
     }
 
     public void setbEstatico(boolean bEstatico) {
