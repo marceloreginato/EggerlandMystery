@@ -50,7 +50,7 @@ import javax.swing.JButton;
 
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
     private Hero hero;
-    private ArrayList<Personagem> faseAtual;
+    private ArrayList<Personagem> faseAtual;    
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;    
     private int fase;                                
@@ -144,7 +144,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 break;
 
             case 3:
-                new Fase3(hero);
+                new Fase3(hero);                    
                 break;
 
             case 4:
