@@ -1,21 +1,22 @@
 package Controler;
 
+import Modelo.AtiraNaVisao;  
+import Modelo.AtiraPelaMoeda;  
+import Modelo.Coletavel;  
+import Modelo.Estatico;  
+import Modelo.Fase;  
+import Modelo.Fase1;  
+import Modelo.Fase2;  
+import Modelo.Fase3;  
+import Modelo.Fase4;  
+import Modelo.Hero;  
+import Modelo.Inimigo;  
 import Modelo.Personagem;
-import Modelo.InimigoAtirador;  
-import Modelo.AtiraNaVisao;
-import Modelo.AtiraPelaMoeda;
-import Modelo.Coletavel;        
-import Modelo.Empurravel;
-import Modelo.Estatico;     
-import Modelo.Hero;
-import Modelo.Inimigo;
-import Modelo.Fase1;
-import Modelo.Fase2;
-import Modelo.Fase3;
-import Modelo.Fase4;
+import Modelo.Porta;
+import Modelo.Tiro;
+import Modelo.ZigueZague;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
-import Modelo.ZigueZague;
 import Auxiliar.Posicao;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -61,11 +62,11 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         faseAtual = new ArrayList<Personagem>();
         hero = new Hero("HeroEstaticFace.png");     
             
-        criaFase();  
-    }
+        criaFase();
+    }   
 
-    public boolean ehPosicaoValida(Posicao p, char c, char tipoPersonagem){
-        return cj.ehPosicaoValida(this.faseAtual, p, c, tipoPersonagem);
+    public boolean ehPosicaoValida(Posicao p, char sentidoMovimento, char tipoPersonagem){
+        return cj.ehPosicaoValida(this.faseAtual, p, sentidoMovimento, tipoPersonagem);
     }
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
@@ -73,6 +74,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public void removePersonagem(Personagem umPersonagem) {
         faseAtual.remove(umPersonagem);
+    }   
+
+    public int tamanhoFase(){
+        return faseAtual.size();
     }
 
     public int getQntmoedas() {
@@ -137,9 +142,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }
+        }   
 
-        if(qntmoedas == 10 && fase == 1){
+        if(tamanhoFase() > 0 && !faseAtual.get(1).isbPorta() && fase < 5){
             fase++;
             criaFase();
         }
