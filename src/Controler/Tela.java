@@ -47,7 +47,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
-    private int fase = 2;                         
+    private int fase = 3;                                 
     private int qntmoedas;  
     
     public Tela() {
@@ -233,7 +233,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)    
         );
 
         pack();

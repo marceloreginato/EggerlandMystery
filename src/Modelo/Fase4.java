@@ -8,6 +8,12 @@ public class Fase4 extends Fase {
         super(hero);
         hero.setPosicao(4, 6);
         porta.setPosicao(Consts.RES - 3, 6);
+
+        for(int j = 4; j < 9; j += 4){
+            AtiraNaVisao atv = new AtiraNaVisao("PlantinhaDormindo", hero);
+            atv.setPosicao(Consts.RES - 8, j);
+            Desenho.acessoATelaDoJogo().addPersonagem(atv);
+        }
     
         for(int j = 2; j < Consts.RES - 5; j++){
             if(j == 6)
@@ -47,10 +53,5 @@ public class Fase4 extends Fase {
         col2.setPosicao(Consts.RES - 8, 6);
         Desenho.acessoATelaDoJogo().addPersonagem(col2);
 
-        for(int j = 4; j < 9; j += 4){
-            AtiraNaVisao atv = new AtiraNaVisao("PlantinhaDormindo", hero);
-            atv.setPosicao(Consts.RES - 8, j);
-            Desenho.acessoATelaDoJogo().addPersonagem(atv);
-        }
     }
 }

@@ -9,10 +9,6 @@ public class Fase3 extends Fase{
         hero.setPosicao(2, 2);
         porta.setPosicao(Consts.RES - 3, 9);
 
-        Empurravel emp = new Empurravel("caixa.png");
-        emp.setPosicao(Consts.RES - 3, 8);
-        Desenho.acessoATelaDoJogo().addPersonagem(emp);
-
         AtiraPelaMoeda am1 = new AtiraPelaMoeda("MonstroRoxoDireita.png", hero);
         am1.setPosicao(4, 3);           
         Desenho.acessoATelaDoJogo().addPersonagem(am1);
@@ -27,7 +23,11 @@ public class Fase3 extends Fase{
 
         AtiraPelaMoeda am4 = new AtiraPelaMoeda("MonstroRoxoEsquerda.png", hero);
         am4.setPosicao(9, 8);           
-        Desenho.acessoATelaDoJogo().addPersonagem(am4);                        
+        Desenho.acessoATelaDoJogo().addPersonagem(am4);
+
+        Empurravel emp = new Empurravel("caixa.png");
+        emp.setPosicao(Consts.RES - 3, 8);
+        Desenho.acessoATelaDoJogo().addPersonagem(emp);                        
 
         Coletavel moeda1 = new Coletavel("moeda.png");
         moeda1.setPosicao(6, 5);

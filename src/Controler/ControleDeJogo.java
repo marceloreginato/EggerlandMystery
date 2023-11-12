@@ -14,6 +14,10 @@ public class ControleDeJogo {
             e.get(i).autoDesenho();
         }
         e.get(0).autoDesenho();
+        e.get(Consts.TAM_FASE).autoDesenho();
+        e.get(Consts.TAM_FASE + 1).autoDesenho();
+        e.get(Consts.TAM_FASE + 2).autoDesenho();
+        e.get(Consts.TAM_FASE + 3).autoDesenho();
     }
 
     public void processaTudo(ArrayList<Personagem> umaFase) {
