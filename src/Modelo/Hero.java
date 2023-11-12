@@ -143,7 +143,7 @@ public class Hero extends Personagem implements Serializable {
 
 
     public void atira(char c){
-
+        
         if(c == 'r'){
         Tiro t1 = new Tiro("TiroHorizontal.png", 'r');
         t1.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());

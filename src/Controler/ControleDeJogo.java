@@ -114,6 +114,7 @@ public class ControleDeJogo {
                     if(tipoPersonagem != 'h')
                         return false;
                     Desenho.acessoATelaDoJogo().addMoedas();
+                    Desenho.acessoATelaDoJogo().addMoedasColetadas();
                 }
                 return true;
             }
