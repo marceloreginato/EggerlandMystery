@@ -31,7 +31,7 @@ public class AtiraPelaMoeda extends InimigoAtirador{
 
             if(tiroD == 0){
                 if(this.sNomeImagePNG.equals("MonstroRoxoDireita.png"))
-                    super.atiraRight('m');
+                    super.atiraRight('m');  
                 tiroD++;
             }
             else if(tiroD != 0 && this.sNomeImagePNG.equals("MonstroRoxoDireita.png")){

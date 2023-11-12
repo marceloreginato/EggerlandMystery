@@ -35,11 +35,11 @@ public class Fase1 extends Fase {
             Desenho.acessoATelaDoJogo().addPersonagem(bricktop);
         }   
 
-        for(int i = 8; i < 9; i++){
+        for(int i = 8; i < 9; i++){ 
             Estatico brick9 = new Estatico("bricks.png");
-            brick9.setPosicao(i, 9);
+            brick9.setPosicao(i, 9);    
             Desenho.acessoATelaDoJogo().addPersonagem(brick9);
-        }
+        }   
 
         for(int z = 3; z < 10; z = z+4){
             Empurravel emp = new Empurravel("caixa.png");
@@ -57,7 +57,7 @@ public class Fase1 extends Fase {
         }
 
         Inimigo inimigo = new Inimigo("MonstroVerde.png");
-        inimigo.setPosicao(Consts.RES - 6, 10);
+        inimigo.setPosicao(Consts.RES - 6, 10); 
         Desenho.acessoATelaDoJogo().addPersonagem(inimigo);
 
         for(int i = Consts.RES - 5 ; i < Consts.RES - 3; i++){

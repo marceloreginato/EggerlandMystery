@@ -34,7 +34,7 @@ public class Hero extends Personagem implements Serializable {
     }
 
     public void voltaAUltimaPosicao(){
-        this.pPosicao.volta();
+        this.pPosicao.volta();  
     }
     
     
