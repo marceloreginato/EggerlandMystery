@@ -56,7 +56,7 @@ public class Fase1 extends Fase {
             Desenho.acessoATelaDoJogo().addPersonagem(inimigo);
         }
 
-        Inimigo inimigo = new Inimigo("caveira.png");
+        Inimigo inimigo = new Inimigo("MonstroVerde.png");
         inimigo.setPosicao(Consts.RES - 6, 10);
         Desenho.acessoATelaDoJogo().addPersonagem(inimigo);
 

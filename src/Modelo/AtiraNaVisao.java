@@ -36,9 +36,9 @@ public class AtiraNaVisao extends InimigoAtirador implements Serializable{
             super.SkinPersonagem("PlantinhaPistola.png", 'i');
             stopLinha = 1;
             if(hero.pPosicao.getColuna() > this.pPosicao.getColuna())
-                super.atiraRight();
+                super.atiraRight('v');
             else if(hero.pPosicao.getColuna() < this.pPosicao.getColuna())
-                super.atiraLeft();
+                super.atiraLeft('v');
         }       
 
         if(hero.pPosicao.getColuna() != this.pPosicao.getColuna()){
@@ -53,9 +53,9 @@ public class AtiraNaVisao extends InimigoAtirador implements Serializable{
             super.SkinPersonagem("PlantinhaPistola.png", 'i');
             stopColuna = 1;
             if(hero.pPosicao.getLinha() > this.pPosicao.getLinha())
-                super.atiraDown();
+                super.atiraDown('v');
             if(hero.pPosicao.getLinha() < this.pPosicao.getLinha())
-                super.atiraUp();
+                super.atiraUp('v');
         }
     }           
 

@@ -31,14 +31,13 @@ public class AtiraPelaMoeda extends InimigoAtirador{
 
             if(tiroD == 0){
                 if(this.sNomeImagePNG.equals("MonstroRoxoDireita.png"))
-                    super.atiraRight();
+                    super.atiraRight('m');
                 tiroD++;
             }
             else if(tiroD != 0 && this.sNomeImagePNG.equals("MonstroRoxoDireita.png")){
-                if(hero.pPosicao.getLinha() == this.pPosicao.getLinha() && hero.pPosicao.getColuna() > this.pPosicao.getColuna() && stopLinha != 1){
-                    super.SkinPersonagem("MonstroRoxoDireita.png", 'i');
-                    stopLinha = 1;
-                    super.atiraRight();
+                super.SkinPersonagem("MonstroRoxoDireitaAcordado.png", 'i');
+                if(hero.pPosicao.getLinha() == this.pPosicao.getLinha() && hero.pPosicao.getColuna() > this.pPosicao.getColuna() && stopLinha != 1){                    stopLinha = 1;
+                    super.atiraRight('m');
                 }
                 else if(hero.pPosicao.getLinha() != this.pPosicao.getLinha())
                     stopLinha = 0;
@@ -46,14 +45,14 @@ public class AtiraPelaMoeda extends InimigoAtirador{
 
             if(tiroE == 0){
                 if(this.sNomeImagePNG.equals("MonstroRoxoEsquerda.png"))
-                    super.atiraLeft();
+                    super.atiraLeft('m');
                 tiroE++;
             }
             else if(tiroE != 0 && this.sNomeImagePNG.equals("MonstroRoxoEsquerda.png")){
+                super.SkinPersonagem("MonstroRoxoEsquerdaAcordado.png", 'i');
                 if(hero.pPosicao.getLinha() == this.pPosicao.getLinha() && hero.pPosicao.getColuna() < this.pPosicao.getColuna() && stopLinha != 1){
-                    super.SkinPersonagem("MonstroRoxoEsquerda.png", 'i');
                     stopLinha = 1;
-                    super.atiraLeft();
+                    super.atiraLeft('m');
                 }
                 else if(hero.pPosicao.getLinha() != this.pPosicao.getLinha())
                     stopLinha = 0;
@@ -61,14 +60,14 @@ public class AtiraPelaMoeda extends InimigoAtirador{
 
             if(tiroT == 0){
                 if(this.sNomeImagePNG.equals("MonstroRoxoTras.png"))
-                    super.atiraUp();
-                tiroT++;    
+                    super.atiraUp('m');
+                tiroT++;
             }
             else if(tiroT != 0 && this.sNomeImagePNG.equals("MonstroRoxoTras.png")){
+                super.SkinPersonagem("MonstroRoxoTras.png", 'i');
                 if(hero.pPosicao.getColuna() == this.pPosicao.getColuna() && hero.pPosicao.getLinha() < this.pPosicao.getLinha() && stopColuna != 1){
-                    super.SkinPersonagem("MonstroRoxoTras.png", 'i');
                     stopColuna = 1;
-                    super.atiraUp();
+                    super.atiraUp('m');
                 }
                 else if(hero.pPosicao.getColuna() != this.pPosicao.getColuna())
                     stopColuna = 0;
@@ -76,14 +75,14 @@ public class AtiraPelaMoeda extends InimigoAtirador{
 
             if(tiroF == 0){
                 if(this.sNomeImagePNG.equals("MonstroRoxoFrente.png"))
-                    super.atiraDown();
-                tiroF++;   
+                    super.atiraDown('m');
+                tiroF++;
             }
             else if(tiroF != 0 && this.sNomeImagePNG.equals("MonstroRoxoFrente.png")){
+                super.SkinPersonagem("MonstroRoxoFrenteAcordado.png", 'i');
                 if(hero.pPosicao.getColuna() == this.pPosicao.getColuna() && hero.pPosicao.getLinha() > this.pPosicao.getLinha() && stopColuna != 1){
-                    super.SkinPersonagem("MonstroRoxoFrente.png", 'i');
                     stopColuna = 1;
-                    super.atiraDown();      
+                    super.atiraDown('m');      
                 }
                 else if(hero.pPosicao.getColuna() != this.pPosicao.getColuna())
                     stopColuna = 0;

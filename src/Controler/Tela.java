@@ -44,10 +44,10 @@ import javax.swing.JButton;
 
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
     private Hero hero;
-    private ArrayList<Personagem> faseAtual;
+    private ArrayList<Personagem> faseAtual;    
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
-    private int fase = 3;                                 
+    private int fase = 3;                                               
     private int qntmoedas;  
     
     public Tela() {
@@ -60,7 +60,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
-        faseAtual = new ArrayList<Personagem>();
+        faseAtual = new ArrayList<Personagem>();        
         hero = new Hero("HeroEstaticFace.png");     
             
         criaFase();
@@ -94,7 +94,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         return fase;
     }
 
-    public void setMoedas(){
+    public void setMoedas(){    
         qntmoedas++;
     }  
 
@@ -117,7 +117,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 break;
 
             case 3:
-                new Fase3(hero);
+                new Fase3(hero);                    
                 break;
 
             case 4:
@@ -155,8 +155,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }   
 
         if(tamanhoFase() > 0 && !faseAtual.get(1).isbPorta() && fase < 5){
-            fase++;
-            criaFase();
+            fase++;                 
+            criaFase();     
         }
 
         if (!this.faseAtual.isEmpty()) {

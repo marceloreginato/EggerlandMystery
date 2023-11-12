@@ -4,7 +4,7 @@ import Auxiliar.Consts;
 import Auxiliar.Desenho;
 
 public class Fase { 
-    Porta porta = new Porta("roboPink.png");
+    Porta porta = new Porta("PortaFechada.png");
 
     public Fase (Hero hero) {
         Desenho.acessoATelaDoJogo().addPersonagem(hero);
