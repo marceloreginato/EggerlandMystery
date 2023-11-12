@@ -116,7 +116,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             default:
                 break;
         }
-    }       
+    }     
 
     public Graphics getGraphicsBuffer(){
         return g2;  
