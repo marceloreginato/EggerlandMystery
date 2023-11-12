@@ -30,7 +30,7 @@ public class ControleDeJogo {
 
     /*
      * Retorna true se a posicao p é válida para Hero com relacao a todos os
-     * personagens no array
+     * personagens no array 
      */
     // public boolean ehPosicaoValida_Antigo(ArrayList<Personagem> umaFase, Posicao p, char c) {
     //     Personagem pIesimoPersonagem;
@@ -115,5 +115,18 @@ public class ControleDeJogo {
             }
         }
         return true;
+    }
+
+    public boolean ehValidoZigueZague(ArrayList<Personagem> umaFase, Posicao p){
+        Personagem pIesimoPersonagem;
+        for(int i = 1; i < umaFase.size(); i++){
+            pIesimoPersonagem = umaFase.get(i);
+            if(pIesimoPersonagem.isbEstatico() ||pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbPorta()){
+                if(pIesimoPersonagem.getPosicao().igual(p)){
+                    return false;   
+                }   
+            }
+        }
+        return true; 
     }
 }

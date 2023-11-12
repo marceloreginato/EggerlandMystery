@@ -3,7 +3,7 @@ package Modelo;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 
-public class Fase {
+public class Fase { 
     Porta porta = new Porta("roboPink.png");
 
     public Fase (Hero hero) {

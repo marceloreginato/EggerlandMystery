@@ -15,7 +15,7 @@ public class Fase4 extends Fase {
             Estatico brick = new Estatico("bricks.png");
             brick.setPosicao(Consts.RES - 7, j);
             Desenho.acessoATelaDoJogo().addPersonagem(brick);
-        }
+        }   
         
         Empurravel emp1 = new Empurravel("caixa.png");
         emp1.setPosicao(Consts.RES - 7, 6);

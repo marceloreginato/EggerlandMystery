@@ -13,7 +13,7 @@ public class Tiro extends Personagem implements Serializable {
         super(sNomeImagePNG, 't');
         this.bMortal = true;    
         this.c = c;
-    }
+    }   
 
     public void autoDesenho() {
         super.autoDesenho();

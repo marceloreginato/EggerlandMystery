@@ -24,6 +24,7 @@ public abstract class Personagem implements Serializable{
     protected boolean bColetavel;   /*Se encostar coleta o objeto*/
     protected boolean bPorta;
     protected boolean bMorrivel;
+    protected boolean bEstatico;
     private char c;
 
 
@@ -34,6 +35,7 @@ public abstract class Personagem implements Serializable{
         this.bEmpurravel = false;
         this.bColetavel = false;
         this.bMorrivel = false;
+        this.bEstatico = false;
         this.c = c;
         try {
             if(this.c == 'h')       
@@ -100,6 +102,14 @@ public abstract class Personagem implements Serializable{
 
     public boolean isbMorrivel() {
         return bMorrivel;
+    }
+
+    public boolean isbEstatico() {
+        return bEstatico;
+    }
+
+    public void setbEstatico(boolean bEstatico) {
+        this.bEstatico = bEstatico;
     }
 
     public void setbTransponivel(boolean bTransponivel) {

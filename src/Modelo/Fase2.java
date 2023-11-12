@@ -17,7 +17,7 @@ public class Fase2 extends Fase {
             brick4.setPosicao(i, 4);
             Desenho.acessoATelaDoJogo().addPersonagem(brick4);
             Estatico brick6 = new Estatico("bricks.png");
-            if(i == Consts.RES/2 + 1)
+            if(i == Consts.RES/2 + 1) 
                 continue;
             brick6.setPosicao(i, 6);
             Desenho.acessoATelaDoJogo().addPersonagem(brick6);

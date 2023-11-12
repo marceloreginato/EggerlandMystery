@@ -51,12 +51,12 @@ public class Fase1 extends Fase {
         }
 
         for(int z = 2; z < 7; z = z+4){
-            Inimigo inimigo = new Inimigo("skoot.png");
+            Inimigo inimigo = new Inimigo("MonstroVerde.png");
             inimigo.setPosicao(Consts.RES - 2, z);
             Desenho.acessoATelaDoJogo().addPersonagem(inimigo);
         }
 
-        Inimigo inimigo = new Inimigo("skoot.png");
+        Inimigo inimigo = new Inimigo("caveira.png");
         inimigo.setPosicao(Consts.RES - 6, 10);
         Desenho.acessoATelaDoJogo().addPersonagem(inimigo);
 
@@ -65,7 +65,7 @@ public class Fase1 extends Fase {
             moeda.setPosicao(i, 10);
             Desenho.acessoATelaDoJogo().addPersonagem(moeda);
         }
-
+        
         Coletavel moeda = new Coletavel("moeda.png");
         moeda.setPosicao((Consts.RES/2) - 1, 3);
         Desenho.acessoATelaDoJogo().addPersonagem(moeda);

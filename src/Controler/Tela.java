@@ -12,7 +12,7 @@ import Modelo.Inimigo;
 import Modelo.Fase1;
 import Modelo.Fase2;
 import Modelo.Fase3;
-import Modelo.Fase4;
+import Modelo.Fase4;        
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Modelo.ZigueZague;
@@ -37,19 +37,19 @@ import java.util.TimerTask;
 import java.util.logging.Level;     
 import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import javax.swing.JButton;
+import java.util.zip.GZIPOutputStream;  
+import javax.swing.JButton;                 
 
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
     private Hero hero;
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
-    private int fase = 4;   
+    private int fase = 2;                         
     private int qntmoedas;  
     
     public Tela() {
-        Desenho.setCenario(this);
+        Desenho.setCenario(this);           
         initComponents();
         this.addMouseListener(this); /*mouse*/
 
@@ -66,7 +66,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public boolean ehPosicaoValida(Posicao p, char c, char tipoPersonagem){
         return cj.ehPosicaoValida(this.faseAtual, p, c, tipoPersonagem);
+    }                           
+
+    public boolean ehValidoZigueZague(Posicao p){
+        return cj.ehValidoZigueZague(this.faseAtual, p);
     }
+
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
     }           
@@ -77,6 +82,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public int getQntmoedas() {
         return qntmoedas;
+    }
+    
+    public int getFase(){   
+        return fase;
     }
 
     public void setMoedas(){

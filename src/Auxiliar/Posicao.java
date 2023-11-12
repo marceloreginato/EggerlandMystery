@@ -24,7 +24,7 @@ public class Posicao implements Serializable{
         colunaAnterior = this.coluna;
         this.coluna = coluna;
         
-        return true;
+        return true;        
     }
     
     public int getLinha(){

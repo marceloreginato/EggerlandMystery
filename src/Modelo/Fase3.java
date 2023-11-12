@@ -18,7 +18,7 @@ public class Fase3 extends Fase{
         Desenho.acessoATelaDoJogo().addPersonagem(am1);
 
         AtiraPelaMoeda am2 = new AtiraPelaMoeda("MonstroRoxoFrente.png", hero);
-        am2.setPosicao(4, 8);           
+        am2.setPosicao(4, 8);            
         Desenho.acessoATelaDoJogo().addPersonagem(am2);
 
         AtiraPelaMoeda am3 = new AtiraPelaMoeda("MonstroRoxoTras.png", hero);
