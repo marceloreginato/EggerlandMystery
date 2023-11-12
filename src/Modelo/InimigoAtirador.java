@@ -6,10 +6,10 @@ import Controler.Tela;
 import java.awt.Graphics;
 import java.io.Serializable;
 
-public class InimigoAtirador extends Personagem implements Serializable {
+public class InimigoAtirador extends Personagem{
     
     public InimigoAtirador(String sNomeImagePNG) {
-        super(sNomeImagePNG, 'i');
+        super(sNomeImagePNG, 'i');  
         this.bTransponivel = false;
     }
 

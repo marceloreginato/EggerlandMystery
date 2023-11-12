@@ -1,6 +1,6 @@
 package Modelo;
 
-import Auxiliar.Consts;
+import Auxiliar.Consts; 
 import Auxiliar.Desenho;
 import Controler.Tela;
 import Auxiliar.Posicao;
@@ -36,7 +36,7 @@ public abstract class Personagem implements Serializable{
         this.bMorrivel = false;
         this.c = c;
         try {
-            if(this.c == 'h')
+            if(this.c == 'h')       
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_HERO + sNomeImagePNG);
             else if(this.c == 't')
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_FOGO + sNomeImagePNG);

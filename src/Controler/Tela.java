@@ -1,11 +1,12 @@
 package Controler;
 
 import Modelo.Personagem;
-import Modelo.InimigoAtirador;
+import Modelo.InimigoAtirador;  
 import Modelo.AtiraNaVisao;
+import Modelo.AtiraPelaMoeda;
 import Modelo.Coletavel;        
 import Modelo.Empurravel;
-import Modelo.Estatico;
+import Modelo.Estatico;     
 import Modelo.Hero;
 import Modelo.Inimigo;
 import Auxiliar.Consts;
@@ -40,8 +41,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
-    private int fase = 1; 
-    public int qntmoedas = 0;
+    private int fase = 3; 
+    private int qntmoedas = 0;
     
     public Tela() {
         Desenho.setCenario(this);
@@ -104,15 +105,15 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     Coletavel moeda = new Coletavel("moeda.png");
                     moeda.setPosicao((Consts.RES/2)+1, z);
                     this.addPersonagem(moeda);
-                }
+                }   
 
                 for(int z = 2; z < 7; z = z+4){
-                    Inimigo inimigo = new Inimigo("skoot.png");
+                    Inimigo inimigo = new Inimigo("MonstroVerde.png");
                     inimigo.setPosicao(Consts.RES - 2, z);
-                    this.addPersonagem(inimigo);
+                    this.addPersonagem(inimigo);        
                 }
 
-                Inimigo inimigo = new Inimigo("skoot.png");
+                Inimigo inimigo = new Inimigo("MonstroVerde.png"); 
                 inimigo.setPosicao(Consts.RES/2, 1);
                 this.addPersonagem(inimigo);
 
@@ -155,7 +156,30 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 this.addPersonagem(zz1);
 
                 break;
-        }
+
+            case 3:
+                AtiraPelaMoeda am1 = new AtiraPelaMoeda("MonstroRoxoDireita.png", hero);
+                am1.setPosicao(3, 4);           
+                this.addPersonagem(am1);
+
+                AtiraPelaMoeda am2 = new AtiraPelaMoeda("MonstroRoxoFrente.png", hero);
+                am2.setPosicao(3, 9);           
+                this.addPersonagem(am2);
+
+                AtiraPelaMoeda am3 = new AtiraPelaMoeda("MonstroRoxoTras.png", hero);
+                am3.setPosicao(8, 4);           
+                this.addPersonagem(am3);                             
+
+                AtiraPelaMoeda am4 = new AtiraPelaMoeda("MonstroRoxoEsquerda.png", hero);
+                am4.setPosicao(8, 9);           
+                this.addPersonagem(am4);                        
+
+                Coletavel moeda1 = new Coletavel("moeda.png");
+                moeda1.setPosicao(5, 6);
+                this.addPersonagem(moeda1);
+            
+                break;
+        }   
     
         // ZigueZague zz1 = new ZigueZague("robo.png");
         // zz1.setPosicao(8, 8);
@@ -187,6 +211,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public void removePersonagem(Personagem umPersonagem) {
         faseAtual.remove(umPersonagem);
+    }
+
+    public int getQntmoedas() {
+        return qntmoedas;
     }
 
     public void setMoedas(){

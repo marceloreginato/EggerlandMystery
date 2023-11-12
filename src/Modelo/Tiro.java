@@ -1,5 +1,5 @@
 package Modelo;
-
+    
 import Auxiliar.Desenho;
 import Controler.Tela;
 import java.awt.Graphics;

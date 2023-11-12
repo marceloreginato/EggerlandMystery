@@ -1,5 +1,5 @@
 package Auxiliar;
-
+    
 import java.io.File;
 
 public class Consts {

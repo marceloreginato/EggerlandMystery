@@ -46,7 +46,7 @@ public class AtiraNaVisao extends InimigoAtirador implements Serializable{
             if(SkinPlantaLinha == 0)
                 super.SkinPersonagem("PlantinhaDormindo.png", 'i');
             stopColuna = 0;
-        }
+        }       
 
         if(hero.pPosicao.getColuna() == this.pPosicao.getColuna() && stopColuna != 1){
             SkinPlantaColuna = 1;

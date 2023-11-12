@@ -1,5 +1,5 @@
 package Auxiliar;
-
+    
 import java.io.Serializable;
 
 public class Posicao implements Serializable{
