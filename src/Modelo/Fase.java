@@ -4,11 +4,11 @@ import Auxiliar.Consts;
 import Auxiliar.Desenho;
 
 public class Fase {
-    // Porta porta;
+    Porta porta = new Porta("roboPink.png");
 
     public Fase (Hero hero) {
-        hero.setPosicao(1, 1);
         Desenho.acessoATelaDoJogo().addPersonagem(hero);
+        Desenho.acessoATelaDoJogo().addPersonagem(porta);
 
         for (int i = 0; i < Consts.RES; i++){
             for (int j = 0; j < Consts.RES; j++){
@@ -18,10 +18,6 @@ public class Fase {
                     Desenho.acessoATelaDoJogo().addPersonagem(est);
                 }
             }
-        }   
-
-        // porta = new Porta("Porta.png");
-        // porta.setPosicao();
-        // Desenho.acessoATelaDoJogo().addPersonagem(porta);
+        } 
     }
 }

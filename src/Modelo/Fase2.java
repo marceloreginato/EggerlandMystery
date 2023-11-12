@@ -4,33 +4,32 @@ import Auxiliar.Consts;
 import Auxiliar.Desenho;
 
 public class Fase2 extends Fase {
-    // Porta porta;
-
     public Fase2 (Hero hero) {
         super(hero);
+        hero.setPosicao(3, 9);
+        porta.setPosicao(Consts.RES - 4, 9);
 
-        // porta = new Porta("Porta.png");
-        // porta.setPosicao();
-        // Desenho.acessoATelaDoJogo().addPersonagem(porta);
-
-        for(int i = 2; i < Consts.RES - 3; i++){
-            Estatico brick3 = new Estatico("bricks.png");
-            brick3.setPosicao(i, 3);
-            Desenho.acessoATelaDoJogo().addPersonagem(brick3);
-            Estatico brick5 = new Estatico("bricks.png");
-            brick5.setPosicao(i, 5);
-            Desenho.acessoATelaDoJogo().addPersonagem(brick5);
+        for(int i = 2; i < Consts.RES - 4; i++){
+            Estatico brick2 = new Estatico("bricks.png");
+            brick2.setPosicao(i, 2);
+            Desenho.acessoATelaDoJogo().addPersonagem(brick2);
+            Estatico brick4 = new Estatico("bricks.png");
+            brick4.setPosicao(i, 4);
+            Desenho.acessoATelaDoJogo().addPersonagem(brick4);
+            Estatico brick6 = new Estatico("bricks.png");
+            brick6.setPosicao(i, 6);
+            Desenho.acessoATelaDoJogo().addPersonagem(brick6);
         }
 
-        for(int i = 4; i < Consts.RES - 4; i++){
+        for(int i = 2; i < Consts.RES - 4; i++){
             if(i == Consts.RES/2)
                 continue;
-            Estatico brick11 = new Estatico("bricks.png");
-            brick11.setPosicao(i, 11);
-            Desenho.acessoATelaDoJogo().addPersonagem(brick11);
-            Estatico brick9 = new Estatico("bricks.png");
-            brick9.setPosicao(i, 9);
-            Desenho.acessoATelaDoJogo().addPersonagem(brick9);
+            Estatico brick8 = new Estatico("bricks.png");
+            brick8.setPosicao(i, 8);
+            Desenho.acessoATelaDoJogo().addPersonagem(brick8);
+            Estatico brick10 = new Estatico("bricks.png");
+            brick10.setPosicao(i, 10);
+            Desenho.acessoATelaDoJogo().addPersonagem(brick10);
         }
 
         for(int j = 7; j < 9; j++){
@@ -39,7 +38,7 @@ public class Fase2 extends Fase {
             Desenho.acessoATelaDoJogo().addPersonagem(bricktop);
         }
 
-        ZigueZague zz1 = new ZigueZague("robo.png");
+        ZigueZague zz1 = new ZigueZague("caveira.png");
         zz1.setPosicao(8, 7);
         Desenho.acessoATelaDoJogo().addPersonagem(zz1);
     }

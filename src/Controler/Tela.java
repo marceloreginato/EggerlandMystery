@@ -41,9 +41,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private Hero hero;
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
-    private Graphics g2;
-    private int fase = 1; 
-    public int qntmoedas = 0;
+    private Graphics g2;    
+    private int fase = 2;       
+    public int qntmoedas;       
     
     public Tela() {
         Desenho.setCenario(this);
@@ -75,11 +75,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public void setMoedas(){
         qntmoedas++;
-    }
+    }  
 
     public void criaFase(){
         if(fase <= 5)
             faseAtual.clear();
+        qntmoedas = 0;
 
         switch (fase) {
             // case 0:
@@ -132,7 +133,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             }
         }
 
-        if(qntmoedas == 1 && fase == 1){
+        if(qntmoedas == 10 && fase == 1){
             fase++;
             criaFase();
         }
