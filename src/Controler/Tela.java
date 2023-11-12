@@ -12,6 +12,7 @@ import Modelo.Inimigo;
 import Modelo.Fase1;
 import Modelo.Fase2;
 import Modelo.Fase3;
+import Modelo.Fase4;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Modelo.ZigueZague;
@@ -33,7 +34,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Level;
+import java.util.logging.Level;     
 import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
@@ -44,8 +45,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
-    private int fase = 3; 
-    private int qntmoedas;
+    private int fase = 4;   
+    private int qntmoedas;  
     
     public Tela() {
         Desenho.setCenario(this);
@@ -104,9 +105,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 new Fase3(hero);
                 break;
 
-            // case 4:
-            //     new Fase4(hero);
-            //     break;
+            case 4:
+                new Fase4(hero);
+                break;
         
             // case 5:
             //     new Fim();
@@ -115,7 +116,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             default:
                 break;
         }
-    }
+    }       
 
     public Graphics getGraphicsBuffer(){
         return g2;  
