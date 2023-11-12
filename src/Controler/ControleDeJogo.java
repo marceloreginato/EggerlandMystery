@@ -6,6 +6,7 @@ import Modelo.Hero;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
 import Auxiliar.Consts;
+import Auxiliar.Desenho;
 
 public class ControleDeJogo {
     public void desenhaTudo(ArrayList<Personagem> e) {
@@ -42,35 +43,35 @@ public class ControleDeJogo {
     //     return true;    
     // }
 
-    public boolean processaEmpurravel(char sentidoMovimento, Personagem personagemEmpurravel, Tela tela, ArrayList<Personagem> umaFase){
+    public boolean processaEmpurravel(char sentidoMovimento, Personagem personagemEmpurravel, ArrayList<Personagem> umaFase){
         int linha = personagemEmpurravel.getPosicao().getLinha();
         int coluna = personagemEmpurravel.getPosicao().getColuna();
 
         switch (sentidoMovimento) {
             case 'u':
                 Posicao posicaoU = new Posicao(linha - 1, coluna);
-                if(!this.ehPosicaoValida(umaFase, posicaoU, 'u', tela, 'e'))
+                if(!this.ehPosicaoValida(umaFase, posicaoU, 'u', 'e'))
                     return false;
                 personagemEmpurravel.moveUp();
                 break;
 
             case 'd':
                 Posicao posicaoD = new Posicao(linha + 1, coluna);
-                if(!this.ehPosicaoValida(umaFase, posicaoD, 'd', tela, 'e'))
+                if(!this.ehPosicaoValida(umaFase, posicaoD, 'd', 'e'))
                     return false;
                 personagemEmpurravel.moveDown();
                 break;
 
             case 'l':
                 Posicao posicaoL = new Posicao(linha, coluna - 1);
-                if(!this.ehPosicaoValida(umaFase, posicaoL, 'l', tela, 'e'))
+                if(!this.ehPosicaoValida(umaFase, posicaoL, 'l', 'e'))
                     return false;
                 personagemEmpurravel.moveLeft();
                 break;
 
             case 'r':
                 Posicao posicaoR = new Posicao(linha - 1, coluna + 1);
-                if(!this.ehPosicaoValida(umaFase, posicaoR, 'r', tela, 'e'))
+                if(!this.ehPosicaoValida(umaFase, posicaoR, 'r', 'e'))
                     return false;    
                 personagemEmpurravel.moveRight();
                 break;
@@ -81,7 +82,7 @@ public class ControleDeJogo {
         return true;
     }
 
-    public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p, char sentidoMovimento, Tela tela, char tipoPersonagem) {
+    public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p, char sentidoMovimento, char tipoPersonagem) {
         Personagem pIesimoPersonagem;
         for (int i = 1; i < umaFase.size(); i++) {
             pIesimoPersonagem = umaFase.get(i);
@@ -93,22 +94,22 @@ public class ControleDeJogo {
                         return false;
                     }
                     if(pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbPorta() || !pIesimoPersonagem.isbTransponivel())
-                    return false;
-                // if(pIesimoPersonagem.isbTransponivel())
-                //     return false;
-                // if(pIesimoPersonagem.isbMortal())
-                //     return false;
+                        return false;
+                    // if(pIesimoPersonagem.isbTransponivel())
+                    //     return false;
+                    // if(pIesimoPersonagem.isbMortal())
+                    //     return false;
                     return true;
-                }
+                }   
                 if (!pIesimoPersonagem.isbTransponivel()) {
                     if (pIesimoPersonagem.isbEmpurravel())
-                        return processaEmpurravel(sentidoMovimento, pIesimoPersonagem, tela, umaFase);
+                        return processaEmpurravel(sentidoMovimento, pIesimoPersonagem, umaFase);
                     return false;
                 }
                 if(pIesimoPersonagem.isbColetavel()){
                     if(tipoPersonagem != 'h')
                         return false;
-                    tela.setMoedas();
+                    Desenho.acessoATelaDoJogo().setMoedas();
                 }
                 return true;
             }

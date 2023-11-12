@@ -9,6 +9,9 @@ import Modelo.Empurravel;
 import Modelo.Estatico;     
 import Modelo.Hero;
 import Modelo.Inimigo;
+import Modelo.Fase1;
+import Modelo.Fase2;
+import Modelo.Fase3;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Modelo.ZigueZague;
@@ -42,7 +45,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;
     private int fase = 3; 
-    private int qntmoedas = 0;
+    private int qntmoedas;
     
     public Tela() {
         Desenho.setCenario(this);
@@ -54,156 +57,14 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
-        
-        // fasesJogo = new ArrayList<ArrayList<Personagem>>();
         faseAtual = new ArrayList<Personagem>();
-        hero = new Hero("HeroEstaticFace.png"); 
-        hero.setPosicao(1, 1);
-        this.addPersonagem(hero);
-
-        switch (fase) {
-            case 1:
-                for(int i = 2; i < Consts.RES - 2; i++){
-                    Estatico brick3 = new Estatico("bricks.png");
-                    brick3.setPosicao(i, 2);
-                    this.addPersonagem(brick3);
-                    Estatico brick7 = new Estatico("bricks.png");
-                    brick7.setPosicao(i, 6);
-                    this.addPersonagem(brick7);
-                    Estatico brick11 = new Estatico("bricks.png");
-                    brick11.setPosicao(i, 10);
-                    this.addPersonagem(brick11);
-                }
-
-                for(int i = 1; i < Consts.RES - 1; i++){
-                    if(i == Consts.RES/2)
-                        continue;
-                    Estatico brick5 = new Estatico("bricks.png");
-                    brick5.setPosicao(i, 4);
-                    this.addPersonagem(brick5);
-                    Estatico brick9 = new Estatico("bricks.png");
-                    brick9.setPosicao(i, 8);
-                    this.addPersonagem(brick9);
-                }
-
-                for(int j = 6; j < 8; j++){
-                    Estatico bricktop = new Estatico("bricks.png");
-                    bricktop.setPosicao(1, j);
-                    this.addPersonagem(bricktop);
-                }   
-                
-                for(int z = 3; z < 10; z = z+4){
-                    Empurravel emp1 = new Empurravel("caixa.png");
-                    emp1.setPosicao(Consts.RES/2 - 2, z);
-                    this.addPersonagem(emp1);
-                    Empurravel emp2 = new Empurravel("caixa.png");
-                    emp2.setPosicao(Consts.RES/2 - 1, z);
-                    this.addPersonagem(emp2);
-                    Empurravel emp = new Empurravel("caixa.png");
-                    emp.setPosicao(Consts.RES/2, z);
-                    this.addPersonagem(emp);
-                    Coletavel moeda = new Coletavel("moeda.png");
-                    moeda.setPosicao((Consts.RES/2)+1, z);
-                    this.addPersonagem(moeda);
-                }   
-
-                for(int z = 2; z < 7; z = z+4){
-                    Inimigo inimigo = new Inimigo("MonstroVerde.png");
-                    inimigo.setPosicao(Consts.RES - 2, z);
-                    this.addPersonagem(inimigo);        
-                }
-
-                Inimigo inimigo = new Inimigo("MonstroVerde.png"); 
-                inimigo.setPosicao(Consts.RES/2, 1);
-                this.addPersonagem(inimigo);
-
-                Coletavel moeda = new Coletavel("moeda.png");
-                moeda.setPosicao(2, 1);
-                // moeda.setPosicao((Consts.RES/2)-1, 3);
-                this.addPersonagem(moeda);
-                    
-                break;
+        hero = new Hero("HeroEstaticFace.png");     
             
-            case 2:
-                for(int i = 2; i < Consts.RES - 3; i++){
-                    Estatico brick3 = new Estatico("bricks.png");
-                    brick3.setPosicao(i, 3);
-                    this.addPersonagem(brick3);
-                    Estatico brick5 = new Estatico("bricks.png");
-                    brick5.setPosicao(i, 5);
-                    this.addPersonagem(brick5);
-                }
-
-                for(int i = 4; i < Consts.RES - 4; i++){
-                    if(i == Consts.RES/2)
-                        continue;
-                    Estatico brick11 = new Estatico("bricks.png");
-                    brick11.setPosicao(i, 11);
-                    this.addPersonagem(brick11);
-                    Estatico brick9 = new Estatico("bricks.png");
-                    brick9.setPosicao(i, 9);
-                    this.addPersonagem(brick9);
-                }
-
-                for(int j = 7; j < 9; j++){
-                    Estatico bricktop = new Estatico("bricks.png");
-                    bricktop.setPosicao(2, j);
-                    this.addPersonagem(bricktop);
-                }
-
-                ZigueZague zz1 = new ZigueZague("robo.png");
-                zz1.setPosicao(8, 8);
-                this.addPersonagem(zz1);
-
-                break;
-
-            case 3:
-                AtiraPelaMoeda am1 = new AtiraPelaMoeda("MonstroRoxoDireita.png", hero);
-                am1.setPosicao(3, 4);           
-                this.addPersonagem(am1);
-
-                AtiraPelaMoeda am2 = new AtiraPelaMoeda("MonstroRoxoFrente.png", hero);
-                am2.setPosicao(3, 9);           
-                this.addPersonagem(am2);
-
-                AtiraPelaMoeda am3 = new AtiraPelaMoeda("MonstroRoxoTras.png", hero);
-                am3.setPosicao(8, 4);           
-                this.addPersonagem(am3);                             
-
-                AtiraPelaMoeda am4 = new AtiraPelaMoeda("MonstroRoxoEsquerda.png", hero);
-                am4.setPosicao(8, 9);           
-                this.addPersonagem(am4);                        
-
-                Coletavel moeda1 = new Coletavel("moeda.png");
-                moeda1.setPosicao(5, 6);
-                this.addPersonagem(moeda1);
-            
-                break;
-        }   
-    
-        // ZigueZague zz1 = new ZigueZague("robo.png");
-        // zz1.setPosicao(8, 8);
-        // this.addPersonagem(zz1);
-
-        // // InimigoAtirador bV = new InimigoAtirador("caveira.png");
-        // // bV.setPosicao(9, 1);
-        // // this.addPersonagem(bV);
-
-        // AtiraNaVisao anv1 = new AtiraNaVisao("PlantinhaDormindo.png", hero);
-        // anv1.setPosicao(6, 6);
-        // this.addPersonagem(anv1);
-
-        // Coletavel col1 = new Coletavel("moeda.png");
-        // col1.setPosicao(4, 4);
-        // this.addPersonagem(col1);
-
-        // Empurravel emp1 = new Empurravel("caixa.png");
-        // emp1.setPosicao(2, 2);
-        // this.addPersonagem(emp1);   
+        criaFase();  
     }
 
     public boolean ehPosicaoValida(Posicao p, char c, char tipoPersonagem){
-        return cj.ehPosicaoValida(this.faseAtual, p, c, this, tipoPersonagem);
+        return cj.ehPosicaoValida(this.faseAtual, p, c, tipoPersonagem);
     }
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
@@ -219,6 +80,41 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
     public void setMoedas(){
         qntmoedas++;
+    }  
+
+    public void criaFase(){
+        if(fase <= 5)
+            faseAtual.clear();
+        qntmoedas = 0;
+
+        switch (fase) {
+            // case 0:
+            //     new Inicio();
+            //     break;
+
+            case 1:
+                new Fase1(hero);
+                break;
+
+            case 2:
+                new Fase2(hero);
+                break;
+
+            case 3:
+                new Fase3(hero);
+                break;
+
+            // case 4:
+            //     new Fase4(hero);
+            //     break;
+        
+            // case 5:
+            //     new Fim();
+            //     break;
+
+            default:
+                break;
+        }
     }
 
     public Graphics getGraphicsBuffer(){
@@ -242,16 +138,10 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             }
         }
 
-        for (int i = 0; i < Consts.RES; i++){
-            for (int j = 0; j < Consts.RES; j++){
-                if(i == 0 || j == 0 || i == Consts.RES - 1 || j == Consts.RES - 1 || j == Consts.RES - 4 || (i == 7 && j > Consts.RES - 4) || (i == 12 && j > Consts.RES - 4)){
-                    Estatico est = new Estatico("TijoloRoxo.png");      
-                    est.setPosicao(i, j);
-                    faseAtual.add(est);
-                }
-            }
+        if(qntmoedas == 10 && fase == 1){
+            fase++;
+            criaFase();
         }
-
 
         if (!this.faseAtual.isEmpty()) {
             this.cj.desenhaTudo(faseAtual);
@@ -307,14 +197,14 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
          this.hero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
          
         repaint();
-    }
+    }   
 
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("POO2023-1 - Skooter");
+        setTitle("POO2023 - Eggerland Mystery - Marcelo e Rhayna");
         setAlwaysOnTop(true);
         setAutoRequestFocus(false);
         setResizable(false);

@@ -1,5 +1,8 @@
 package Modelo;
 
-// public class Porta extends Personagem {
-    
-// }
+public class Porta extends Personagem {
+    public Porta(String sNomeImagemPNG){
+        super(sNomeImagemPNG, 'z');
+        this.bTransponivel = true;
+    }
+}
