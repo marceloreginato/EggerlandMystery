@@ -36,7 +36,7 @@ public class Progresso {
             dataOutputStream.writeInt(currentfase);
             dataOutputStream.writeInt(currentvidas);
             dataOutputStream.close();
-            System.out.println("Jogo salvo com sucesso");
+            // System.out.println("Jogo salvo com sucesso");
         } catch (IOException e) {
             System.err.println("Erro no salvamento do jogo: " + e.getMessage());
         }
@@ -47,7 +47,7 @@ public class Progresso {
             DataInputStream dataInputStream = new DataInputStream(new FileInputStream(file));
             currentfase = dataInputStream.readInt();
             currentvidas = dataInputStream.readInt();
-            System.out.println("Jogo restaurado com sucesso");
+            // System.out.println("Jogo restaurado com sucesso");
             dataInputStream.close();
         } catch (IOException e) {
             System.err.println("Erro ao restaurar o jogo: " + e.getMessage());

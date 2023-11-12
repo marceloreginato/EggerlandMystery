@@ -222,6 +222,14 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             hero.moveRight();
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             hero.atira(hero.getLastMovment());  
+        } else if (e.getKeyCode() == KeyEvent.VK_M) { // salvar e sair
+            progresso.salvamento();
+            // setFase(0);
+        } else if (e.getKeyCode() == KeyEvent.VK_R) { // salvar e sair
+            progresso.salvamento();
+            System.exit(0);
+        } else if (e.getKeyCode() == KeyEvent.VK_I) { // sair sem salvar
+            System.exit(0);
         }
 
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", "
