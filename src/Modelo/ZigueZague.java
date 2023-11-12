@@ -12,7 +12,7 @@ public class ZigueZague extends Personagem {
 
     public void autoDesenho(){
 
-        if(Desenho.acessoATelaDoJogo().getQntmoedas() == 5 && Desenho.acessoATelaDoJogo().getFase() == 2){
+        if(Desenho.acessoATelaDoJogo().getMoedas() == 5 && Desenho.acessoATelaDoJogo().getFase() == 2){
             Random rand = new Random();
             int iDirecao = rand.nextInt(4);
             

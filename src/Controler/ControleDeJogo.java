@@ -113,7 +113,7 @@ public class ControleDeJogo {
                 if(pIesimoPersonagem.isbColetavel()){
                     if(tipoPersonagem != 'h')
                         return false;
-                    Desenho.acessoATelaDoJogo().setMoedas();
+                    Desenho.acessoATelaDoJogo().addMoedas();
                 }
                 return true;
             }

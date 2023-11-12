@@ -16,6 +16,7 @@ import Modelo.InimigoAtirador;
 import Modelo.Porta;
 import Modelo.Tiro;
 import Modelo.ZigueZague;
+import Modelo.Progresso;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Auxiliar.Posicao;
@@ -27,9 +28,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -41,15 +47,17 @@ import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;  
 import javax.swing.JButton;                 
-    
+
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
     private Hero hero;
     private ArrayList<Personagem> faseAtual;
     private ControleDeJogo cj = new ControleDeJogo();
-    private Graphics g2;
-    private int fase = 1;                                 
-    private int qntmoedas;  
-    
+    private Graphics g2;    
+    private int fase;                                
+    private int qntmoedas;
+    private int qntvidas;
+    private Progresso progresso = new Progresso(this);
+
     public Tela() {
         Desenho.setCenario(this);           
         initComponents();
@@ -61,9 +69,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
         faseAtual = new ArrayList<Personagem>();
-        hero = new Hero("HeroEstaticFace.png");     
-            
+        hero = new Hero("HeroEstaticFace.png");
+        
+        progresso.restaurar();
+        
         criaFase();
+        progresso.salvamento();
     }   
 
     public boolean ehPosicaoValida(Posicao p, char sentidoMovimento, char tipoPersonagem){
@@ -86,22 +97,38 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         return faseAtual.size();
     }
 
-    public int getQntmoedas() {
-        return qntmoedas;
-    }
-    
     public int getFase(){   
         return fase;
     }
 
-    public void setMoedas(){
+    public void setFase(int i){
+        fase = i;
+    } 
+
+    public int getMoedas() {
+        return qntmoedas;
+    }
+
+    protected void setMoedas(int i){
+        qntmoedas = i;
+    } 
+
+    public void addMoedas(){
         qntmoedas++;
     }  
+
+    public int getVidas(){   
+        return qntvidas;
+    }
+
+    public void setVida(int i){
+        qntvidas = i;
+    } 
 
     public void criaFase(){
         if(fase <= 5)
             faseAtual.clear();
-        qntmoedas = 0;
+        setMoedas(0);
 
         switch (fase) {
             // case 0:
@@ -131,7 +158,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             default:
                 break;
         }
-    }     
+    }
 
     public Graphics getGraphicsBuffer(){
         return g2;  
@@ -157,6 +184,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         if(tamanhoFase() > 0 && !faseAtual.get(1).isbPorta() && fase < 5){
             fase++;
             criaFase();
+            progresso.salvamento();
         }
 
         if (!this.faseAtual.isEmpty()) {

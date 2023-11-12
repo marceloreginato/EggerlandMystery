@@ -27,7 +27,7 @@ public class AtiraPelaMoeda extends InimigoAtirador{
     public void autoDesenho(){
         super.autoDesenho();
 
-        if(Desenho.acessoATelaDoJogo().getQntmoedas() != 0){
+        if(Desenho.acessoATelaDoJogo().getMoedas() != 0){
 
             if(tiroD == 0){
                 if(this.sNomeImagePNG.equals("MonstroRoxoDireita.png"))
@@ -91,7 +91,7 @@ public class AtiraPelaMoeda extends InimigoAtirador{
             aguardaTodosAtirar++;
 
             if(aguardaTodosAtirar == 3)
-                Desenho.acessoATelaDoJogo().setMoedas();
+                Desenho.acessoATelaDoJogo().addMoedas();
         }
     }
 
