@@ -132,6 +132,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     } 
     
     public void removeVidas(){
+        if(qntvidas == 1){
+            qntvidas = 5;
+            fase = 1;
+            progresso.salvamento();
+            System.exit(0);
+        } 
         qntvidas--;
     }
 
@@ -169,6 +175,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             //     break;
 
             case 1:
+                setVidas(5);
                 new Fase1(hero);
                 break;
 
