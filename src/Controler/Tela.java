@@ -81,7 +81,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
         faseAtual = new ArrayList<Personagem>();                    /*Instancia array com ambiente da fase atual*/
         hero = new Hero("HeroEstaticFace.png");       /*Instancia Hero*/
-    }   
+    }
 
     /*Verifica se a posicao a ser movida eh possivel*/
     public boolean ehPosicaoValida(Posicao p, char sentidoMovimento, char tipoPersonagem){
@@ -112,7 +112,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         return fase;
     }
 
-    public void setFase(int fase){
+    protected void setFase(int fase){
         this.fase = fase;
     } 
 
@@ -132,7 +132,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     }  
 
     /*Remove uma moeda (tiro) do inventario do jogador (um tiro foi gasto)*/
-    public void removeMoedas(){
+    private void removeMoedas(){
         qntmoedas--;
     } 
 
@@ -140,7 +140,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         return qntvidas;
     }
 
-    public void setVidas(int qntvidas){
+    protected void setVidas(int qntvidas){
         this.qntvidas = qntvidas;
     } 
     

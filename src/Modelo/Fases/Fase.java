@@ -14,18 +14,18 @@ public abstract class Fase {
     padroes de todas as fases (Hero, Porta, Bordas e Setup Lateral).*/
 
     /*Instancia Porta*/
-    Porta porta = new Porta("PortaFechada.png");
+    protected Porta porta = new Porta("PortaFechada.png");
 
     /*Instancia Setup Lateral - Numeros*/
-    Numero numVida = new Numero(Desenho.acessoATelaDoJogo().getVidas(), 'v');
-    Numero numMoeda = new Numero(Desenho.acessoATelaDoJogo().getMoedas(), 'm');
-    Numero numFase = new Numero(Desenho.acessoATelaDoJogo().getFase(), 'f');
+    protected Numero numVida = new Numero(Desenho.acessoATelaDoJogo().getVidas(), 'v');
+    protected Numero numMoeda = new Numero(Desenho.acessoATelaDoJogo().getMoedas(), 'm');
+    protected Numero numFase = new Numero(Desenho.acessoATelaDoJogo().getFase(), 'f');
 
     /*Instancia Setup Lateral - Desenhos*/
-    Lateral herolateral = new Lateral("HeroEstaticFace.png", 'h');
-    Lateral tirolateral = new Lateral("TiroHorizontal.png", 't');
-    Lateral round1 = new Lateral("round1.png", 'r');
-    Lateral round2 = new Lateral("round2.png", 'l');
+    protected Lateral herolateral = new Lateral("HeroEstaticFace.png", 'h');
+    protected Lateral tirolateral = new Lateral("TiroHorizontal.png", 't');
+    protected Lateral round1 = new Lateral("round1.png", 'r');
+    protected Lateral round2 = new Lateral("round2.png", 'l');
 
 
     public Fase (Hero hero) {

@@ -6,13 +6,13 @@ import Modelo.Hero;
 public class AtiraPelaMoeda extends InimigoAtirador{
 
     private String sNomeImagePNG;    //string para verificacao do inimigo
-    int tiroD = 0;                  //bloco de variaveis para atirar uma vez a partir da condicao satisfeita
-    int tiroE = 0;
-    int tiroF = 0;
-    int tiroT = 0;
-    int stopLinha = 0;              //variaveis para atirar apenas uma vez se a condicao for satisfeita, apos a coleta da moeda
-    int stopColuna = 0;
-    Hero hero;
+    private int tiroD = 0;                  //bloco de variaveis para atirar uma vez a partir da condicao satisfeita
+    private int tiroE = 0;
+    private int tiroF = 0;
+    private int tiroT = 0;
+    private int stopLinha = 0;              //variaveis para atirar apenas uma vez se a condicao for satisfeita, apos a coleta da moeda
+    private int stopColuna = 0;
+    private Hero hero;
 
     public AtiraPelaMoeda(String sNomeImagePNG, Hero hero){
         super(sNomeImagePNG);

@@ -16,7 +16,7 @@ public class Janela{
     e gameover). Desenha um background com uma imagem 675x675 px. 
     O nome da imagem eh passado ao instanciar o objeto.*/
 
-    String sNomeBackground;
+    public String sNomeBackground;
 
     public Janela(String sNomeBackgorund){
         this.sNomeBackground = sNomeBackgorund;

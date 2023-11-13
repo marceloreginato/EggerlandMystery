@@ -19,11 +19,11 @@ public class Hero extends Personagem {
         return lastMovment;
     }
 
-    public void setLastMovment(char lastMovment) {
-        this.lastMovment = lastMovment;
-    }
+    // public void setLastMovment(char lastMovment) {
+    //     this.lastMovment = lastMovment;
+    // }
 
-    public void voltaAUltimaPosicao(){
+    private void voltaAUltimaPosicao(){
         this.pPosicao.volta();  
     }
     

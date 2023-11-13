@@ -15,7 +15,7 @@ public class InimigoAtirador extends Personagem{
         super.autoDesenho();
     }
 
-    public void atiraRight(char c){              //recebe caracter para determinar qual skin de tiro utilizar, pois temos dois atiradores que herdam desta classe
+    protected void atiraRight(char c){              //recebe caracter para determinar qual skin de tiro utilizar, pois temos dois atiradores que herdam desta classe
         if(c == 'v'){                            //caracter v pata atiranaVisao e m para atirapelaMoeda
             Tiro t1 = new Tiro("TiroPlantinhaHorizontal.png", 'r'); //instancia objeto tiro
             t1.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
@@ -28,7 +28,7 @@ public class InimigoAtirador extends Personagem{
         }      
     }
 
-    public void atiraLeft(char c){
+    protected void atiraLeft(char c){
         if(c == 'v'){
             Tiro t2 = new Tiro("TiroPlantinhaHorizontal.png", 'l'); //instancia objeto tiro
             t2.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
@@ -41,7 +41,7 @@ public class InimigoAtirador extends Personagem{
         }
     }
 
-    public void atiraUp(char c){
+    protected void atiraUp(char c){
         if(c == 'v'){
             Tiro t3 = new Tiro("TiroPlantinhaVertical.png", 'u');  //instancia objeto tiro
             t3.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
@@ -54,7 +54,7 @@ public class InimigoAtirador extends Personagem{
         }
     }
 
-    public void atiraDown(char c){
+    protected void atiraDown(char c){
         if(c == 'v'){
             Tiro t4 = new Tiro("TiroPlantinhaVertical.png", 'd'); //instancia objeto tiro
             t4.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial

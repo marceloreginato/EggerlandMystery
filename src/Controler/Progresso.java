@@ -14,10 +14,10 @@ public class Progresso {
     o numero da fase em que o jogador esta e aquantidade de vidas, 
     pois as moedas resetam a cada inicio de fase.*/
 
-    protected Tela tela;
-    protected String file;
-    protected int currentfase;
-    protected int currentvidas;
+    private Tela tela;
+    private String file;
+    private int currentfase;
+    private int currentvidas;
 
     public Progresso(Tela tela){
 
@@ -30,7 +30,7 @@ public class Progresso {
         currentvidas = 5;
     }
     
-    public void salvamento() {
+    protected void salvamento() {
 
         /*Metodo para salvar o progresso no jogo. Pega a fase e as vidas
         atuais da tela [se a fase nao for uma jogavel (tela de inico, fim ou
@@ -55,7 +55,7 @@ public class Progresso {
         }
     }
 
-    public void restaurar(){
+    protected void restaurar(){
 
         /*Metodo para restaurar o progresso no jogo. Le os dois valores do
         arquivo (fase e vidas, respectivamente) e envia eles para a tela.*/
@@ -73,7 +73,7 @@ public class Progresso {
         tela.setVidas(currentvidas);
     }
 
-    public void limpar(){
+    protected void limpar(){
 
         /*Metodo para limpar o progresso no jogo. Define a fase e as vidas
         como as inicias (1 e 5, respectivamente) e as escreve no arquivo.
