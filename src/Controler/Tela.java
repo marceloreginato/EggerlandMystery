@@ -167,7 +167,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         setMoedasColetadas(0);
 
         switch (fase) {
-
             case 1:
                 setVidas(5);
                 new Fase1(hero);
@@ -183,10 +182,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
 
             case 4:
                 new Fase4(hero);
-                break;
-        
-            case 5:
-                new Janela("TelaFinal.png");
                 break;
 
             default:
