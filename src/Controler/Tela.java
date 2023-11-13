@@ -156,6 +156,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             criaFase();
         }
         qntvidas--;
+        progresso.salvamento();
     }
 
     public int getMoedasColetadas() {
@@ -298,8 +299,9 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         WASD e UP+LEFT+DOWN+RIGHT: move nos 4 sentidos;
         L: carrega jogo salvo quando na tela de inicio (fase 0);
         N: inicia um jogo novo (fase 1) quando na tela de inicio (fase 0);
-        R: Reinicia jogo (fase 0) quando na tela de fim (fase 5) ou de gameover (fase 6);
-        E: Salva e fecha o jogo (caso nas fases 5 ou 6, o salvamento do jogo eh para inicializacao padrao).
+        R: reinicia jogo (fase 0) quando na tela de fim (fase 5) ou de gameover (fase 6);
+        E: salva e fecha o jogo (caso nas fases 5 ou 6, o salvamento do jogo eh para inicializacao padrao);
+        X: reinicia a fase atual quando em fase jogavel (fases 1 a 4).
         */
 
         if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
@@ -313,22 +315,25 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE && this.getMoedas() != 0) {
             hero.atira(hero.getLastMovment());  
             removeMoedas();
-        } else if (e.getKeyCode() == KeyEvent.VK_L && getFase() == 0){ // load no menu
+        } else if (e.getKeyCode() == KeyEvent.VK_L && getFase() == 0) {
             progresso.restaurar();
             criaFase();
-        } else if (e.getKeyCode() == KeyEvent.VK_N && getFase() == 0){ // new game no menu
+        } else if (e.getKeyCode() == KeyEvent.VK_N && getFase() == 0) {
             setFase(1);
             criaFase();
-        } else if (e.getKeyCode() == KeyEvent.VK_R && getFase() > 4) { // reiniciar no gameover e no fim
+        } else if (e.getKeyCode() == KeyEvent.VK_R && getFase() > 4) {
             progresso.limpar();
             setFase(0);
             criaFase();
-        } else if (e.getKeyCode() == KeyEvent.VK_E) { // salvar e sair ou so sair se jogo finalizado 
+        } else if (e.getKeyCode() == KeyEvent.VK_E) {
             if(getFase() > 0 && getFase() < 5)
                 progresso.salvamento();
             else if (getFase() >= 5)
                 progresso.limpar();
             System.exit(0);
+        } else if (e.getKeyCode() == KeyEvent.VK_X && getFase() > 0 && getFase() < 5) {
+            progresso.restaurar();
+            criaFase();
         }
 
         /*Invoca o paint imediatamente, sem aguardar o refresh*/
