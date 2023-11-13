@@ -2,17 +2,17 @@ package Modelo;
 
 import Auxiliar.Consts; 
 import Auxiliar.Desenho;
-import Controler.Tela;
+// import Controler.Tela;
 import Auxiliar.Posicao;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
+// import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.Serializable;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+// import javax.swing.JFrame;
+// import javax.swing.JPanel;
 
 public abstract class Personagem implements Serializable{
 
@@ -26,6 +26,7 @@ public abstract class Personagem implements Serializable{
     protected boolean bEstatico;     /*Eh um bloco que nao pode passar por cima?*/
     protected boolean bPorta;        /*Eh uma porta?*/
     protected boolean bTiro;         /*Eh um tiro?*/
+    protected boolean bZigueZague;         /*Eh um tiro?*/
     private char tipoImagemPersonagem;
 
     protected Personagem(String sNomeImagePNG, char tipoImagemPersonagem) {
@@ -38,6 +39,7 @@ public abstract class Personagem implements Serializable{
         this.bEstatico = false;
         this.bPorta = false;
         this.bTiro = false;
+        this.bZigueZague = false;
         this.tipoImagemPersonagem = tipoImagemPersonagem;
         
         try {
@@ -115,6 +117,10 @@ public abstract class Personagem implements Serializable{
     
     public boolean isbTiro() {
         return bTiro;
+    }
+
+    public boolean isbZigueZague() {
+        return bZigueZague;
     }
 
     public void setbEstatico(boolean bEstatico) {

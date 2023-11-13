@@ -2,7 +2,6 @@ package Modelo.Fases;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.Graphics;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,7 +9,6 @@ import java.util.logging.Logger;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Controler.Tela;
-import Modelo.Hero;
 
 public class Janela{
 

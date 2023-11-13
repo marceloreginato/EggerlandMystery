@@ -18,7 +18,6 @@ import Modelo.Blocos.Numero;
 import Modelo.Blocos.Porta;
 import Modelo.Tiro;
 import Modelo.Inimigo.ZigueZague;
-import Modelo.Progresso;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Auxiliar.Posicao;
@@ -28,8 +27,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -49,8 +46,8 @@ import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;  
 import javax.swing.JButton;                 
-    
-public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener { /*DELETAR MOUSELISTENER*/
+
+public class Tela extends javax.swing.JFrame implements KeyListener {
     private Hero hero;                          /*Define Hero*/
     private ArrayList<Personagem> faseAtual;    /*Array com o ambiente da fase atual do jogo*/ 
     private ControleDeJogo cj = new ControleDeJogo();
@@ -76,7 +73,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public Tela() {
         Desenho.setCenario(this);           
         initComponents();
-        this.addMouseListener(this); /*mouse*/ /*DELETAR*/
 
         this.addKeyListener(this);   /*teclado*/
         /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
@@ -90,7 +86,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     /*Verifica se a posicao a ser movida eh possivel*/
     public boolean ehPosicaoValida(Posicao p, char sentidoMovimento, char tipoPersonagem){
         return cj.ehPosicaoValida(this.faseAtual, p, sentidoMovimento, tipoPersonagem);
-    }                       
+    }
 
     /*Verifica se a posicao a ser movida pela classe ZigueZague eh possivel*/
     public boolean ehValidoZigueZague(Posicao p){
@@ -116,21 +112,23 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         return fase;
     }
 
-    public void setFase(int i){
-        fase = i;
+    public void setFase(int fase){
+        this.fase = fase;
     } 
 
     public int getMoedas() {
         return qntmoedas;
     }
 
-    protected void setMoedas(int i){
-        qntmoedas = i;
+    protected void setMoedas(int qntmoedas){
+        this.qntmoedas = qntmoedas;
     } 
 
-    /*Adiciona uma moeda (tiro) no inventario do jogador (uma moeda foi coletada)*/
-    public void addMoedas(){
+    /*Adiciona uma moeda (tiro) no inventario do jogador (uma moeda foi coletada) e
+    adiciona uma moeda na quantidade total de moedas coletadas na fase (uma moeda foi coletada)*/
+    protected void addTodasMoedas(){
         qntmoedas++;
+        moedasColetadas++;
     }  
 
     /*Remove uma moeda (tiro) do inventario do jogador (um tiro foi gasto)*/
@@ -142,8 +140,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         return qntvidas;
     }
 
-    public void setVidas(int i){
-        qntvidas = i;
+    public void setVidas(int qntvidas){
+        this.qntvidas = qntvidas;
     } 
     
     /*Remove uma vida do inventario do jogador (personagem morreu).
@@ -151,12 +149,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     se acabem. Ao ter um GameOver o jogador perde o seu progresso no
     jogo, reiniciando na fase 1.*/
 
-    public void removeVidas(){
+    protected void removeVidas(){
         if(qntvidas == 1){
             progresso.limpar();
             fase = 6;
             criaFase();
-        } 
+        }
         qntvidas--;
     }
 
@@ -164,18 +162,13 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         return moedasColetadas;
     }
 
-    public void setMoedasColetadas(int moedasColetadas) {
+    protected void setMoedasColetadas(int moedasColetadas) {
         this.moedasColetadas = moedasColetadas;
-    }
-
-    /*Adiciona uma moeda na quantidade total de moedas coletadas na fase (uma moeda foi coletada)*/
-    public void addMoedasColetadas() { 
-        moedasColetadas++;
     }
 
     /*Metodo que atualiza os numeros no Setup Lateral (contadores de vida, moedas [tiros] e fase).
     Esse metodo eh chamado frequentemente pelo metodo paint dessa classe.*/
-    public void atualizaNumeros(){
+    private void atualizaNumeros(){
         Numero vidas = new Numero(getVidas(), 'v');
         Numero moedas = new Numero(getMoedas(), 'm');
         Numero fases = new Numero(getFase(), 'f');
@@ -188,11 +181,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     /*Metodo que constroi as fases jogaveis por meio das classes herdeiras de Fase*/
-    public void criaFase(){
+    protected void criaFase(){
         if(fase <= 6)       /*Limpa o array do ambiente da fase atual*/
             faseAtual.clear();
         setMoedas(0);     /*Reseta a quantidade de moedas (tiros) a cada fase*/
         setMoedasColetadas(0);    /*Reseta a quantidade de moedas coletadas na fase*/
+        hero.SkinPersonagem("HeroEstaticFace.png", 'h');    /*Reinicializa skin do Hero*/
 
         switch (fase) {
             case 1:
@@ -341,17 +335,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         repaint();
     }
 
-    public void mousePressed(MouseEvent e) { /*DELETAR*/
-        /* Clique do mouse desligado*/
-        int x = e.getX();
-        int y = e.getY();
-        
-        this.hero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
-         
-        repaint();
-    }   
-
-
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -376,24 +359,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
-    public void mouseMoved(MouseEvent e) { /*DELETAR*/
-    }
-
-    public void mouseClicked(MouseEvent e) { /*DELETAR*/
-    }
-
-    public void mouseReleased(MouseEvent e) { /*DELETAR*/
-    }
-
-    public void mouseEntered(MouseEvent e) { /*DELETAR*/
-    }
-
-    public void mouseExited(MouseEvent e) { /*DELETAR*/
-    }
-
-    public void mouseDragged(MouseEvent e) { /*DELETAR*/
-    }
 
     public void keyTyped(KeyEvent e) {
     }

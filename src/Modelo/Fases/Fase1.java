@@ -5,7 +5,6 @@ import Auxiliar.Desenho;
 import Modelo.Hero;
 import Modelo.Blocos.Coletavel;
 import Modelo.Blocos.Empurravel;
-import Modelo.Blocos.Estatico;
 import Modelo.Blocos.Tijolo;
 import Modelo.Inimigo.Inimigo;
 

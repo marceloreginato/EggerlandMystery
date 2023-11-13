@@ -1,10 +1,6 @@
 package Modelo.Inimigo;
 
-import Auxiliar.Consts;
 import Auxiliar.Desenho;
-import Controler.Tela;
-import java.awt.Graphics;
-import java.io.Serializable;
 import Modelo.Personagem;
 import Modelo.Tiro;
 

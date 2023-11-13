@@ -1,7 +1,6 @@
 package Auxiliar;
     
 import java.awt.Graphics;
-import java.io.Serializable;
 import javax.swing.ImageIcon;
 import Controler.Tela;
 

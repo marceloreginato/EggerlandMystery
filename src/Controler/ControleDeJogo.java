@@ -1,9 +1,7 @@
 package Controler;
     
 import Modelo.Personagem;
-import Modelo.Tiro;
 import Modelo.Hero;
-import Modelo.Blocos.Porta;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
 import Auxiliar.Consts;
@@ -106,7 +104,7 @@ public class ControleDeJogo {
                         umaFase.remove(pIesimoPersonagem);
                         return false;
                     }
-                    if(pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbPorta() || !pIesimoPersonagem.isbTransponivel())
+                    if(pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbPorta() || !pIesimoPersonagem.isbTransponivel() || pIesimoPersonagem.isbZigueZague())
                         return false;
                     // if(pIesimoPersonagem.isbTransponivel())
                     //     return false;
@@ -126,8 +124,7 @@ public class ControleDeJogo {
                 if(pIesimoPersonagem.isbColetavel()){
                     if(tipoPersonagem != 'h')
                         return false;
-                    Desenho.acessoATelaDoJogo().addMoedas();
-                    Desenho.acessoATelaDoJogo().addMoedasColetadas();
+                    Desenho.acessoATelaDoJogo().addTodasMoedas();
                 }
                 return true;
             }

@@ -1,11 +1,8 @@
 package Modelo;
 
 import Auxiliar.Desenho;
-import Controler.Tela;
-import java.awt.Graphics;
-import java.io.Serializable;
 
-public class Tiro extends Personagem implements Serializable {
+public class Tiro extends Personagem {
 
     private char direcao;
  

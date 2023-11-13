@@ -1,24 +1,19 @@
 package Modelo;
 
-import Auxiliar.Consts;
 import Auxiliar.Desenho;
-import Controler.ControleDeJogo;
-import Controler.Tela;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.io.IOException;
-import java.io.Serializable;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-public class Hero extends Personagem implements Serializable {
+public class Hero extends Personagem {
 
     private int iUp = 0;
     private int iDown = 0;
     private int iRight = 0;
     private int iLeft = 0;
     private char lastMovment;
+    
+    public Hero(String sNomeImagePNG) {
+        super(sNomeImagePNG, 'h');
+        this.bMorrivel = true;
+    }
 
     public char getLastMovment() {
         return lastMovment;
@@ -28,15 +23,9 @@ public class Hero extends Personagem implements Serializable {
         this.lastMovment = lastMovment;
     }
 
-    public Hero(String sNomeImagePNG) {
-        super(sNomeImagePNG, 'h');
-        this.bMorrivel = true;
-    }
-
     public void voltaAUltimaPosicao(){
         this.pPosicao.volta();  
     }
-    
     
     public boolean setPosicao(int linha, int coluna){
         if(this.pPosicao.setPosicao(linha, coluna)){
@@ -142,27 +131,27 @@ public class Hero extends Personagem implements Serializable {
     }
 
 
-    public void atira(char c){
+    public void atira(char direcaoTiro){
         
-        if(c == 'r'){
+        if(direcaoTiro == 'r'){
         Tiro t1 = new Tiro("TiroHorizontal.png", 'r');
         t1.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
         Desenho.acessoATelaDoJogo().addPersonagem(t1);
         }
          
-        if(c == 'l'){
+        if(direcaoTiro == 'l'){
         Tiro t2 = new Tiro("TiroHorizontal.png", 'l');
         t2.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
         Desenho.acessoATelaDoJogo().addPersonagem(t2);
         }
 
-        if(c == 'u'){
+        if(direcaoTiro == 'u'){
         Tiro t3 = new Tiro("TiroVertical.png", 'u');
         t3.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
         Desenho.acessoATelaDoJogo().addPersonagem(t3);
         }
 
-        if(c == 'd'){
+        if(direcaoTiro == 'd'){
         Tiro t4 = new Tiro("TiroVertical.png", 'd');
         t4.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
         Desenho.acessoATelaDoJogo().addPersonagem(t4);

@@ -8,6 +8,7 @@ public class ZigueZague extends Personagem {
     public ZigueZague(String sNomeImagePNG) {
         super(sNomeImagePNG, 'z');
         this.bMortal = true;
+        this.bZigueZague = true;
     }
 
 

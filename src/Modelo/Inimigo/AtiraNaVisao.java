@@ -1,13 +1,8 @@
 package Modelo.Inimigo;
 
-import Auxiliar.Consts;
-import Auxiliar.Desenho;
-import Controler.Tela;  
-import java.awt.Graphics;
-import java.io.Serializable;
 import Modelo.Hero;
 
-public class AtiraNaVisao extends InimigoAtirador implements Serializable{
+public class AtiraNaVisao extends InimigoAtirador{
     
     private Hero hero;
     private int stopLinha = 0;              //bloco de variaveis utilizado para fazer com que inimigo de apenas um tiro por condicao satisfeita
