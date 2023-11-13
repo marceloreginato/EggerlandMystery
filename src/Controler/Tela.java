@@ -49,7 +49,7 @@ import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;  
 import javax.swing.JButton;                 
-
+    
 public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener { /*DELETAR MOUSELISTENER*/
     private Hero hero;                          /*Define Hero*/
     private ArrayList<Personagem> faseAtual;    /*Array com o ambiente da fase atual do jogo*/ 
@@ -65,7 +65,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     5: Tela de fim (nao jogavel);
     6: Tela de gameover (nao jogavel);
     */
-    
+
     private int fase = 0;  
 
     private int qntmoedas;          /*Quantidade de moedas em posse do jogador (quantidade de tiros restantes) - reseta a cada inicio de fase*/
