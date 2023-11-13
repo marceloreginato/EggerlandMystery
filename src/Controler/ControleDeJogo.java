@@ -81,7 +81,7 @@ public class ControleDeJogo {
                 break;
 
             case 'r':
-                Posicao posicaoR = new Posicao(linha - 1, coluna + 1);
+                Posicao posicaoR = new Posicao(linha, coluna + 1);
                 if(!this.ehPosicaoValida(umaFase, posicaoR, 'r', 'e'))
                     return false;    
                 personagemEmpurravel.moveRight();

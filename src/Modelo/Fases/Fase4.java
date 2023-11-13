@@ -9,17 +9,26 @@ import Modelo.Blocos.Tijolo;
 import Modelo.Inimigo.AtiraNaVisao;
 
 public class Fase4 extends Fase {
-    public Fase4(Hero hero){
+    
+    /*Classe que herda de Fase e define o ambiente da Fase 4.
+    Criar um objeto refere-se a instancia-lo e adiciona-lo a
+    faseAtual da Tela.*/
+
+    public Fase4 (Hero hero) {
         super(hero);
+
+        /*Define posicao do Hero e da Porta*/
         hero.setPosicao(4, 6);
         porta.setPosicao(Consts.RES - 3, 6);
 
+        /*Cria inimigos da fase*/
         for(int j = 4; j < 9; j += 4){
             AtiraNaVisao atv = new AtiraNaVisao("PlantinhaDormindo", hero);
             atv.setPosicao(Consts.RES - 8, j);
             Desenho.acessoATelaDoJogo().addPersonagem(atv);
         }
     
+        /*Cria Tijolos da fase*/
         for(int j = 2; j < Consts.RES - 5; j++){
             if(j == 6)
                 continue;
@@ -28,6 +37,7 @@ public class Fase4 extends Fase {
             Desenho.acessoATelaDoJogo().addPersonagem(brick);
         }   
         
+        /*Cria caixas empurraveis da fase*/
         Empurravel emp1 = new Empurravel("caixa.png");
         emp1.setPosicao(Consts.RES - 7, 6);
         Desenho.acessoATelaDoJogo().addPersonagem(emp1);
@@ -48,6 +58,7 @@ public class Fase4 extends Fase {
         empmeio.setPosicao(6, Consts.RES - 6);
         Desenho.acessoATelaDoJogo().addPersonagem(empmeio);
 
+        /*Cria moedas da fase*/
         for(int j = 4; j < 9; j += 4){
             Coletavel col1 = new Coletavel("moeda.png");
             col1.setPosicao(3, j);

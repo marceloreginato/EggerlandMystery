@@ -1,6 +1,6 @@
 package Controler;
     
-import Modelo.Inimigo.AtiraNaVisao;  
+import Modelo.Inimigo.AtiraNaVisao; 
 import Modelo.Inimigo.AtiraPelaMoeda;  
 import Modelo.Blocos.Coletavel;  
 import Modelo.Blocos.Estatico;  
@@ -60,7 +60,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private int moedasColetadas;
     private int qntvidas;
     private Progresso progresso = new Progresso(this);
- 
+
     public Tela() {
         Desenho.setCenario(this);           
         initComponents();
