@@ -11,7 +11,7 @@ import Modelo.Fases.Fase3;
 import Modelo.Fases.Fase4;
 import Modelo.Fases.Janela;
 import Modelo.Hero;  
-import Modelo.Inimigo.Inimigo;  
+import Modelo.Inimigo.InimigoMorrivel;  
 import Modelo.Personagem;
 import Modelo.Inimigo.InimigoAtirador;
 import Modelo.Blocos.Numero;
@@ -45,7 +45,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;  
-import javax.swing.JButton;                 
+import javax.swing.JButton;               
 
 public class Tela extends javax.swing.JFrame implements KeyListener {
     private Hero hero;                          /*Define Hero*/

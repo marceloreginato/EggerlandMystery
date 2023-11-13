@@ -28,7 +28,7 @@ public abstract class Fase {
     protected Lateral round2 = new Lateral("round2.png", 'l');
 
 
-    public Fase (Hero hero) {
+    protected Fase (Hero hero) {
         /*Adiciona Hero e Porta na faseAtual da Tela. Hero eh 
         instanciado na propria Tela.*/
         Desenho.acessoATelaDoJogo().addPersonagem(hero);

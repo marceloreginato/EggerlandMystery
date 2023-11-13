@@ -91,20 +91,16 @@ public abstract class Personagem implements Serializable{
         return bTransponivel;
     }
 
-    public boolean isbEmpurravel() {
-        return bEmpurravel;
-    }
-
     public boolean isbColetavel() {
         return bColetavel;
     }
 
-    public boolean isbMortal() {
-        return bMortal;
+    public boolean isbEmpurravel() {
+        return bEmpurravel;
     }
 
-    public boolean isbPorta() {
-        return bPorta;
+    public boolean isbMortal() {
+        return bMortal;
     }
 
     public boolean isbMorrivel() {
@@ -113,6 +109,10 @@ public abstract class Personagem implements Serializable{
 
     public boolean isbEstatico() {
         return bEstatico;
+    }
+
+    public boolean isbPorta() {
+        return bPorta;
     }
     
     public boolean isbTiro() {
@@ -123,16 +123,16 @@ public abstract class Personagem implements Serializable{
         return bZigueZague;
     }
 
-    public void setbEstatico(boolean bEstatico) {
-        this.bEstatico = bEstatico;
-    }
-
-    public void setbTransponivel(boolean bTransponivel) {
+    protected void setbTransponivel(boolean bTransponivel) {
         this.bTransponivel = bTransponivel;
     }
-
-    public void setbEmpurravel(boolean bEmpurravel) {
+    
+    protected void setbEmpurravel(boolean bEmpurravel) {
         this.bEmpurravel = bEmpurravel;
+    }
+
+    protected void setbEstatico(boolean bEstatico) {
+        this.bEstatico = bEstatico;
     }
 
     public void autoDesenho(){

@@ -6,7 +6,7 @@ import Modelo.Hero;
 import Modelo.Blocos.Coletavel;
 import Modelo.Blocos.Empurravel;
 import Modelo.Blocos.Tijolo;
-import Modelo.Inimigo.Inimigo;
+import Modelo.Inimigo.InimigoMorrivel;
 
 public class Fase1 extends Fase {
 
@@ -66,12 +66,12 @@ public class Fase1 extends Fase {
 
         /*Cria inimigos da fase*/
         for(int z = 2; z < 7; z = z+4){
-            Inimigo inimigo = new Inimigo("MonstroVerde.png");
+            InimigoMorrivel inimigo = new InimigoMorrivel("MonstroVerde.png");
             inimigo.setPosicao(Consts.RES - 2, z);
             Desenho.acessoATelaDoJogo().addPersonagem(inimigo);
         }
 
-        Inimigo inimigo = new Inimigo("MonstroVerde.png");
+        InimigoMorrivel inimigo = new InimigoMorrivel("MonstroVerde.png");
         inimigo.setPosicao(Consts.RES - 6, 10); 
         Desenho.acessoATelaDoJogo().addPersonagem(inimigo);
 

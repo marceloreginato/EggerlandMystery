@@ -7,9 +7,6 @@ public class Numero extends Estatico {
     /*Classe que herda de Estatico e define os 
     icones mutaveis (numeros) do Setup Lateral*/
 
-    int numero;
-    String Nomepng;
-
     public Numero(int numero, char tipoNumero){
 
         /*Transforma o inteiro da quantidade recebida em
