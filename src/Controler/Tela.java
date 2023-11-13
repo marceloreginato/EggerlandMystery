@@ -303,7 +303,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         E: salva e fecha o jogo (caso nas fases 5 ou 6, o salvamento do jogo eh para inicializacao padrao);
         X: reinicia a fase atual quando em fase jogavel (fases 1 a 4).
         */
-
+        
         if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
             hero.moveUp();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
