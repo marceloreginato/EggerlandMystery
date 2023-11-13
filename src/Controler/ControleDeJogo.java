@@ -54,6 +54,11 @@ public class ControleDeJogo {
     //     return true;    
     // }
 
+    /*Metodo que processa o movimento dos blocos empurraveis. Esse metodo eh chamado no metodo
+    ehPosicaoValida dessa classe ao Personagem tentar se mover para a posicao de um Empurravel.
+    Assim, analisa-se a possibilidade de movimentacao do bloco empurravel para ceder espaco para
+    o Personagem que esta se movendo (bloco ser empurrado).*/
+
     public boolean processaEmpurravel(char sentidoMovimento, Personagem personagemEmpurravel, ArrayList<Personagem> umaFase){
         int linha = personagemEmpurravel.getPosicao().getLinha();
         int coluna = personagemEmpurravel.getPosicao().getColuna();
@@ -93,12 +98,19 @@ public class ControleDeJogo {
         return true;
     }
 
+    /*Metodo que verifica se a posicao que objeto esta se movendo eh possivel.*/
     public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p, char sentidoMovimento, char tipoPersonagem) {
         Personagem pIesimoPersonagem;
+
+        /*Percorre o array do ambiente da fase (desconsiderando o Hero) e
+        verifica se ha algum Personagem na posicao a ser movimentada.*/
         for (int i = 1; i < umaFase.size(); i++) {
             pIesimoPersonagem = umaFase.get(i);
 
             if (pIesimoPersonagem.getPosicao().igual(p)) {
+
+                /*Tratamento para se o objeto que esta se movendo eh um Tiro.
+                Remove Personagem morrivel e eh destrido ao atingir outros Personagens.*/
                 if (tipoPersonagem == 't') {
                     if (pIesimoPersonagem.isbMorrivel()) {
                         umaFase.remove(pIesimoPersonagem);
@@ -106,29 +118,37 @@ public class ControleDeJogo {
                     }
                     if(pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbPorta() || !pIesimoPersonagem.isbTransponivel() || pIesimoPersonagem.isbZigueZague())
                         return false;
-                    // if(pIesimoPersonagem.isbTransponivel())
-                    //     return false;
-                    // if(pIesimoPersonagem.isbMortal())
-                    //     return false;
                     return true;
                 }
+
+                /*Tratamento para se o objeto que esta se movendo eh um Empurravel.
+                Empurravel nao se move se tiver outro Personagem no lugar.*/
                 else if(tipoPersonagem == 'e'){
                     if(pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbPorta() || !pIesimoPersonagem.isbTransponivel() || pIesimoPersonagem.isbMortal())
                         return false;    
-                }   
+                }
+
+                /*Processamento se o objeto com posicao conflitada nao eh transponivel.
+                So se move se o bloco seguinte for Empurravel (mediante a processamento
+                do movimento do bloco empurravel).*/
                 if (!pIesimoPersonagem.isbTransponivel()) {
                     if (pIesimoPersonagem.isbEmpurravel())
                         return processaEmpurravel(sentidoMovimento, pIesimoPersonagem, umaFase);
                     return false;
                 }
+
+                /*Se o bloco nao for transponivel, verifica-se se eh coletavel (moeda) e coleta-o.*/
                 if(pIesimoPersonagem.isbColetavel()){
                     if(tipoPersonagem != 'h')
                         return false;
                     Desenho.acessoATelaDoJogo().addTodasMoedas();
                 }
+
+                /*Retorna true se nao for conflitante*/
                 return true;
             }
         }
+        /*Retorna true se nao for conflitante*/
         return true;
     }
 
