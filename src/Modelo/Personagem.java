@@ -19,33 +19,35 @@ public abstract class Personagem implements Serializable{
     protected ImageIcon iImage;
     protected Posicao pPosicao;
     protected boolean bTransponivel; /*Pode passar por cima?*/
-    protected boolean bMortal;       /*Se encostar, morre?*/
-    protected boolean bEmpurravel;  /*Se encostar empurra o objeto*/
-    protected boolean bColetavel;   /*Se encostar coleta o objeto*/
-    protected boolean bPorta;
-    protected boolean bMorrivel;
-    protected boolean bEstatico;
-    protected boolean bTiro;
-    private char c;
+    protected boolean bColetavel;    /*Se encostar, coleta o objeto?*/
+    protected boolean bEmpurravel;   /*Se encostar, empurra o objeto?*/
+    protected boolean bMortal;       /*Se o Hero encostar, o Hero morre?*/
+    protected boolean bMorrivel;     /*Se acertado por um tiro, morre?*/
+    protected boolean bEstatico;     /*Eh um bloco que nao pode passar por cima?*/
+    protected boolean bPorta;        /*Eh uma porta?*/
+    protected boolean bTiro;         /*Eh um tiro?*/
+    private char tipoImagemPersonagem;
 
-    protected Personagem(String sNomeImagePNG, char c) {
+    protected Personagem(String sNomeImagePNG, char tipoImagemPersonagem) {
         this.pPosicao = new Posicao(1, 1);
         this.bTransponivel = true;
-        this.bMortal = false;
-        this.bEmpurravel = false;
         this.bColetavel = false;
+        this.bEmpurravel = false;
+        this.bMortal = false;
         this.bMorrivel = false;
         this.bEstatico = false;
+        this.bPorta = false;
         this.bTiro = false;
-        this.c = c;
+        this.tipoImagemPersonagem = tipoImagemPersonagem;
+        
         try {
-            if(this.c == 'h')       
+            if(this.tipoImagemPersonagem == 'h')       
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_HERO + sNomeImagePNG);
-            else if(this.c == 't')
+            else if(this.tipoImagemPersonagem == 't')
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_FOGO + sNomeImagePNG);
-            else if(this.c == 'i')
+            else if(this.tipoImagemPersonagem == 'i')
             iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_INIMIGO + sNomeImagePNG);
-            else if(this.c == 'l')
+            else if(this.tipoImagemPersonagem == 'l')
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_LATERAL + sNomeImagePNG);
             else
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
@@ -59,11 +61,11 @@ public abstract class Personagem implements Serializable{
         }
     }
 
-    public void SkinPersonagem(String sNomeImagePNG, char c){
+    public void SkinPersonagem(String sNomeImagePNG, char tipoImagemPersonagem){
         try {
-            if(this.c == 'h')
+            if(this.tipoImagemPersonagem == 'h')
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_HERO + sNomeImagePNG);
-            else if(this.c == 'i')
+            else if(this.tipoImagemPersonagem == 'i')
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_INIMIGO + sNomeImagePNG);
             else
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH + sNomeImagePNG);    

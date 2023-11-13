@@ -1,6 +1,6 @@
 package Controler;
     
-import Modelo.Inimigo.AtiraNaVisao;  
+import Modelo.Inimigo.AtiraNaVisao; 
 import Modelo.Inimigo.AtiraPelaMoeda;  
 import Modelo.Blocos.Coletavel;  
 import Modelo.Blocos.Estatico;  
@@ -49,50 +49,65 @@ import java.util.logging.Logger;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;  
 import javax.swing.JButton;                 
-
-public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener {
-    private Hero hero;
-    private ArrayList<Personagem> faseAtual;    
+    
+public class Tela extends javax.swing.JFrame implements MouseListener, KeyListener { /*DELETAR MOUSELISTENER*/
+    private Hero hero;                          /*Define Hero*/
+    private ArrayList<Personagem> faseAtual;    /*Array com o ambiente da fase atual do jogo*/ 
     private ControleDeJogo cj = new ControleDeJogo();
-    private Graphics g2;    
-    private int fase = 0;                               
-    private int qntmoedas;
-    private int moedasColetadas;
-    private int qntvidas;
-    private Progresso progresso = new Progresso(this);
- 
+    private Graphics g2;
+
+    /*Fase atual do jogo: 
+    0: Tela de inicio (nao jogavel);
+    1: Fase 1 (jogavel);
+    2: Fase 2 (jogavel);
+    3: Fase 3 (jogavel);
+    4: Fase 4 (jogavel);
+    5: Tela de fim (nao jogavel);
+    6: Tela de gameover (nao jogavel);
+    */
+
+    private int fase = 0;  
+
+    private int qntmoedas;          /*Quantidade de moedas em posse do jogador (quantidade de tiros restantes) - reseta a cada inicio de fase*/
+    private int moedasColetadas;    /*Quantidade total de moedas coletadas durante a fase*/
+    private int qntvidas;           /*Quantidade de vidas - inicia com 5 e nao ganha durante o jogo*/
+    private Progresso progresso = new Progresso(this);      /*Define o progresso do jogo, restaura e o atualiza*/ 
+
     public Tela() {
         Desenho.setCenario(this);           
         initComponents();
-        this.addMouseListener(this); /*mouse*/
+        this.addMouseListener(this); /*mouse*/ /*DELETAR*/
 
         this.addKeyListener(this);   /*teclado*/
         /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
         this.setSize(Consts.RES * Consts.CELL_SIDE + getInsets().left + getInsets().right,
                 Consts.RES * Consts.CELL_SIDE + getInsets().top + getInsets().bottom);
 
-        faseAtual = new ArrayList<Personagem>();
-        hero = new Hero("HeroEstaticFace.png");
-        
-        criaFase();
+        faseAtual = new ArrayList<Personagem>();                    /*Instancia array com ambiente da fase atual*/
+        hero = new Hero("HeroEstaticFace.png");       /*Instancia Hero*/
     }   
 
+    /*Verifica se a posicao a ser movida eh possivel*/
     public boolean ehPosicaoValida(Posicao p, char sentidoMovimento, char tipoPersonagem){
         return cj.ehPosicaoValida(this.faseAtual, p, sentidoMovimento, tipoPersonagem);
     }                       
 
+    /*Verifica se a posicao a ser movida pela classe ZigueZague eh possivel*/
     public boolean ehValidoZigueZague(Posicao p){
         return cj.ehValidoZigueZague(this.faseAtual, p);
     }
 
+    /*Adiciona um personagem no ambiente da fase atual*/
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
     }           
 
+    /*Remove um personagem do ambiente da fase atual*/
     public void removePersonagem(Personagem umPersonagem) {
         faseAtual.remove(umPersonagem);
     }   
 
+    /*Retorna quantidade de objetos no ambiente da fase atual*/
     public int tamanhoFase(){
         return faseAtual.size();
     }
@@ -113,10 +128,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         qntmoedas = i;
     } 
 
+    /*Adiciona uma moeda (tiro) no inventario do jogador (uma moeda foi coletada)*/
     public void addMoedas(){
         qntmoedas++;
     }  
 
+    /*Remove uma moeda (tiro) do inventario do jogador (um tiro foi gasto)*/
     public void removeMoedas(){
         qntmoedas--;
     } 
@@ -129,7 +146,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         qntvidas = i;
     } 
     
-    public void removeVidas(){  
+    /*Remove uma vida do inventario do jogador (personagem morreu).
+    Eh feito tratamento para que aconteca um GameOver caso as vidas
+    se acabem. Ao ter um GameOver o jogador perde o seu progresso no
+    jogo, reiniciando na fase 1.*/
+
+    public void removeVidas(){
         if(qntvidas == 1){
             progresso.limpar();
             fase = 6;
@@ -146,31 +168,35 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         this.moedasColetadas = moedasColetadas;
     }
 
+    /*Adiciona uma moeda na quantidade total de moedas coletadas na fase (uma moeda foi coletada)*/
     public void addMoedasColetadas() { 
         moedasColetadas++;
     }
 
+    /*Metodo que atualiza os numeros no Setup Lateral (contadores de vida, moedas [tiros] e fase).
+    Esse metodo eh chamado frequentemente pelo metodo paint dessa classe.*/
     public void atualizaNumeros(){
         Numero vidas = new Numero(getVidas(), 'v');
         Numero moedas = new Numero(getMoedas(), 'm');
         Numero fases = new Numero(getFase(), 'f');
-    
+        
+        /*As posicoes desses objetos no array faseAtual sao predefinidas,
+        logo os objetos sao apenas substituidos pelo metodo set.*/
         faseAtual.set(2, vidas); 
         faseAtual.set(3, moedas);   
         faseAtual.set(4, fases);   
     }
 
+    /*Metodo que constroi as fases jogaveis por meio das classes herdeiras de Fase*/
     public void criaFase(){
-        if(fase <= 6)
+        if(fase <= 6)       /*Limpa o array do ambiente da fase atual*/
             faseAtual.clear();
-        setMoedas(0);
-        setMoedasColetadas(0);
+        setMoedas(0);     /*Reseta a quantidade de moedas (tiros) a cada fase*/
+        setMoedasColetadas(0);    /*Reseta a quantidade de moedas coletadas na fase*/
 
         switch (fase) {
-
-
             case 1:
-                setVidas(5);
+                setVidas(5);     /*O jogo sempre se inicia com 5 vidas*/
                 new Fase1(hero);
                 break;
 
@@ -185,10 +211,6 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             case 4:
                 new Fase4(hero);
                 break;
-        
-            case 5:
-                new Janela("TelaFinal.png");
-                break;
 
             default:
                 break;
@@ -198,11 +220,14 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     public Graphics getGraphicsBuffer(){
         return g2;  
     }
+
     public void paint(Graphics gOld) {
         Graphics g = this.getBufferStrategy().getDrawGraphics();
+
         /*Criamos um contexto gráfico*/
         g2 = g.create(getInsets().left, getInsets().top, getWidth() - getInsets().right, getHeight() - getInsets().top);
-        /*************Desenha cenário de fundo**************/
+
+        /*Desenha cenário de fundo*/
         for (int i = 0; i < Consts.RES; i++) {
             for (int j = 0; j < Consts.RES; j++) {
                 try {
@@ -216,31 +241,37 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             }       
         }
 
+        /*Desenha as fases nao jogaveis. As Janelas sao instanciadas nesse metodo, pois precisam que um Graphics seja criado.*/
         switch (fase) {
-            case 0:
+            case 0: 
                 new Janela("TelaInicial.png");
                 break;
             case 5:
-                progresso.limpar();
+                progresso.limpar();     /*Jogo finalizado, progresso reiniciado*/
                 new Janela("TelaFinal.png");
                 break;    
             case 6:
-                progresso.limpar();
+                progresso.limpar();     /*Jogo finalizado, progresso reiniciado*/
                 new Janela("TelaGameOver.png");
                 break;        
             default:
                 break;
         }
 
+        /*Atualiza os numeros do Setup Lateral caso em fase jogavel*/
         if(fase > 0 && fase < 5)
             atualizaNumeros();  
 
+        /*Passa de fase caso a porta tenha sido coletada (Hero tenha acessado ela depois de aberta)
+        em fase jogavel. Para passar de fase, muda o indicador de fase para o proximo inteiro, cria
+        um novo ambiente de fase e salva o progresso do jogador.*/
         if(tamanhoFase() > 0 && !faseAtual.get(1).isbPorta() && fase > 0 && fase < 5){
             fase++;
             criaFase();
             progresso.salvamento();
         }
 
+        /*Desenha o ambiente da fase atual e processa o andamento e interacao dos objetos nele*/
         if (!this.faseAtual.isEmpty()) {
             this.cj.desenhaTudo(faseAtual);
             this.cj.processaTudo(faseAtual);
@@ -253,6 +284,8 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         }
     }
 
+    /*Metodo geral que mantem a tela rodando e atualizando os acontecimentos.
+    Esse metodo mantem o metodo paint dessa classe sempre atualizado.*/
     public void go() {
         TimerTask task = new TimerTask() {
             public void run() {
@@ -263,10 +296,19 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         timer.schedule(task, 0, Consts.PERIOD);
     }
 
+    /*Metodo que interpreta as teclas pressionadas do teclado*/
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_C) {
-            this.faseAtual.clear();
-        } else if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
+
+        /*Significado das teclas:
+
+        WASD e UP+LEFT+DOWN+RIGHT: move nos 4 sentidos;
+        L: carrega jogo salvo quando na tela de inicio (fase 0);
+        N: inicia um jogo novo (fase 1) quando na tela de inicio (fase 0);
+        R: Reinicia jogo (fase 0) quando na tela de fim (fase 5) ou de gameover (fase 6);
+        E: Salva e fecha o jogo (caso nas fases 5 ou 6, o salvamento do jogo eh para inicializacao padrao).
+        */
+
+        if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
             hero.moveUp();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
             hero.moveDown();
@@ -295,21 +337,16 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             System.exit(0);
         }
 
-        this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", "
-                + (hero.getPosicao().getLinha()));
-
-        //repaint(); /*invoca o paint imediatamente, sem aguardar o refresh*/
+        /*Invoca o paint imediatamente, sem aguardar o refresh*/
+        repaint();
     }
 
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(MouseEvent e) { /*DELETAR*/
         /* Clique do mouse desligado*/
-         int x = e.getX();
-         int y = e.getY();
-     
-         this.setTitle("X: "+ x + ", Y: " + y +
-         " -> Cell: " + (y/Consts.CELL_SIDE) + ", " + (x/Consts.CELL_SIDE));
+        int x = e.getX();
+        int y = e.getY();
         
-         this.hero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
+        this.hero.getPosicao().setPosicao(y/Consts.CELL_SIDE, x/Consts.CELL_SIDE);
          
         repaint();
     }   
@@ -340,22 +377,22 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    public void mouseMoved(MouseEvent e) {
+    public void mouseMoved(MouseEvent e) { /*DELETAR*/
     }
 
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) { /*DELETAR*/
     }
 
-    public void mouseReleased(MouseEvent e) {
+    public void mouseReleased(MouseEvent e) { /*DELETAR*/
     }
 
-    public void mouseEntered(MouseEvent e) {
+    public void mouseEntered(MouseEvent e) { /*DELETAR*/
     }
 
-    public void mouseExited(MouseEvent e) {
+    public void mouseExited(MouseEvent e) { /*DELETAR*/
     }
 
-    public void mouseDragged(MouseEvent e) {
+    public void mouseDragged(MouseEvent e) { /*DELETAR*/
     }
 
     public void keyTyped(KeyEvent e) {

@@ -3,11 +3,27 @@ package Modelo.Blocos;
 import Auxiliar.Consts;
 
 public class Numero extends Estatico {
+
+    /*Classe que herda de Estatico e define os 
+    icones mutaveis (numeros) do Setup Lateral*/
+
     int numero;
     String Nomepng;
 
     public Numero(int numero, char tipoNumero){
+
+        /*Transforma o inteiro da quantidade recebida em
+        string para pegar a imagem correspondente*/
+
         super(Integer.toString(numero) + ".png", 'l');
+
+        /*As posicoes sao predefinas e o caractere indicam
+        qual o icone que esta sendo adicionado:
+
+        v: contador de vida;
+        m: contador de moeda;
+        f: contador de fase.
+        */
 
         switch (tipoNumero) {
             case 'v':
