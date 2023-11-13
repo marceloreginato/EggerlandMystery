@@ -42,7 +42,9 @@ public abstract class Personagem implements Serializable{
             else if(this.c == 't')
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_FOGO + sNomeImagePNG);
             else if(this.c == 'i')
-                iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_INIMIGO + sNomeImagePNG);
+            iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_INIMIGO + sNomeImagePNG);
+            else if(this.c == 'l')
+                iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_LATERAL + sNomeImagePNG);
             else
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH + sNomeImagePNG);
             Image img = iImage.getImage();

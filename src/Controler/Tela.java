@@ -1,21 +1,22 @@
 package Controler;
 
-import Modelo.AtiraNaVisao;  
-import Modelo.AtiraPelaMoeda;  
-import Modelo.Coletavel;  
-import Modelo.Estatico;  
-import Modelo.Fase;  
-import Modelo.Fase1;  
-import Modelo.Fase2;  
-import Modelo.Fase3;  
-import Modelo.Fase4;  
+import Modelo.Inimigo.AtiraNaVisao;  
+import Modelo.Inimigo.AtiraPelaMoeda;  
+import Modelo.Blocos.Coletavel;  
+import Modelo.Blocos.Estatico;  
+import Modelo.Fases.Fase;  
+import Modelo.Fases.Fase1;  
+import Modelo.Fases.Fase2;  
+import Modelo.Fases.Fase3;  
+import Modelo.Fases.Fase4;  
 import Modelo.Hero;  
-import Modelo.Inimigo;  
+import Modelo.Inimigo.Inimigo;  
 import Modelo.Personagem;
-import Modelo.InimigoAtirador;  
-import Modelo.Porta;
+import Modelo.Inimigo.InimigoAtirador;
+import Modelo.Blocos.Numero;
+import Modelo.Blocos.Porta;
 import Modelo.Tiro;
-import Modelo.ZigueZague;
+import Modelo.Inimigo.ZigueZague;
 import Modelo.Progresso;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
@@ -55,6 +56,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private Graphics g2;    
     private int fase;                                
     private int qntmoedas;
+    private int moedasColetadas;
     private int qntvidas;
     private Progresso progresso = new Progresso(this);
 
@@ -117,23 +119,55 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         qntmoedas++;
     }  
 
+    public void removeMoedas(){
+        qntmoedas--;
+    } 
+
     public int getVidas(){   
         return qntvidas;
     }
 
-    public void setVida(int i){
+    public void setVidas(int i){
         qntvidas = i;
     } 
+    
+    public void removeVidas(){
+        qntvidas--;
+    }
+
+    public int getMoedasColetadas() {
+        return moedasColetadas;
+    }
+
+    public void setMoedasColetadas(int moedasColetadas) {
+        this.moedasColetadas = moedasColetadas;
+    }
+
+    public void addMoedasColetadas() { 
+        moedasColetadas++;
+    }
+
+    public void atualizaNumeros(){
+        Numero vidas = new Numero(getVidas(), 'v');
+        Numero moedas = new Numero(getMoedas(), 'm');
+        Numero fases = new Numero(getFase(), 'f');
+    
+        faseAtual.set(2, vidas); 
+        faseAtual.set(3, moedas);   
+        faseAtual.set(4, fases);   
+    }
 
     public void criaFase(){
         if(fase <= 5)
             faseAtual.clear();
         setMoedas(0);
+        setMoedasColetadas(0);
 
-        switch (fase) {
+        switch (fase) {                   
             // case 0:
             //     new Inicio();
             //     break;
+
 
             case 1:
                 new Fase1(hero);
@@ -151,9 +185,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 new Fase4(hero);
                 break;
         
-            // case 5:
-            //     new Fim();
-            //     break;
+            case 5:
+                new Fase1(hero);
+                break;
 
             default:
                 break;
@@ -179,7 +213,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                     Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }   
+        }
+
+        atualizaNumeros();
 
         if(tamanhoFase() > 0 && !faseAtual.get(1).isbPorta() && fase < 5){
             fase++;
@@ -220,15 +256,16 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             hero.moveLeft();
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
             hero.moveRight();
-        } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+        } else if (e.getKeyCode() == KeyEvent.VK_SPACE && this.getMoedas() != 0) {
             hero.atira(hero.getLastMovment());  
+            removeMoedas();
         } else if (e.getKeyCode() == KeyEvent.VK_M) { // salvar e sair
             progresso.salvamento();
             // setFase(0);
         } else if (e.getKeyCode() == KeyEvent.VK_R) { // salvar e sair
             progresso.salvamento();
             System.exit(0);
-        }               
+        }
 
         this.setTitle("-> Cell: " + (hero.getPosicao().getColuna()) + ", "
                 + (hero.getPosicao().getLinha()));

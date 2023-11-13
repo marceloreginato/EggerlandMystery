@@ -3,6 +3,7 @@ package Controler;
 import Modelo.Personagem;
 import Modelo.Tiro;
 import Modelo.Hero;
+import Modelo.Blocos.Porta;
 import Auxiliar.Posicao;
 import java.util.ArrayList;
 import Auxiliar.Consts;
@@ -22,8 +23,10 @@ public class ControleDeJogo {
 
     public void processaTudo(ArrayList<Personagem> umaFase) {
         Hero hero = (Hero) umaFase.get(0);
+        Porta porta = (Porta) umaFase.get(1);
         Personagem pIesimoPersonagem;
-        for (int i = 1; i < umaFase.size(); i++) {
+        int i = 0;
+        for (i = 1; i < umaFase.size(); i++) {
             pIesimoPersonagem = umaFase.get(i);
             if (hero.getPosicao().igual(pIesimoPersonagem.getPosicao()))    
                 if (pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbMortal())
@@ -114,6 +117,7 @@ public class ControleDeJogo {
                     if(tipoPersonagem != 'h')
                         return false;
                     Desenho.acessoATelaDoJogo().addMoedas();
+                    Desenho.acessoATelaDoJogo().addMoedasColetadas();
                 }
                 return true;
             }

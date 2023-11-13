@@ -11,10 +11,10 @@ import Auxiliar.Desenho;
 import Controler.Tela;
 
 public class Progresso {
-    Tela tela;
-    String file;
-    int currentfase;
-    int currentvidas;
+    protected Tela tela;
+    protected String file;
+    protected int currentfase;
+    protected int currentvidas;
 
     public Progresso(Tela tela){
         this.tela = tela;
@@ -53,6 +53,6 @@ public class Progresso {
             System.err.println("Erro ao restaurar o jogo: " + e.getMessage());
         }
         tela.setFase(currentfase);
-        tela.setVida(currentvidas);
+        tela.setVidas(currentvidas);
     }
 }
