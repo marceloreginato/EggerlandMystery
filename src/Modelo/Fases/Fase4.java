@@ -8,7 +8,7 @@ import Modelo.Blocos.Empurravel;
 import Modelo.Blocos.Tijolo;
 import Modelo.Inimigo.AtiraNaVisao;
 
-public class Fase4 extends Fase {
+public class Fase4 extends Fase {   
     
     /*Classe que herda de Fase e define o ambiente da Fase 4.
     Criar um objeto refere-se a instancia-lo e adiciona-lo a
@@ -32,7 +32,7 @@ public class Fase4 extends Fase {
         for(int j = 2; j < Consts.RES - 5; j++){
             if(j == 6)
                 continue;
-            Tijolo brick = new Tijolo("bricks.png");
+            Tijolo brick = new Tijolo("TijoloRoxo.png");
             brick.setPosicao(Consts.RES - 7, j);
             Desenho.acessoATelaDoJogo().addPersonagem(brick);
         }   

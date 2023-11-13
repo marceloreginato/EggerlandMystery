@@ -1,7 +1,7 @@
 package Modelo.Blocos; 
 
 import Modelo.Personagem;   
-    
+        
 public abstract class Estatico extends Personagem {
     
     /*Classe abstrata que herda de Personagem e define blocos

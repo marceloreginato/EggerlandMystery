@@ -1,7 +1,7 @@
 package Modelo.Inimigo;
 
 import Auxiliar.Desenho;    
-import Modelo.Hero;
+import Modelo.Hero; 
 
 public class AtiraPelaMoeda extends InimigoAtirador{
 

@@ -32,7 +32,7 @@ public class Tiro extends Personagem {
                 Desenho.acessoATelaDoJogo().removePersonagem(this);
             if(!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao(), direcao, 't')) //verifica se a proxima posicao em que o tiro se move é valida
                 Desenho.acessoATelaDoJogo().removePersonagem((this));   //caso nao seja valida remove o tiro
-        }
+        }   
         if(this.direcao == 'd'){                  //caso caracter de definicao do tiro sera d, o tiro irá para baixo
             if(!moveDown())                 //tiro se move para baixo até a resolucao da tela, sendo removido ao fim
                 Desenho.acessoATelaDoJogo().removePersonagem(this);

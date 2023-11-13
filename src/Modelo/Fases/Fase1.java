@@ -14,7 +14,7 @@ public class Fase1 extends Fase {
     Criar um objeto refere-se a instancia-lo e adiciona-lo a
     faseAtual da Tela.*/
 
-    public Fase1 (Hero hero) {
+    public Fase1 (Hero hero) {  
         super(hero);
 
         /*Define posicao do Hero e da Porta*/
@@ -23,10 +23,10 @@ public class Fase1 extends Fase {
 
         /*Cria Tijolos da fase*/
         for(int i = 2; i < Consts.RES - 2; i++){
-            Tijolo brick2 = new Tijolo("bricks.png");
+            Tijolo brick2 = new Tijolo("TijoloRoxo.png");
             brick2.setPosicao(i, 2);
             Desenho.acessoATelaDoJogo().addPersonagem(brick2);
-            Tijolo brick6 = new Tijolo("bricks.png");
+            Tijolo brick6 = new Tijolo("TijoloRoxo.png");
             brick6.setPosicao(i, 6);
             Desenho.acessoATelaDoJogo().addPersonagem(brick6);
         }
@@ -34,22 +34,22 @@ public class Fase1 extends Fase {
         for(int i = 1; i < Consts.RES - 1; i++){
             if(i == Consts.RES/2)
                 continue;
-            Tijolo brick4 = new Tijolo("bricks.png");
+            Tijolo brick4 = new Tijolo("TijoloRoxo.png");
             brick4.setPosicao(i, 4);    
             Desenho.acessoATelaDoJogo().addPersonagem(brick4);
-            Tijolo brick8 = new Tijolo("bricks.png");
+            Tijolo brick8 = new Tijolo("TijoloRoxo.png");
             brick8.setPosicao(i, 8);    
             Desenho.acessoATelaDoJogo().addPersonagem(brick8);
         }   
 
         for(int j = 6; j < 8; j++){
-            Tijolo bricktop = new Tijolo("bricks.png");
+            Tijolo bricktop = new Tijolo("TijoloRoxo.png");
             bricktop.setPosicao(1, j);
             Desenho.acessoATelaDoJogo().addPersonagem(bricktop);
         }   
 
         for(int i = 8; i < 9; i++){
-            Tijolo brick9 = new Tijolo("bricks.png");
+            Tijolo brick9 = new Tijolo("TijoloRoxo.png");
             brick9.setPosicao(i, 9);
             Desenho.acessoATelaDoJogo().addPersonagem(brick9);
         }   
