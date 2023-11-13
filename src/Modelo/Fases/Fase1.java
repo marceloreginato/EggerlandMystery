@@ -31,9 +31,9 @@ public class Fase1 extends Fase {
             brick4.setPosicao(i, 4);    
             Desenho.acessoATelaDoJogo().addPersonagem(brick4);
             Tijolo brick8 = new Tijolo("bricks.png");
-            brick8.setPosicao(i, 8);
+            brick8.setPosicao(i, 8);    
             Desenho.acessoATelaDoJogo().addPersonagem(brick8);
-        }
+        }   
 
         for(int j = 6; j < 8; j++){
             Tijolo bricktop = new Tijolo("bricks.png");
@@ -75,6 +75,5 @@ public class Fase1 extends Fase {
         Coletavel moeda = new Coletavel("moeda.png");
         moeda.setPosicao((Consts.RES/2) - 1, 3);
         Desenho.acessoATelaDoJogo().addPersonagem(moeda);
-
     }
 }

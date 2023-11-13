@@ -8,7 +8,7 @@ import Modelo.Blocos.Numero;
 import Modelo.Blocos.Lateral;
 import Modelo.Hero;
 
-public class Fase { 
+public class Fase{ 
     Porta porta = new Porta("PortaFechada.png");
 
     Numero numVida = new Numero(Desenho.acessoATelaDoJogo().getVidas(), 'v');
@@ -32,9 +32,8 @@ public class Fase {
         Desenho.acessoATelaDoJogo().addPersonagem(herolateral);
         Desenho.acessoATelaDoJogo().addPersonagem(tirolateral);
         Desenho.acessoATelaDoJogo().addPersonagem(round1);
-        Desenho.acessoATelaDoJogo().addPersonagem(round2);
-
-
+        Desenho.acessoATelaDoJogo().addPersonagem(round2);  
+        
 
         for (int i = 0; i < Consts.RES; i++){
             for (int j = 0; j < Consts.RES; j++){

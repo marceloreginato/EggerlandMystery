@@ -15,23 +15,29 @@ public class ControleDeJogo {
             e.get(i).autoDesenho();
         }
         e.get(0).autoDesenho();
-        e.get(Consts.TAM_FASE).autoDesenho();
-        e.get(Consts.TAM_FASE + 1).autoDesenho();
-        e.get(Consts.TAM_FASE + 2).autoDesenho();
-        e.get(Consts.TAM_FASE + 3).autoDesenho();
+        if(Desenho.acessoATelaDoJogo().tamanhoFase() > Consts.TAM_FASE){
+            e.get(Consts.TAM_FASE).autoDesenho();
+            e.get(Consts.TAM_FASE + 1).autoDesenho();
+            e.get(Consts.TAM_FASE + 2).autoDesenho();
+            e.get(Consts.TAM_FASE + 3).autoDesenho();
+        }
     }
 
     public void processaTudo(ArrayList<Personagem> umaFase) {
         Hero hero = (Hero) umaFase.get(0);
-        Porta porta = (Porta) umaFase.get(1);
         Personagem pIesimoPersonagem;
         int i = 0;
         for (i = 1; i < umaFase.size(); i++) {
             pIesimoPersonagem = umaFase.get(i);
-            if (hero.getPosicao().igual(pIesimoPersonagem.getPosicao()))    
-                if (pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbMortal())
+            if (hero.getPosicao().igual(pIesimoPersonagem.getPosicao())){
+                if(pIesimoPersonagem.isbMortal()){
+                    Desenho.acessoATelaDoJogo().removeVidas();
+                    Desenho.acessoATelaDoJogo().criaFase();
+                }
+                if (pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbTiro())
                     /* TO-DO: verificar se o personagem eh mortal antes de retirar */
                     umaFase.remove(pIesimoPersonagem);
+            }
         }
     }
 
@@ -77,7 +83,7 @@ public class ControleDeJogo {
                 break;
 
             case 'r':
-                Posicao posicaoR = new Posicao(linha - 1, coluna + 1);
+                Posicao posicaoR = new Posicao(linha, coluna + 1);
                 if(!this.ehPosicaoValida(umaFase, posicaoR, 'r', 'e'))
                     return false;    
                 personagemEmpurravel.moveRight();
@@ -107,6 +113,10 @@ public class ControleDeJogo {
                     // if(pIesimoPersonagem.isbMortal())
                     //     return false;
                     return true;
+                }
+                else if(tipoPersonagem == 'e'){
+                    if(pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbPorta() || !pIesimoPersonagem.isbTransponivel() || pIesimoPersonagem.isbMortal())
+                        return false;    
                 }   
                 if (!pIesimoPersonagem.isbTransponivel()) {
                     if (pIesimoPersonagem.isbEmpurravel())
@@ -129,7 +139,7 @@ public class ControleDeJogo {
         Personagem pIesimoPersonagem;
         for(int i = 1; i < umaFase.size(); i++){
             pIesimoPersonagem = umaFase.get(i);
-            if(pIesimoPersonagem.isbEstatico() ||pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbPorta()){
+            if(pIesimoPersonagem.isbEstatico() || pIesimoPersonagem.isbColetavel() || pIesimoPersonagem.isbEmpurravel() || pIesimoPersonagem.isbPorta()){
                 if(pIesimoPersonagem.getPosicao().igual(p)){
                     return false;   
                 }   

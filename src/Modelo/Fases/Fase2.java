@@ -6,7 +6,7 @@ import Modelo.Hero;
 import Modelo.Blocos.Coletavel; 
 import Modelo.Blocos.Empurravel;
 import Modelo.Blocos.Estatico;
-import Modelo.Blocos.Tijolo;
+import Modelo.Blocos.Tijolo;        
 import Modelo.Inimigo.ZigueZague;
 
 public class Fase2 extends Fase {

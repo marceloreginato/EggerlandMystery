@@ -7,7 +7,7 @@ import Controler.Tela;
 
 public class Desenho {
     static Tela jCenario;
-    public static void setCenario(Tela umJCenario) {
+    public static void setCenario(Tela umJCenario) {    
         jCenario = umJCenario;
     }
 

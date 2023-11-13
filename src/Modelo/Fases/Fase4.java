@@ -9,10 +9,10 @@ import Modelo.Blocos.Tijolo;
 import Modelo.Inimigo.AtiraNaVisao;
 
 public class Fase4 extends Fase {
-    public Fase4(Hero hero){
+    public Fase4(Hero hero){    
         super(hero);
         hero.setPosicao(4, 6);
-        porta.setPosicao(Consts.RES - 3, 6);
+        porta.setPosicao(Consts.RES - 3, 6);    
 
         for(int j = 4; j < 9; j += 4){
             AtiraNaVisao atv = new AtiraNaVisao("PlantinhaDormindo", hero);
