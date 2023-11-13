@@ -23,14 +23,14 @@ public class Fase2 extends Fase {
 
         /*Cria Tijolos da fase*/
         for(int i = 2; i < Consts.RES - 3; i++){
-            Tijolo brick2 = new Tijolo("bricks.png");
+            Tijolo brick2 = new Tijolo("TijoloRoxo.png");
             brick2.setPosicao(i, 2);
             Desenho.acessoATelaDoJogo().addPersonagem(brick2);
-            Tijolo brick4 = new Tijolo("bricks.png");
+            Tijolo brick4 = new Tijolo("TijoloRoxo.png");
             brick4.setPosicao(i, 4);
             Desenho.acessoATelaDoJogo().addPersonagem(brick4);
-            Tijolo brick6 = new Tijolo("bricks.png");
-            if(i == Consts.RES/2 + 1) 
+            Tijolo brick6 = new Tijolo("TijoloRoxo.png");
+            if(i == Consts.RES/2 + 1)   
                 continue;
             brick6.setPosicao(i, 6);
             Desenho.acessoATelaDoJogo().addPersonagem(brick6);
@@ -39,27 +39,27 @@ public class Fase2 extends Fase {
         for(int i = 2; i < Consts.RES - 3; i++){
             if(i == Consts.RES/2 || i == 3)
                 continue;
-            Tijolo brick8 = new Tijolo("bricks.png");
+            Tijolo brick8 = new Tijolo("TijoloRoxo.png");
             brick8.setPosicao(i, 8);
             Desenho.acessoATelaDoJogo().addPersonagem(brick8);
         }
 
         for(int j = 8; j < 11; j++){
-            Tijolo bricktop = new Tijolo("bricks.png");
+            Tijolo bricktop = new Tijolo("TijoloRoxo.png");
             bricktop.setPosicao(1, j);
             Desenho.acessoATelaDoJogo().addPersonagem(bricktop);
             if(j == 10)
                 continue;
-            Tijolo brickbottom = new Tijolo("bricks.png");
+            Tijolo brickbottom = new Tijolo("TijoloRoxo.png");
             brickbottom.setPosicao(Consts.RES - 3, j);
             Desenho.acessoATelaDoJogo().addPersonagem(brickbottom);
         }
 
-        Tijolo bricktop = new Tijolo("bricks.png");
+        Tijolo bricktop = new Tijolo("TijoloRoxo.png");
         bricktop.setPosicao(2, 5);
         Desenho.acessoATelaDoJogo().addPersonagem(bricktop);
 
-        Tijolo brickbottom = new Tijolo("bricks.png");
+        Tijolo brickbottom = new Tijolo("TijoloRoxo.png");
         brickbottom.setPosicao(Consts.RES - 3, 6);
         Desenho.acessoATelaDoJogo().addPersonagem(brickbottom);
 

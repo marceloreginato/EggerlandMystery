@@ -1,6 +1,6 @@
 package Modelo.Inimigo;
 
-import Modelo.Hero;
+import Modelo.Hero; 
 
 public class AtiraNaVisao extends InimigoAtirador{
     

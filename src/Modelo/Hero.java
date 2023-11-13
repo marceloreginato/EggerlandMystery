@@ -4,18 +4,20 @@ import Auxiliar.Desenho;
 
 public class Hero extends Personagem {
 
-    private int iUp = 0;
-    private int iDown = 0;
+    private int iUp = 0;            // bloco de variaveis para tratar 
+    private int iDown = 0;          // a sensação de movimento do heroi
     private int iRight = 0;
     private int iLeft = 0;
-    private char lastMovment;
+    private char lastMovment;       //char que retorna ultima direcao de movimento do heroi
     
     public Hero(String sNomeImagePNG) {
         super(sNomeImagePNG, 'h');
-        this.bMorrivel = true;
+        this.bMorrivel = true;           //define heroi com possibilidade de morrer
     }
 
-    public char getLastMovment() {
+    /*get para variavel lastMovment */
+
+    public char getLastMovment() {     
         return lastMovment;
     }
 
@@ -23,10 +25,16 @@ public class Hero extends Personagem {
     //     this.lastMovment = lastMovment;
     // }
 
+    /*funcao que seta o heroi para a posicao antiga */
+
     private void voltaAUltimaPosicao(){
         this.pPosicao.volta();  
     }
     
+    /*funcao para setar posicao do heroi verificando se a posicao a
+     * ser setada é valida ou nao, caso for invalida retorna a 
+     * ultima posicao*/
+
     public boolean setPosicao(int linha, int coluna){
         if(this.pPosicao.setPosicao(linha, coluna)){
             if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao(), 'z', 'h')) {
@@ -37,7 +45,9 @@ public class Hero extends Personagem {
         return false;       
     }
 
-    /*TO-DO: este metodo pode ser interessante a todos os personagens que se movem*/
+    /*este metodo valida a posicao do heroi e volta para a ultima
+     *posicao caso a posicao que o heroi esta seja invalida*/
+
     private boolean validaPosicao(char c){
         if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao(), c, 'h')) {
             this.voltaAUltimaPosicao();
@@ -46,6 +56,12 @@ public class Hero extends Personagem {
         return true;         
     }
     
+    /* move o heroi para cima 
+     * foram criadas variaveis para verificar qual skin deve ser aplicada ao heroi
+     * as variaveis sao utilizadas para reconhecer em que movimento o herois está
+     * e dependendo do valor delas uma determinada skin vai ser utilizada
+     * esse tratamento foi criado para dar sensação de movimento ao heroi*/
+
     public boolean moveUp() {
         iLeft = 0;
         iDown = 0;
@@ -69,6 +85,9 @@ public class Hero extends Personagem {
         return false;
     }
 
+    /*move o heroi para baixo, com o mesmo tratamento para
+     * dar a sensação de movimento ao heroi
+     */
     public boolean moveDown() {
         iLeft = 0;
         iUp = 0;
@@ -92,6 +111,10 @@ public class Hero extends Personagem {
         return false;
     }
 
+    /*move o heroi para direita, com o mesmo tratamento para
+     * dar a sensação de movimento ao heroi
+     */
+
     public boolean moveRight() {
         iLeft = 0;
         iDown = 0;
@@ -110,6 +133,10 @@ public class Hero extends Personagem {
         }
         return false;
     }
+
+    /*move o heroi para esquerda, com o mesmo tratamento para
+     * dar a sensação de movimento ao heroi
+     */
 
     public boolean moveLeft() {
         iDown = 0;
@@ -130,6 +157,8 @@ public class Hero extends Personagem {
         return false;
     }
 
+    /*metodo atirar do heroi, que recebe a direcao do tiro e envia ela para o 
+     * instanciamento do tiro*/
 
     public void atira(char direcaoTiro){
         

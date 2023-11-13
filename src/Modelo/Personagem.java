@@ -31,8 +31,8 @@ public abstract class Personagem implements Serializable{
 
     protected Personagem(String sNomeImagePNG, char tipoImagemPersonagem) {
         this.pPosicao = new Posicao(1, 1);
-        this.bTransponivel = true;
-        this.bColetavel = false;
+        this.bTransponivel = true;                          //Determinando padroes iniciais para 
+        this.bColetavel = false;                            //o Personagem
         this.bEmpurravel = false;
         this.bMortal = false;
         this.bMorrivel = false;
@@ -42,6 +42,11 @@ public abstract class Personagem implements Serializable{
         this.bZigueZague = false;
         this.tipoImagemPersonagem = tipoImagemPersonagem;
         
+        /*definicao das skins dos persongens a partir da verificacao de um caracter
+         * no qual define de qual PATH a imagem sera pegada, mudança apenas para facilitar
+         * organizacao do codigo
+         */
+
         try {
             if(this.tipoImagemPersonagem == 'h')       
                 iImage = new ImageIcon(new java.io.File("..").getCanonicalPath() + Consts.PATH_HERO + sNomeImagePNG);
@@ -63,6 +68,11 @@ public abstract class Personagem implements Serializable{
         }
     }
 
+    /*Função criada para que fosse possivel a alteração
+     * das skins dos personagens durante o processamento
+     * do codigo*/
+
+
     public void SkinPersonagem(String sNomeImagePNG, char tipoImagemPersonagem){
         try {
             if(this.tipoImagemPersonagem == 'h')
@@ -81,6 +91,9 @@ public abstract class Personagem implements Serializable{
         }   
     }
     
+    /*getters e setters para as variaveis criadas */
+
+
     public Posicao getPosicao() {
         /*TODO: Retirar este método para que objetos externos nao possam operar
          diretamente sobre a posição do Personagem*/
@@ -135,9 +148,11 @@ public abstract class Personagem implements Serializable{
         this.bEstatico = bEstatico;
     }
 
+    /*função autoDesenho para possibilitar a troca das imagens durante o processamento */
+
     public void autoDesenho(){
         Desenho.desenhar(this.iImage, this.pPosicao.getColuna(), this.pPosicao.getLinha());        
-    }
+    }   
 
     public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);

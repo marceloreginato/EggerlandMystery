@@ -134,7 +134,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     /*Remove uma moeda (tiro) do inventario do jogador (um tiro foi gasto)*/
     private void removeMoedas(){
         qntmoedas--;
-    } 
+    }   
 
     public int getVidas(){   
         return qntvidas;
@@ -178,7 +178,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         logo os objetos sao apenas substituidos pelo metodo set.*/
         faseAtual.set(2, vidas); 
         faseAtual.set(3, moedas);   
-        faseAtual.set(4, fases);   
+        faseAtual.set(4, fases);        
     }
 
     /*Metodo que constroi as fases jogaveis por meio das classes herdeiras de Fase*/
@@ -188,7 +188,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         setMoedas(0);     /*Reseta a quantidade de moedas (tiros) a cada fase*/
         setMoedasColetadas(0);    /*Reseta a quantidade de moedas coletadas na fase*/
         hero.SkinPersonagem("HeroEstaticFace.png", 'h');    /*Reinicializa skin do Hero*/
-
+        
         switch (fase) {
             case 1:
                 setVidas(5);     /*O jogo sempre se inicia com 5 vidas*/

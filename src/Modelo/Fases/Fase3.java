@@ -21,7 +21,7 @@ public class Fase3 extends Fase{
 
         porta.setPosicao(Consts.RES - 3, 9);
 
-        /*Cria inimigos da fase*/
+        /*Cria inimigos da fase*/   
         AtiraPelaMoeda am1 = new AtiraPelaMoeda("MonstroRoxoDireita.png", hero);
         am1.setPosicao(4, 3);           
         Desenho.acessoATelaDoJogo().addPersonagem(am1);
