@@ -8,7 +8,8 @@ import Modelo.Fases.Fase;
 import Modelo.Fases.Fase1;  
 import Modelo.Fases.Fase2;  
 import Modelo.Fases.Fase3;  
-import Modelo.Fases.Fase4;  
+import Modelo.Fases.Fase4;
+import Modelo.Fases.Janela;
 import Modelo.Hero;  
 import Modelo.Inimigo.Inimigo;  
 import Modelo.Personagem;
@@ -54,7 +55,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     private ArrayList<Personagem> faseAtual;    
     private ControleDeJogo cj = new ControleDeJogo();
     private Graphics g2;    
-    private int fase;                               
+    private int fase = 0;                               
     private int qntmoedas;
     private int moedasColetadas;
     private int qntvidas;
@@ -73,10 +74,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         faseAtual = new ArrayList<Personagem>();
         hero = new Hero("HeroEstaticFace.png");
         
-        progresso.restaurar();
-        
         criaFase();
-        progresso.salvamento();
     }   
 
     public boolean ehPosicaoValida(Posicao p, char sentidoMovimento, char tipoPersonagem){
@@ -133,10 +131,9 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     
     public void removeVidas(){
         if(qntvidas == 1){
-            qntvidas = 5;
-            fase = 1;
-            progresso.salvamento();
-            System.exit(0);
+            progresso.limpar();
+            fase = 6;
+            criaFase();
         } 
         qntvidas--;
     }
@@ -164,15 +161,12 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
     }
 
     public void criaFase(){
-        if(fase <= 5)
+        if(fase <= 6)
             faseAtual.clear();
         setMoedas(0);
         setMoedasColetadas(0);
 
         switch (fase) {
-            // case 0:
-            //     new Inicio();
-            //     break;
 
             case 1:
                 setVidas(5);
@@ -192,7 +186,7 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
                 break;
         
             case 5:
-                new Fase1(hero);
+                new Janela("TelaFinal.png");
                 break;
 
             default:
@@ -221,9 +215,26 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
             }
         }
 
-        atualizaNumeros();
+        switch (fase) {
+            case 0:
+                new Janela("TelaInicial.png");
+                break;
+            case 5:
+                progresso.limpar();
+                new Janela("TelaFinal.png");
+                break;    
+            case 6:
+                progresso.limpar();
+                new Janela("TelaGameOver.png");
+                break;        
+            default:
+                break;
+        }
 
-        if(tamanhoFase() > 0 && !faseAtual.get(1).isbPorta() && fase < 5){
+        if(fase > 0 && fase < 5)
+            atualizaNumeros();  
+
+        if(tamanhoFase() > 0 && !faseAtual.get(1).isbPorta() && fase > 0 && fase < 5){
             fase++;
             criaFase();
             progresso.salvamento();
@@ -265,11 +276,21 @@ public class Tela extends javax.swing.JFrame implements MouseListener, KeyListen
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE && this.getMoedas() != 0) {
             hero.atira(hero.getLastMovment());  
             removeMoedas();
-        } else if (e.getKeyCode() == KeyEvent.VK_M) { // salvar e sair
-            progresso.salvamento();
-            // setFase(0);
-        } else if (e.getKeyCode() == KeyEvent.VK_R) { // salvar e sair
-            progresso.salvamento();
+        } else if (e.getKeyCode() == KeyEvent.VK_L && getFase() == 0){ // load no menu
+            progresso.restaurar();
+            criaFase();
+        } else if (e.getKeyCode() == KeyEvent.VK_N && getFase() == 0){ // new game no menu
+            setFase(1);
+            criaFase();
+        } else if (e.getKeyCode() == KeyEvent.VK_R && getFase() > 4) { // reiniciar no gameover e no fim
+            progresso.limpar();
+            setFase(0);
+            criaFase();
+        } else if (e.getKeyCode() == KeyEvent.VK_E) { // salvar e sair ou so sair se jogo finalizado 
+            if(getFase() > 0 && getFase() < 5)
+                progresso.salvamento();
+            else if (getFase() >= 5)
+                progresso.limpar();
             System.exit(0);
         }
 

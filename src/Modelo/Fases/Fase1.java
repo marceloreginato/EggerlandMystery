@@ -75,6 +75,5 @@ public class Fase1 extends Fase {
         Coletavel moeda = new Coletavel("moeda.png");
         moeda.setPosicao((Consts.RES/2) - 1, 3);
         Desenho.acessoATelaDoJogo().addPersonagem(moeda);
-
     }
 }

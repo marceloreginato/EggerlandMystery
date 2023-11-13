@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import Auxiliar.Desenho;
 import Controler.Tela;
 
 public class Progresso {
@@ -54,5 +53,17 @@ public class Progresso {
         }
         tela.setFase(currentfase);
         tela.setVidas(currentvidas);
+    }
+
+    public void limpar(){
+        try {
+            DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(file));
+            dataOutputStream.writeInt(1);
+            dataOutputStream.writeInt(5);
+            dataOutputStream.close();
+            // System.out.println("Jogo salvo com sucesso");
+        } catch (IOException e) {
+            System.err.println("Erro no salvamento do jogo: " + e.getMessage());
+        }
     }
 }

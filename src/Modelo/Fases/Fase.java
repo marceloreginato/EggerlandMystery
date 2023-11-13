@@ -35,7 +35,6 @@ public class Fase {
         Desenho.acessoATelaDoJogo().addPersonagem(round2);
 
 
-
         for (int i = 0; i < Consts.RES; i++){
             for (int j = 0; j < Consts.RES; j++){
                 if(i == 0 || j == 0 || i == Consts.RES - 1 || j == Consts.RES - 1 || j == Consts.RES - 4 || (i == 7 && j > Consts.RES - 4) || (i == 11 && j > Consts.RES - 4)){
