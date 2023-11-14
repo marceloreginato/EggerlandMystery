@@ -1,6 +1,8 @@
 package Modelo.Inimigo;
 
-import Modelo.Hero; 
+import Auxiliar.Desenho;
+import Modelo.Hero;
+import Modelo.Tiro; 
 
 public class AtiraNaVisao extends InimigoAtirador{
     
@@ -31,9 +33,9 @@ public class AtiraNaVisao extends InimigoAtirador{
             super.SkinPersonagem("PlantinhaPistola.png", 'i');  //altera para skin ativada do inimigo
             stopLinha = 1;                                                      //altera variavel para verificar que um tiro ja foi dado
             if(hero.getPosicao().getColuna() > this.pPosicao.getColuna())       //verificacoes de coluna entre heroi e inimigo para definir sentido do tiro
-                super.atiraRight('v');
+                this.atiraRight();
             else if(hero.getPosicao().getColuna() < this.pPosicao.getColuna())
-                super.atiraLeft('v');
+                this.atiraLeft();
         }       
 
         if(hero.getPosicao().getColuna() != this.pPosicao.getColuna()){   //caso heroi e inimigos nao estejam na mesma coluna
@@ -48,11 +50,37 @@ public class AtiraNaVisao extends InimigoAtirador{
             super.SkinPersonagem("PlantinhaPistola.png", 'i');          //altera skin para inimigo ativado
             stopColuna = 1;
             if(hero.getPosicao().getLinha() > this.pPosicao.getLinha())                 //verificacoes de linha entre heroi e inimigo para definir sentido do tiro
-                super.atiraDown('v');
+                this.atiraDown();
             if(hero.getPosicao().getLinha() < this.pPosicao.getLinha())
-                super.atiraUp('v');
+                this.atiraUp();
         }
-    }           
+    }
+    
+    /*Polimorfismo metodos atirar */
+
+    public void atiraRight(){
+            Tiro t1 = new Tiro("TiroPlantinhaHorizontal.png", 'r'); //instancia objeto tiro
+            t1.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
+            Desenho.acessoATelaDoJogo().addPersonagem(t1); //adiciona tiro no array de personagens
+    }
+
+    public void atiraLeft(){
+            Tiro t2 = new Tiro("TiroPlantinhaHorizontal.png", 'l'); //instancia objeto tiro
+            t2.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
+            Desenho.acessoATelaDoJogo().addPersonagem(t2); //adiciona tiro no array de personagens
+    }
+
+    public void atiraUp(){
+            Tiro t3 = new Tiro("TiroPlantinhaVertical.png", 'u');  //instancia objeto tiro
+            t3.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
+            Desenho.acessoATelaDoJogo().addPersonagem(t3); //adiciona tiro no array de personagens
+    }
+
+    public void atiraDown(){
+            Tiro t4 = new Tiro("TiroPlantinhaVertical.png", 'd'); //instancia objeto tiro
+            t4.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
+            Desenho.acessoATelaDoJogo().addPersonagem(t4); //adiciona tiro no array de personagens
+    }
 
 }       
 

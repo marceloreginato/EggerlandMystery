@@ -1,51 +1,51 @@
 package Controler;
     
-import Modelo.Inimigo.AtiraNaVisao; 
-import Modelo.Inimigo.AtiraPelaMoeda;  
-import Modelo.Blocos.Coletavel;  
-import Modelo.Blocos.Estatico;  
-import Modelo.Fases.Fase;  
+//import Modelo.Inimigo.AtiraNaVisao; 
+//import Modelo.Inimigo.AtiraPelaMoeda;  
+//import Modelo.Blocos.Coletavel;  
+//import Modelo.Blocos.Estatico;  
+//import Modelo.Fases.Fase;  
 import Modelo.Fases.Fase1;  
 import Modelo.Fases.Fase2;  
 import Modelo.Fases.Fase3;  
 import Modelo.Fases.Fase4;
 import Modelo.Fases.Janela;
 import Modelo.Hero;  
-import Modelo.Inimigo.InimigoMorrivel;  
+//import Modelo.Inimigo.InimigoMorrivel;  
 import Modelo.Personagem;
-import Modelo.Inimigo.InimigoAtirador;
+//import Modelo.Inimigo.InimigoAtirador;
 import Modelo.Blocos.Numero;
-import Modelo.Blocos.Porta;
-import Modelo.Tiro;
-import Modelo.Inimigo.ZigueZague;
+//import Modelo.Blocos.Porta;
+//import Modelo.Tiro;
+//import Modelo.Inimigo.ZigueZague;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Auxiliar.Posicao;
-import java.awt.FlowLayout;
+//import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
+//import java.io.BufferedReader;
+//import java.io.DataInputStream;
+//import java.io.DataOutputStream;
+//import java.io.File;
+//import java.io.FileWriter;
+//import java.io.FileInputStream;
+//import java.io.FileOutputStream;
+//import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;               
-import java.io.ObjectOutputStream;
+//import java.io.ObjectInputStream;               
+//import java.io.ObjectOutputStream;
 import java.util.ArrayList; 
 import java.util.Timer;             
 import java.util.TimerTask;
 import java.util.logging.Level;     
 import java.util.logging.Logger;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;  
-import javax.swing.JButton;               
+//import java.util.zip.GZIPInputStream;
+//import java.util.zip.GZIPOutputStream;  
+//import javax.swing.JButton;               
 
 public class Tela extends javax.swing.JFrame implements KeyListener {
     private Hero hero;                          /*Define Hero*/
@@ -161,7 +161,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     public int getMoedasColetadas() {
         return moedasColetadas;
     }
-
+            
     protected void setMoedasColetadas(int moedasColetadas) {
         this.moedasColetadas = moedasColetadas;
     }
@@ -360,7 +360,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    public void keyTyped(KeyEvent e) {
+    public void keyTyped(KeyEvent e) {  
     }
 
     public void keyReleased(KeyEvent e) {
