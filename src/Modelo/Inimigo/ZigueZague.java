@@ -2,7 +2,7 @@ package Modelo.Inimigo;
 
 import Auxiliar.Desenho;
 import java.util.Random;
-import Modelo.Personagem;
+import Modelo.Personagem;   
 
 public class ZigueZague extends Personagem {
     public ZigueZague(String sNomeImagePNG) {

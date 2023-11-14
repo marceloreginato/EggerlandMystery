@@ -12,7 +12,7 @@ public class Desenho {
 
     public static Tela acessoATelaDoJogo() {
         return jCenario;
-    }
+    }   
 
     public static Graphics getGraphicsDaTela() {
         return jCenario.getGraphicsBuffer();

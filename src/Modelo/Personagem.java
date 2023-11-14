@@ -4,7 +4,7 @@ import Auxiliar.Consts;
 import Auxiliar.Desenho;
 // import Controler.Tela;
 import Auxiliar.Posicao;
-import java.awt.Graphics;
+import java.awt.Graphics;   
 import java.awt.Image;
 // import java.awt.Toolkit;
 import java.awt.image.BufferedImage;

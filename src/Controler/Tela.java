@@ -3,7 +3,7 @@ package Controler;
 //import Modelo.Inimigo.AtiraNaVisao; 
 //import Modelo.Inimigo.AtiraPelaMoeda;  
 //import Modelo.Blocos.Coletavel;  
-//import Modelo.Blocos.Estatico;  
+//import Modelo.Blocos.Estatico;    
 //import Modelo.Fases.Fase;  
 import Modelo.Fases.Fase1;  
 import Modelo.Fases.Fase2;  
@@ -21,31 +21,31 @@ import Modelo.Blocos.Numero;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Auxiliar.Posicao;
-//import java.awt.FlowLayout;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-//import java.io.BufferedReader;
-//import java.io.DataInputStream;
-//import java.io.DataOutputStream;
-//import java.io.File;
-//import java.io.FileWriter;
-//import java.io.FileInputStream;
-//import java.io.FileOutputStream;
-//import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-//import java.io.ObjectInputStream;               
-//import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;               
+import java.io.ObjectOutputStream;
 import java.util.ArrayList; 
 import java.util.Timer;             
 import java.util.TimerTask;
 import java.util.logging.Level;     
 import java.util.logging.Logger;
-//import java.util.zip.GZIPInputStream;
-//import java.util.zip.GZIPOutputStream;  
-//import javax.swing.JButton;               
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;  
+import javax.swing.JButton;               
 
 public class Tela extends javax.swing.JFrame implements KeyListener {
     private Hero hero;                          /*Define Hero*/
@@ -146,16 +146,15 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     
     /*Remove uma vida do inventario do jogador (personagem morreu).
     Eh feito tratamento para que aconteca um GameOver caso as vidas
-    se acabem. Ao ter um GameOver o jogador perde o seu progresso no
-    jogo, reiniciando na fase 1.*/
+    se acabem. Ao ter um GameOver o jogador vai para a tela de GameOver.*/
 
     protected void removeVidas(){
         if(qntvidas == 1){
-            progresso.limpar();
             fase = 6;
             criaFase();
         }
         qntvidas--;
+        progresso.salvamento();
     }
 
     public int getMoedasColetadas() {
@@ -252,7 +251,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                 break;
         }
 
-        /*Atualiza os numeros do Setup Lateral caso em fase jogavel*/
+        /*Atualiza os numeros do Setup Lateral caso em fase jogavel.*/
         if(fase > 0 && fase < 5)
             atualizaNumeros();  
 
@@ -298,10 +297,12 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         WASD e UP+LEFT+DOWN+RIGHT: move nos 4 sentidos;
         L: carrega jogo salvo quando na tela de inicio (fase 0);
         N: inicia um jogo novo (fase 1) quando na tela de inicio (fase 0);
-        R: Reinicia jogo (fase 0) quando na tela de fim (fase 5) ou de gameover (fase 6);
-        E: Salva e fecha o jogo (caso nas fases 5 ou 6, o salvamento do jogo eh para inicializacao padrao).
+        R: reinicia jogo (fase 0) quando na tela de fim (fase 5) ou de gameover (fase 6);
+        M: salva o jogo e volta para a tela inicial nas fases jogaveis;
+        E: fecha o jogo;
+        X: reinicia a fase atual quando em fase jogavel (fases 1 a 4).
         */
-
+        
         if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
             hero.moveUp();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
@@ -313,22 +314,25 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE && this.getMoedas() != 0) {
             hero.atira(hero.getLastMovment());  
             removeMoedas();
-        } else if (e.getKeyCode() == KeyEvent.VK_L && getFase() == 0){ // load no menu
+        } else if (e.getKeyCode() == KeyEvent.VK_L && getFase() == 0) {
             progresso.restaurar();
             criaFase();
-        } else if (e.getKeyCode() == KeyEvent.VK_N && getFase() == 0){ // new game no menu
+        } else if (e.getKeyCode() == KeyEvent.VK_N && getFase() == 0) {
             setFase(1);
             criaFase();
-        } else if (e.getKeyCode() == KeyEvent.VK_R && getFase() > 4) { // reiniciar no gameover e no fim
+        } else if (e.getKeyCode() == KeyEvent.VK_R && getFase() > 4) {
             progresso.limpar();
             setFase(0);
             criaFase();
-        } else if (e.getKeyCode() == KeyEvent.VK_E) { // salvar e sair ou so sair se jogo finalizado 
-            if(getFase() > 0 && getFase() < 5)
-                progresso.salvamento();
-            else if (getFase() >= 5)
-                progresso.limpar();
+        } else if (e.getKeyCode() == KeyEvent.VK_M && getFase() > 0 && getFase() < 5) {
+            progresso.salvamento();
+            setFase(0);
+            faseAtual.clear();
+        } else if (e.getKeyCode() == KeyEvent.VK_E) {
             System.exit(0);
+        } else if (e.getKeyCode() == KeyEvent.VK_X && getFase() > 0 && getFase() < 5) {
+            progresso.restaurar();
+            criaFase();
         }
 
         /*Invoca o paint imediatamente, sem aguardar o refresh*/

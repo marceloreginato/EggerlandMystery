@@ -4,7 +4,7 @@ import Auxiliar.Desenho;
 
 public class Tiro extends Personagem {
 
-    private char direcao;
+    private char direcao;    
  
     public Tiro(String sNomeImagePNG, char direcao) {
         super(sNomeImagePNG, 't');  

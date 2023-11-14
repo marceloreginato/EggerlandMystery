@@ -55,8 +55,8 @@ public class Fase4 extends Fase {
         Desenho.acessoATelaDoJogo().addPersonagem(emp4);
 
         Empurravel empmeio = new Empurravel("caixa.png");
-        empmeio.setPosicao(6, Consts.RES - 6);
-        Desenho.acessoATelaDoJogo().addPersonagem(empmeio);
+        empmeio.setPosicao(6, Consts.RES - 6);  
+        Desenho.acessoATelaDoJogo().addPersonagem(empmeio); 
 
         /*Cria moedas da fase*/
         for(int j = 4; j < 9; j += 4){
