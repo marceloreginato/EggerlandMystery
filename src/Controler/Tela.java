@@ -325,11 +325,14 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             progresso.limpar();
             setFase(0);
             criaFase();
-        } else if (e.getKeyCode() == KeyEvent.VK_E) {
+        } else if (e.getKeyCode() == KeyEvent.VK_M) {
             if(getFase() > 0 && getFase() < 5)
                 progresso.salvamento();
             else if (getFase() >= 5)
                 progresso.limpar();
+            setFase(0);
+            faseAtual.clear();
+        } else if (e.getKeyCode() == KeyEvent.VK_E) {
             System.exit(0);
         } else if (e.getKeyCode() == KeyEvent.VK_X && getFase() > 0 && getFase() < 5) {
             progresso.restaurar();
