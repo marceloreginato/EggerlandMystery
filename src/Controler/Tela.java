@@ -146,12 +146,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     
     /*Remove uma vida do inventario do jogador (personagem morreu).
     Eh feito tratamento para que aconteca um GameOver caso as vidas
-    se acabem. Ao ter um GameOver o jogador perde o seu progresso no
-    jogo, reiniciando na fase 1.*/
+    se acabem. Ao ter um GameOver o jogador vai para a tela de GameOver.*/
 
     protected void removeVidas(){
         if(qntvidas == 1){
-            progresso.limpar();
             fase = 6;
             criaFase();
         }
@@ -253,7 +251,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                 break;
         }
 
-        /*Atualiza os numeros do Setup Lateral caso em fase jogavel*/
+        /*Atualiza os numeros do Setup Lateral caso em fase jogavel.*/
         if(fase > 0 && fase < 5)
             atualizaNumeros();  
 
@@ -300,7 +298,8 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         L: carrega jogo salvo quando na tela de inicio (fase 0);
         N: inicia um jogo novo (fase 1) quando na tela de inicio (fase 0);
         R: reinicia jogo (fase 0) quando na tela de fim (fase 5) ou de gameover (fase 6);
-        E: salva e fecha o jogo (caso nas fases 5 ou 6, o salvamento do jogo eh para inicializacao padrao);
+        M: salva o jogo e volta para a tela inicial nas fases jogaveis;
+        E: fecha o jogo;
         X: reinicia a fase atual quando em fase jogavel (fases 1 a 4).
         */
         
@@ -325,11 +324,8 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             progresso.limpar();
             setFase(0);
             criaFase();
-        } else if (e.getKeyCode() == KeyEvent.VK_M) {
-            if(getFase() > 0 && getFase() < 5)
-                progresso.salvamento();
-            else if (getFase() >= 5)
-                progresso.limpar();
+        } else if (e.getKeyCode() == KeyEvent.VK_M && getFase() > 0 && getFase() < 5) {
+            progresso.salvamento();
             setFase(0);
             faseAtual.clear();
         } else if (e.getKeyCode() == KeyEvent.VK_E) {
