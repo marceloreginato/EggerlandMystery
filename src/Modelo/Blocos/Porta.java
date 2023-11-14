@@ -15,7 +15,7 @@ public class Porta extends Estatico {
         if(Desenho.acessoATelaDoJogo().getMoedasColetadas() == 5 && Desenho.acessoATelaDoJogo().getFase() == 1){ //caso todas as moedas da fase 1 um forem pegas transforma porta em coletavel e muda skin da porta
             this.bColetavel = true;     //transformando em coletavel
             super.SkinPersonagem("PortaAberta.png", 'p');   //mudando skin
-        }
+        }   
 
         if(Desenho.acessoATelaDoJogo().getMoedasColetadas() == 5 && Desenho.acessoATelaDoJogo().getFase() == 2){ //caso todas as moedas da fase 2 forem pegas transforma porta em coletavel e muda skin da porta
             this.bColetavel = true;     //transformando em coletavel

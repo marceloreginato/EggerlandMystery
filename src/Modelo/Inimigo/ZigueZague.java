@@ -5,7 +5,7 @@ import Auxiliar.Posicao;
 
 import java.util.ArrayList;
 import java.util.Random;
-import Modelo.Personagem;
+import Modelo.Personagem;   
 
 public class ZigueZague extends Personagem {
     public ZigueZague(String sNomeImagePNG) {

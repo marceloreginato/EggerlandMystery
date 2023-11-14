@@ -38,7 +38,7 @@ public class Fase3 extends Fase{
         am4.setPosicao(9, 8);           
         Desenho.acessoATelaDoJogo().addPersonagem(am4);
 
-        /*Cria caixas empurraveis da fase*/
+        /*Cria caixas empurraveis da fase*/ 
         Empurravel emp = new Empurravel("caixa.png");
         emp.setPosicao(Consts.RES - 3, 8);  
         Desenho.acessoATelaDoJogo().addPersonagem(emp);                            

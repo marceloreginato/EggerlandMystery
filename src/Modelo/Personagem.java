@@ -4,7 +4,7 @@ import Auxiliar.Consts;
 import Auxiliar.Desenho;
 // import Controler.Tela;
 import Auxiliar.Posicao;
-import java.awt.Graphics;
+import java.awt.Graphics;   
 import java.awt.Image;
 // import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
@@ -97,8 +97,6 @@ public abstract class Personagem implements Serializable{
 
 
     public Posicao getPosicao() {
-        /*TODO: Retirar este método para que objetos externos nao possam operar
-         diretamente sobre a posição do Personagem*/
         return pPosicao;
     }
     

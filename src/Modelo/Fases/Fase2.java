@@ -94,7 +94,7 @@ public class Fase2 extends Fase {
         /*Cria moedas da fase*/
         for(int i = 1; i < Consts.RES; i+=11){
             Coletavel col1 = new Coletavel("moeda.png");
-            col1.setPosicao(i, 3);
+            col1.setPosicao(i, 3);  
             Desenho.acessoATelaDoJogo().addPersonagem(col1);
         }
 

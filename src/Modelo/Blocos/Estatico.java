@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Auxiliar.Posicao;
 import Modelo.Personagem;   
         
-public abstract class Estatico extends Personagem {
+public abstract class Estatico extends Personagem { 
     
     /*Classe abstrata que herda de Personagem e define blocos
     que podem ser nao podem ser ultrapassados pelo heroi.*/

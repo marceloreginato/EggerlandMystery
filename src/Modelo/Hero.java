@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import Auxiliar.Desenho;
 import Auxiliar.Posicao;
 
-public class Hero extends Personagem {
+public class Hero extends Personagem {  
 
     private int iUp = 0;            // bloco de variaveis para tratar 
     private int iDown = 0;          // a sensação de movimento do heroi

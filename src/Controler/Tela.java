@@ -12,13 +12,13 @@ import Modelo.Fases.Fase3;
 import Modelo.Fases.Fase4;
 import Modelo.Fases.Janela;
 import Modelo.Hero;  
-import Modelo.Inimigo.InimigoMorrivel;  
+//import Modelo.Inimigo.InimigoMorrivel;  
 import Modelo.Personagem;
-import Modelo.Inimigo.InimigoAtirador;
+//import Modelo.Inimigo.InimigoAtirador;
 import Modelo.Blocos.Numero;
-import Modelo.Blocos.Porta;
-import Modelo.Tiro;
-import Modelo.Inimigo.ZigueZague;
+//import Modelo.Blocos.Porta;
+//import Modelo.Tiro;
+//import Modelo.Inimigo.ZigueZague;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Auxiliar.Posicao;
@@ -155,7 +155,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     public int getMoedasColetadas() {
         return moedasColetadas;
     }
-
+            
     protected void setMoedasColetadas(int moedasColetadas) {
         this.moedasColetadas = moedasColetadas;
     }
@@ -360,7 +360,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    public void keyTyped(KeyEvent e) {
+    public void keyTyped(KeyEvent e) {  
     }
 
     public void keyReleased(KeyEvent e) {

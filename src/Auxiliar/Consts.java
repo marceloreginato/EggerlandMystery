@@ -2,7 +2,7 @@ package Auxiliar;
     
 import java.io.File;
 
-public class Consts {
+public class Consts {   
     public static final int CELL_SIDE = 45;
     public static final int RES = 15;
     public static final int PERIOD = 15;   
