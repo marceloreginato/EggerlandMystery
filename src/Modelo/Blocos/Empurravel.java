@@ -17,7 +17,9 @@ public class Empurravel extends Personagem{
     }
 
     @Override
-    public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p) {
+    /*Metodo que verifica se a posicao que objeto esta se movendo eh possivel.*/
+    public boolean ehPosicaoValida(Posicao p) {
+        ArrayList<Personagem> umaFase = getFaseAtual();
         Personagem pIesimoPersonagem;
 
         /*Percorre o array do ambiente da fase (desconsiderando o Hero) e

@@ -40,7 +40,7 @@ public class Hero extends Personagem {
 
     public boolean setPosicao(int linha, int coluna){
         if(this.pPosicao.setPosicao(linha, coluna)){
-            if (!ehPosicaoValida(Desenho.acessoATelaDoJogo().getFaseAtual(), this.getPosicao())) {
+            if (!ehPosicaoValida(this.getPosicao())) {
                 this.voltaAUltimaPosicao();
             }
             return true;
@@ -61,7 +61,7 @@ public class Hero extends Personagem {
         lastMovment = 'u';
         boolean validMove = true;
 
-        if(!ehPosicaoValida(Desenho.acessoATelaDoJogo().getFaseAtual(), new Posicao(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna())))
+        if(!ehPosicaoValida(new Posicao(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna())))
             validMove = false;
 
         if(super.moveUp()){
@@ -93,7 +93,7 @@ public class Hero extends Personagem {
         lastMovment = 'd';
         boolean validMove = true;
 
-        if(!ehPosicaoValida(Desenho.acessoATelaDoJogo().getFaseAtual(), new Posicao(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna())))
+        if(!ehPosicaoValida(new Posicao(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna())))
             validMove = false;
         
         if(super.moveDown()){
@@ -126,7 +126,7 @@ public class Hero extends Personagem {
         lastMovment = 'r';
         boolean validMove = true;
 
-        if(!ehPosicaoValida(Desenho.acessoATelaDoJogo().getFaseAtual(), new Posicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1)))
+        if(!ehPosicaoValida(new Posicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1)))
             validMove = false;
 
         if(super.moveRight()){
@@ -155,7 +155,7 @@ public class Hero extends Personagem {
         lastMovment = 'l';
         boolean validMove = true;
 
-        if(!ehPosicaoValida(Desenho.acessoATelaDoJogo().getFaseAtual(), new Posicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1)))
+        if(!ehPosicaoValida(new Posicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1)))
             validMove = false;
 
         if(super.moveLeft()){
@@ -205,7 +205,8 @@ public class Hero extends Personagem {
 
     @Override
     /*Metodo que verifica se a posicao que objeto esta se movendo eh possivel.*/
-    public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p) {
+    public boolean ehPosicaoValida(Posicao p) {
+        ArrayList<Personagem> umaFase = getFaseAtual();
         Personagem pIesimoPersonagem;
 
         /*Percorre o array do ambiente da fase (desconsiderando o Hero) e
@@ -214,6 +215,7 @@ public class Hero extends Personagem {
             pIesimoPersonagem = umaFase.get(i);
 
             if (pIesimoPersonagem.getPosicao().igual(p)) {
+                /*Se o Hero estiver se movendo para a posicao de um Empurravel, o o Empurravel se move para a posicao seguinte*/
                 if(pIesimoPersonagem.isbEmpurravel()){
                     int linha = this.getPosicao().getLinha();
                     int coluna = this.getPosicao().getColuna();
@@ -232,10 +234,11 @@ public class Hero extends Personagem {
                             coluna-=2;
                     }
 
-                    if(pIesimoPersonagem.ehPosicaoValida(umaFase, new Posicao(linha, coluna)))
+                    if(pIesimoPersonagem.ehPosicaoValida(new Posicao(linha, coluna)))
                         return pIesimoPersonagem.setPosicao(linha, coluna);
                 }
 
+                /*Se o objeto for transponivel o Hero o sobrepoe*/
                 if(pIesimoPersonagem.isbTransponivel()){
                     if(pIesimoPersonagem.isbColetavel()){
                         Desenho.acessoATelaDoJogo().addTodasMoedas();
@@ -247,7 +250,7 @@ public class Hero extends Personagem {
                 return false;
             }
         }
-        /*Retorna true se nao for conflitante*/
+        /*Retorna true se nao for conflitante com outros objetos*/
         return true;
     }
 }

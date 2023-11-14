@@ -148,7 +148,11 @@ public abstract class Personagem implements Serializable{
         this.bEstatico = bEstatico;
     }
 
-    /*função autoDesenho para possibilitar a troca das imagens durante o processamento */
+    protected ArrayList<Personagem> getFaseAtual(){
+        return Desenho.acessoATelaDoJogo().getFaseAtual();
+    }
+
+    /*função autoDesenho para possibilitar a troca das imagens durante o processamento*/
 
     public void autoDesenho(){
         Desenho.desenhar(this.iImage, this.pPosicao.getColuna(), this.pPosicao.getLinha());        
@@ -158,11 +162,8 @@ public abstract class Personagem implements Serializable{
         return pPosicao.setPosicao(linha, coluna);
     }
 
-    abstract public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p);
-
-    // public boolean ehPosicaoValida(ArrayList<Personagem> arrayFase, Posicao p){
-    //     return true;
-    // }
+    /*Metodo abstrato que verifica se a posicao que o Personagem vai se mover eh valida para ele.*/
+    abstract public boolean ehPosicaoValida(Posicao p);
 
     public boolean moveUp() {
         return this.pPosicao.moveUp();

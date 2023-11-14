@@ -1,7 +1,5 @@
 package Modelo.Blocos; 
 
-import java.util.ArrayList;
-
 import Auxiliar.Posicao;
 import Modelo.Personagem;   
         
@@ -17,7 +15,8 @@ public abstract class Estatico extends Personagem {
     }
 
     @Override
-    public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p) {
-        return false;
+    /*Metodo que verifica se a posicao que objeto esta se movendo eh possivel.*/
+    public boolean ehPosicaoValida(Posicao p) {
+        return false;       /*Personagem nao pode se mover.*/
     }
 }
