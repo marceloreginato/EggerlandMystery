@@ -1,14 +1,12 @@
 package Modelo.Inimigo;
 
 import Auxiliar.Desenho;
-import Modelo.Personagem;
 import Modelo.Tiro;
 
-public class InimigoAtirador extends Personagem{
+public class InimigoAtirador extends Inimigo{
     
     public InimigoAtirador(String sNomeImagePNG) {
-        super(sNomeImagePNG, 'i');  
-        this.bTransponivel = false;              //define que inimigosatiradoes nao sao transponiveis
+        super(sNomeImagePNG);  
     }
 
     public void autoDesenho() {
@@ -65,8 +63,7 @@ public class InimigoAtirador extends Personagem{
             t4.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
             Desenho.acessoATelaDoJogo().addPersonagem(t4); //adiciona tiro no array de personagens
         }
-    }       
-
+    }     
 }           
 
 

@@ -13,7 +13,7 @@ public class Posicao implements Serializable{
         this.setPosicao(linha,coluna);
     }
 
-    public boolean setPosicao(int linha, int coluna){       
+    public boolean setPosicao(int linha, int coluna){ 
         if(linha < 0 || linha >= Auxiliar.Consts.RES)
             return false;
         linhaAnterior = this.linha;

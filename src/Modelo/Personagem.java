@@ -10,6 +10,8 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 // import javax.swing.JFrame;
 // import javax.swing.JPanel;
@@ -157,6 +159,12 @@ public abstract class Personagem implements Serializable{
     public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);
     }
+
+    abstract public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p);
+
+    // public boolean ehPosicaoValida(ArrayList<Personagem> arrayFase, Posicao p){
+    //     return true;
+    // }
 
     public boolean moveUp() {
         return this.pPosicao.moveUp();

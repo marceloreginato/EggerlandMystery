@@ -1,5 +1,8 @@
 package Modelo.Blocos; 
 
+import java.util.ArrayList;
+
+import Auxiliar.Posicao;
 import Modelo.Personagem;   
         
 public abstract class Estatico extends Personagem {
@@ -11,5 +14,10 @@ public abstract class Estatico extends Personagem {
         super(sNomeImagemPNG, tipoEstatico);
         this.bTransponivel = false;
         this.bEstatico = true;          
+    }
+
+    @Override
+    public boolean ehPosicaoValida(ArrayList<Personagem> umaFase, Posicao p) {
+        return false;
     }
 }

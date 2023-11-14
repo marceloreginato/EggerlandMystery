@@ -1,8 +1,6 @@
 package Modelo.Blocos; 
 
-import Modelo.Personagem;   
-
-public class Coletavel extends Personagem {
+public class Coletavel extends Estatico {
     
     /*Classe que herda de Personagem e define blocos
     que podem ser coletados pelo heroi (moedas).*/
@@ -12,4 +10,4 @@ public class Coletavel extends Personagem {
         this.bColetavel = true;
         this.bTransponivel = true;
     }
-}
+} 
