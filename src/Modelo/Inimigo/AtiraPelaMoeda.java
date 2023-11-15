@@ -90,24 +90,28 @@ public class AtiraPelaMoeda extends InimigoAtirador{
 
     /*Polimorfismo metodos atirar*/
 
+    @Override
     public void atiraRight(){         
             Tiro t1 = new Tiro("TiroMonstroRoxoDireita.png", 'r');  //instancia objeto tiro
             t1.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
             Desenho.acessoATelaDoJogo().addPersonagem(t1); //adiciona tiro no array de personagens
     }
 
+    @Override
     public void atiraLeft(){
             Tiro t2 = new Tiro("TiroMonstroRoxoEsquerda.png", 'l');  //instancia objeto tiro
             t2.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
             Desenho.acessoATelaDoJogo().addPersonagem(t2); //adiciona tiro no array de personagens
     }
 
+    @Override
     public void atiraUp(){
             Tiro t3 = new Tiro("TiroMonstroRoxoCima.png", 'u'); //instancia objeto tiro
             t3.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
             Desenho.acessoATelaDoJogo().addPersonagem(t3); //adiciona tiro no array de personagens
     }
 
+    @Override
     public void atiraDown(){
             Tiro t4 = new Tiro("TiroMonstroRoxoBaixo.png", 'd'); //instancia objeto tiro
             t4.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial

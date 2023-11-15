@@ -53,7 +53,7 @@ public class Hero extends Personagem {
             this.voltaAUltimaPosicao();
             return false;
         }
-        return true;         
+        return true;    
     }
     
     /* move o heroi para cima 
@@ -161,30 +161,14 @@ public class Hero extends Personagem {
      * instanciamento do tiro*/
 
     public void atira(char direcaoTiro){
-        
-        if(direcaoTiro == 'r'){
-        Tiro t1 = new Tiro("TiroHorizontal.png", 'r');
-        t1.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
-        Desenho.acessoATelaDoJogo().addPersonagem(t1);
-        }
-         
-        if(direcaoTiro == 'l'){
-        Tiro t2 = new Tiro("TiroHorizontal.png", 'l');
-        t2.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
-        Desenho.acessoATelaDoJogo().addPersonagem(t2);
-        }
+        String stringTiro = "stringTiro";                   //inicia variavel 
+        if(direcaoTiro == 'r' || direcaoTiro == 'l')        //selecao da direcao do tiro
+            stringTiro = "TiroHorizontal.png";              //guarda na string a skin a ser utilizada
+        else if(direcaoTiro == 'u' || direcaoTiro == 'd')
+            stringTiro = "TiroVertical.png";
 
-        if(direcaoTiro == 'u'){
-        Tiro t3 = new Tiro("TiroVertical.png", 'u');
-        t3.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
-        Desenho.acessoATelaDoJogo().addPersonagem(t3);
-        }
-
-        if(direcaoTiro == 'd'){
-        Tiro t4 = new Tiro("TiroVertical.png", 'd');
-        t4.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
-        Desenho.acessoATelaDoJogo().addPersonagem(t4);
-        }
-    }    
-
+        Tiro t = new Tiro(stringTiro, direcaoTiro);
+        t.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
+        Desenho.acessoATelaDoJogo().addPersonagem(t);
+    } 
 }

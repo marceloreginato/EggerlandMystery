@@ -61,7 +61,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     4: Fase 4 (jogavel);
     5: Tela de fim (nao jogavel);
     6: Tela de gameover (nao jogavel);
-    */
+    */  
 
     private int fase = 0;  
 
@@ -72,7 +72,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
     public Tela() {
         Desenho.setCenario(this);           
-        initComponents();
+        initComponents();   
 
         this.addKeyListener(this);   /*teclado*/
         /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
@@ -314,9 +314,9 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_SPACE && this.getMoedas() != 0) {
             hero.atira(hero.getLastMovment());  
             removeMoedas();
-        } else if (e.getKeyCode() == KeyEvent.VK_L && getFase() == 0) {
+        } else if (e.getKeyCode() == KeyEvent.VK_L && getFase() == 0) { 
             progresso.restaurar();
-            criaFase();
+            criaFase();         
         } else if (e.getKeyCode() == KeyEvent.VK_N && getFase() == 0) {
             setFase(1);
             criaFase();

@@ -11,7 +11,6 @@ public class ZigueZague extends Personagem {
         this.bZigueZague = true;                            //variavel para tratemnto do zigue zague na controle de jogo
     }
 
-
     public void autoDesenho(){
 
         if(Desenho.acessoATelaDoJogo().getMoedasColetadas() == 5 && Desenho.acessoATelaDoJogo().getFase() == 2){ // caso todas as moedas da fase 2 forem coletadas ativa movimento dos inimigos
