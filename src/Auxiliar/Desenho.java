@@ -11,7 +11,7 @@ public class Desenho {
     }
 
     public static Tela acessoATelaDoJogo() {
-        return jCenario;
+        return jCenario;    
     }   
 
     public static Graphics getGraphicsDaTela() {

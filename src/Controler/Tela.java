@@ -1,23 +1,24 @@
 package Controler;
     
-//import Modelo.Inimigo.AtiraNaVisao; 
-//import Modelo.Inimigo.AtiraPelaMoeda;  
-//import Modelo.Blocos.Coletavel;  
-//import Modelo.Blocos.Estatico;    
-//import Modelo.Fases.Fase;  
+import Modelo.Inimigo.AtiraNaVisao; 
+import Modelo.Inimigo.AtiraPelaMoeda;  
+import Modelo.Blocos.Coletavel;  
+import Modelo.Blocos.Estatico;  
+import Modelo.Blocos.Empurravel;  
+import Modelo.Fases.Fase;  
 import Modelo.Fases.Fase1;  
 import Modelo.Fases.Fase2;  
 import Modelo.Fases.Fase3;  
 import Modelo.Fases.Fase4;
 import Modelo.Fases.Janela;
 import Modelo.Hero;  
-//import Modelo.Inimigo.InimigoMorrivel;  
+import Modelo.Inimigo.InimigoMorrivel;  
 import Modelo.Personagem;
-//import Modelo.Inimigo.InimigoAtirador;
+import Modelo.Inimigo.InimigoAtirador;
 import Modelo.Blocos.Numero;
-//import Modelo.Blocos.Porta;
-//import Modelo.Tiro;
-//import Modelo.Inimigo.ZigueZague;
+import Modelo.Blocos.Porta;
+import Modelo.Tiro;
+import Modelo.Inimigo.ZigueZague;
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
 import Auxiliar.Posicao;
@@ -83,20 +84,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         hero = new Hero("HeroEstaticFace.png");       /*Instancia Hero*/
     }
 
-    /*Verifica se a posicao a ser movida eh possivel*/
-    public boolean ehPosicaoValida(Posicao p, char sentidoMovimento, char tipoPersonagem){
-        return cj.ehPosicaoValida(this.faseAtual, p, sentidoMovimento, tipoPersonagem);
-    }
-
-    /*Verifica se a posicao a ser movida pela classe ZigueZague eh possivel*/
-    public boolean ehValidoZigueZague(Posicao p){
-        return cj.ehValidoZigueZague(this.faseAtual, p);
-    }
-
     /*Adiciona um personagem no ambiente da fase atual*/
     public void addPersonagem(Personagem umPersonagem) {
         faseAtual.add(umPersonagem);
-    }           
+    } 
 
     /*Remove um personagem do ambiente da fase atual*/
     public void removePersonagem(Personagem umPersonagem) {
@@ -108,9 +99,13 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         return faseAtual.size();
     }
 
+    public ArrayList<Personagem> getFaseAtual() {
+        return faseAtual;
+    }
+    
     public int getFase(){   
         return fase;
-    }
+    } 
 
     protected void setFase(int fase){
         this.fase = fase;
@@ -118,7 +113,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
     public int getMoedas() {
         return qntmoedas;
-    }
+    }       
 
     protected void setMoedas(int qntmoedas){
         this.qntmoedas = qntmoedas;
@@ -126,10 +121,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
     /*Adiciona uma moeda (tiro) no inventario do jogador (uma moeda foi coletada) e
     adiciona uma moeda na quantidade total de moedas coletadas na fase (uma moeda foi coletada)*/
-    protected void addTodasMoedas(){
+    public void addTodasMoedas(){
         qntmoedas++;
         moedasColetadas++;
-    }  
+    }   
 
     /*Remove uma moeda (tiro) do inventario do jogador (um tiro foi gasto)*/
     private void removeMoedas(){
@@ -142,7 +137,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
     protected void setVidas(int qntvidas){
         this.qntvidas = qntvidas;
-    } 
+    }
     
     /*Remove uma vida do inventario do jogador (personagem morreu).
     Eh feito tratamento para que aconteca um GameOver caso as vidas
@@ -177,7 +172,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         faseAtual.set(2, vidas); 
         faseAtual.set(3, moedas);   
         faseAtual.set(4, fases);        
-    }
+    }   
 
     /*Metodo que constroi as fases jogaveis por meio das classes herdeiras de Fase*/
     protected void criaFase(){
@@ -187,10 +182,11 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         setMoedasColetadas(0);    /*Reseta a quantidade de moedas coletadas na fase*/
         hero.SkinPersonagem("HeroEstaticFace.png", 'h');    /*Reinicializa skin do Hero*/
         
-        switch (fase) {
+        switch (fase) { 
             case 1:
                 setVidas(5);     /*O jogo sempre se inicia com 5 vidas*/
                 new Fase1(hero);
+                progresso.salvamento();
                 break;
 
             case 2:
@@ -232,10 +228,10 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                     Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }       
-        }
+        }   
 
         /*Desenha as fases nao jogaveis. As Janelas sao instanciadas nesse metodo, pois precisam que um Graphics seja criado.*/
-        switch (fase) {
+        switch (fase) { 
             case 0: 
                 new Janela("TelaInicial.png");
                 break;
@@ -248,7 +244,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
                 new Janela("TelaGameOver.png");
                 break;        
             default:
-                break;
+                break;  
         }
 
         /*Atualiza os numeros do Setup Lateral caso em fase jogavel.*/
@@ -261,7 +257,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         if(tamanhoFase() > 0 && !faseAtual.get(1).isbPorta() && fase > 0 && fase < 5){
             fase++;
             criaFase();
-            progresso.salvamento();
+            progresso.salvamento(); 
         }
 
         /*Desenha o ambiente da fase atual e processa o andamento e interacao dos objetos nele*/
@@ -275,7 +271,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         if (!getBufferStrategy().contentsLost()) {
             getBufferStrategy().show();
         }
-    }
+    }   
 
     /*Metodo geral que mantem a tela rodando e atualizando os acontecimentos.
     Esse metodo mantem o metodo paint dessa classe sempre atualizado.*/
@@ -302,7 +298,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
         E: fecha o jogo;
         X: reinicia a fase atual quando em fase jogavel (fases 1 a 4).
         */
-        
+
         if (e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
             hero.moveUp();
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {

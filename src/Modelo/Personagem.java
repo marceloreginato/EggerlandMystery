@@ -6,10 +6,12 @@ import Auxiliar.Desenho;
 import Auxiliar.Posicao;
 import java.awt.Graphics;   
 import java.awt.Image;
-// import java.awt.Toolkit;
+// import java.awt.Toolkit; 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 // import javax.swing.JFrame;
 // import javax.swing.JPanel;
@@ -146,7 +148,11 @@ public abstract class Personagem implements Serializable{
         this.bEstatico = bEstatico;
     }
 
-    /*função autoDesenho para possibilitar a troca das imagens durante o processamento */
+    protected ArrayList<Personagem> getFaseAtual(){
+        return Desenho.acessoATelaDoJogo().getFaseAtual();
+    }
+
+    /*função autoDesenho para possibilitar a troca das imagens durante o processamento*/
 
     public void autoDesenho(){
         Desenho.desenhar(this.iImage, this.pPosicao.getColuna(), this.pPosicao.getLinha());        
@@ -155,6 +161,9 @@ public abstract class Personagem implements Serializable{
     public boolean setPosicao(int linha, int coluna) {
         return pPosicao.setPosicao(linha, coluna);
     }
+
+    /*Metodo abstrato que verifica se a posicao que o Personagem vai se mover eh valida para ele.*/
+    abstract public boolean ehPosicaoValida(Posicao p);
 
     public boolean moveUp() {
         return this.pPosicao.moveUp();

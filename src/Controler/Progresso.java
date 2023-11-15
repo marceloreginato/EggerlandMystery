@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Progresso { 
+public class Progresso {    
 
     /*Classe para salvar o progresso em um arquivo binario. As 
     informacoes necessarias para restaurar o estado do jogo sao: 

@@ -1,6 +1,9 @@
 package Modelo;
 
+import java.util.ArrayList;
+
 import Auxiliar.Desenho;
+import Auxiliar.Posicao;
 
 public class Hero extends Personagem {  
 
@@ -21,9 +24,9 @@ public class Hero extends Personagem {
         return lastMovment;
     }
 
-    // public void setLastMovment(char lastMovment) {
-    //     this.lastMovment = lastMovment;
-    // }
+    public void setLastMovment(char lastMovment) {
+        this.lastMovment = lastMovment;
+    }
 
     /*funcao que seta o heroi para a posicao antiga */
 
@@ -37,23 +40,12 @@ public class Hero extends Personagem {
 
     public boolean setPosicao(int linha, int coluna){
         if(this.pPosicao.setPosicao(linha, coluna)){
-            if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao(), 'z', 'h')) {
+            if (!ehPosicaoValida(this.getPosicao())) {
                 this.voltaAUltimaPosicao();
             }
             return true;
         }
         return false;       
-    }
-
-    /*este metodo valida a posicao do heroi e volta para a ultima
-     *posicao caso a posicao que o heroi esta seja invalida*/
-
-    private boolean validaPosicao(char c){
-        if (!Desenho.acessoATelaDoJogo().ehPosicaoValida(this.getPosicao(), c, 'h')) {
-            this.voltaAUltimaPosicao();
-            return false;
-        }
-        return true;    
     }
     
     /* move o heroi para cima 
@@ -67,6 +59,11 @@ public class Hero extends Personagem {
         iDown = 0;
         iRight = 0;
         lastMovment = 'u';
+        boolean validMove = true;
+
+        if(!ehPosicaoValida(new Posicao(this.getPosicao().getLinha() - 1, this.getPosicao().getColuna())))
+            validMove = false;
+
         if(super.moveUp()){
             if(iUp == 0){
                 this.SkinPersonagem("HeroEstaticBack.png", 'h');
@@ -80,7 +77,8 @@ public class Hero extends Personagem {
                 this.SkinPersonagem("HeroMovingBack-2.png", 'h');
                 iUp = 0;
             }
-            return validaPosicao('u');
+            if(!validMove)
+                voltaAUltimaPosicao();
         }
         return false;
     }
@@ -93,6 +91,11 @@ public class Hero extends Personagem {
         iUp = 0;
         iRight = 0;
         lastMovment = 'd';
+        boolean validMove = true;
+
+        if(!ehPosicaoValida(new Posicao(this.getPosicao().getLinha() + 1, this.getPosicao().getColuna())))
+            validMove = false;
+        
         if(super.moveDown()){
             if(iDown == 0){
                 this.SkinPersonagem("HeroEstaticFace.png", 'h');
@@ -106,7 +109,8 @@ public class Hero extends Personagem {
                 this.SkinPersonagem("HeroEstaticFace-2.png", 'h');
                 iDown = 0;
             }
-            return validaPosicao('d');
+            if(!validMove)
+                voltaAUltimaPosicao();
         }
         return false;
     }
@@ -120,6 +124,11 @@ public class Hero extends Personagem {
         iDown = 0;
         iUp = 0;
         lastMovment = 'r';
+        boolean validMove = true;
+
+        if(!ehPosicaoValida(new Posicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() + 1)))
+            validMove = false;
+
         if(super.moveRight()){
             if(iRight == 0){
                 this.SkinPersonagem("HeroEstaticRight.png", 'h');
@@ -129,7 +138,8 @@ public class Hero extends Personagem {
                 this.SkinPersonagem("HeroMovingRight.png", 'h');
                 iRight = 0;
             }
-            return validaPosicao('r');
+            if(!validMove)
+                voltaAUltimaPosicao();
         }
         return false;
     }
@@ -143,6 +153,11 @@ public class Hero extends Personagem {
         iUp = 0;
         iRight = 0;
         lastMovment = 'l';
+        boolean validMove = true;
+
+        if(!ehPosicaoValida(new Posicao(this.getPosicao().getLinha(), this.getPosicao().getColuna() - 1)))
+            validMove = false;
+
         if(super.moveLeft()){
             if(iLeft == 0){
                 this.SkinPersonagem("HeroEstaticLeft.png", 'h');
@@ -152,23 +167,90 @@ public class Hero extends Personagem {
                 this.SkinPersonagem("HeroMovingLeft.png", 'h');
                 iLeft = 0;
             }
-            return validaPosicao('l');
+            if(!validMove)
+                voltaAUltimaPosicao();
         }
         return false;
     }
 
     /*metodo atirar do heroi, que recebe a direcao do tiro e envia ela para o 
-     * instanciamento do tiro*/
+     * instanciamento do tiro*/ 
 
     public void atira(char direcaoTiro){
-        String stringTiro = "stringTiro";                   //inicia variavel 
-        if(direcaoTiro == 'r' || direcaoTiro == 'l')        //selecao da direcao do tiro
-            stringTiro = "TiroHorizontal.png";              //guarda na string a skin a ser utilizada
-        else if(direcaoTiro == 'u' || direcaoTiro == 'd')
-            stringTiro = "TiroVertical.png";
+        
+        if(direcaoTiro == 'r'){
+        Tiro t1 = new Tiro("TiroHorizontal.png", 'r');
+        t1.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
+        Desenho.acessoATelaDoJogo().addPersonagem(t1);
+        }
+         
+        if(direcaoTiro == 'l'){
+        Tiro t2 = new Tiro("TiroHorizontal.png", 'l');
+        t2.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
+        Desenho.acessoATelaDoJogo().addPersonagem(t2);
+        }
 
-        Tiro t = new Tiro(stringTiro, direcaoTiro);
-        t.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
-        Desenho.acessoATelaDoJogo().addPersonagem(t);
-    } 
+        if(direcaoTiro == 'u'){
+        Tiro t3 = new Tiro("TiroVertical.png", 'u');
+        t3.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
+        Desenho.acessoATelaDoJogo().addPersonagem(t3);
+        }
+
+        if(direcaoTiro == 'd'){
+        Tiro t4 = new Tiro("TiroVertical.png", 'd');
+        t4.setPosicao(pPosicao.getLinha(),pPosicao.getColuna());
+        Desenho.acessoATelaDoJogo().addPersonagem(t4);
+        }
+    }
+
+    @Override
+    /*Metodo que verifica se a posicao que objeto esta se movendo eh possivel.*/
+    public boolean ehPosicaoValida(Posicao p) {
+        ArrayList<Personagem> umaFase = getFaseAtual();
+        Personagem pIesimoPersonagem;
+
+        /*Percorre o array do ambiente da fase (desconsiderando o Hero) e
+        verifica se ha algum Personagem na posicao a ser movimentada.*/
+        for (int i = 1; i < umaFase.size(); i++) {
+            pIesimoPersonagem = umaFase.get(i);
+
+            if (pIesimoPersonagem.getPosicao().igual(p)) {
+                /*Se o Hero estiver se movendo para a posicao de um Empurravel, o o Empurravel se move para a posicao seguinte*/
+                if(pIesimoPersonagem.isbEmpurravel()){
+                    int linha = this.getPosicao().getLinha();
+                    int coluna = this.getPosicao().getColuna();
+
+                    if(p.getLinha() != linha){
+                        if(p.getLinha() > linha)
+                            linha+=2;
+                        else
+                            linha-=2;
+                    }
+
+                    if(p.getColuna() != coluna){
+                        if(p.getColuna() > coluna)
+                            coluna+=2;
+                        else
+                            coluna-=2;
+                    }
+
+                    if(pIesimoPersonagem.ehPosicaoValida(new Posicao(linha, coluna)))
+                        return pIesimoPersonagem.setPosicao(linha, coluna);
+                }
+
+                /*Se o objeto for transponivel o Hero o sobrepoe*/
+                if(pIesimoPersonagem.isbTransponivel()){
+                    if(pIesimoPersonagem.isbColetavel()){
+                        Desenho.acessoATelaDoJogo().addTodasMoedas();
+                    }
+                    return true;
+                }
+
+                /*Retorna false se for conflitante com um intransponivel e nao empurravel*/
+                return false;
+            }
+        }
+        /*Retorna true se nao for conflitante com outros objetos*/
+        return true;
+    }
 }

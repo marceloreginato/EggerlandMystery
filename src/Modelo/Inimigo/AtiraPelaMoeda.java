@@ -109,7 +109,7 @@ public class AtiraPelaMoeda extends InimigoAtirador{
             Tiro t3 = new Tiro("TiroMonstroRoxoCima.png", 'u'); //instancia objeto tiro
             t3.setPosicao(pPosicao.getLinha(),pPosicao.getColuna()); //define posicao inicial
             Desenho.acessoATelaDoJogo().addPersonagem(t3); //adiciona tiro no array de personagens
-    }
+    } 
 
     @Override
     public void atiraDown(){

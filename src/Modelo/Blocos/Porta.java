@@ -1,9 +1,8 @@
 package Modelo.Blocos; 
 
-import Modelo.Personagem;
 import Auxiliar.Desenho;    
 
-public class Porta extends Personagem {
+public class Porta extends Estatico {
     public Porta(String sNomeImagemPNG){
         super(sNomeImagemPNG, 'z');
         this.bTransponivel = true;                          //define porta transponivel

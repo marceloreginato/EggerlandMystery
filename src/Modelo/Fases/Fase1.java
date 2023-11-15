@@ -8,7 +8,7 @@ import Modelo.Blocos.Empurravel;
 import Modelo.Blocos.Tijolo;
 import Modelo.Inimigo.InimigoMorrivel;
 
-public class Fase1 extends Fase {
+public class Fase1 extends Fase {   
 
     /*Classe que herda de Fase e define o ambiente da Fase 1.
     Criar um objeto refere-se a instancia-lo e adiciona-lo a
