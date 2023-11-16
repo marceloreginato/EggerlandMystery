@@ -39,6 +39,6 @@ This is a recreation of the first four fases of the game Eggerland Mystery, prog
 
 ## 👥 Project Owners
 
-- Marcelo Eduardo Reginato 13676965
+- Marcelo Eduardo Reginato
 
-- Rhayna Christiani Vasconcelos Marques Casado 13676429
+- Rhayna Christiani Vasconcelos Marques Casado
