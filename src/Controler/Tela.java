@@ -73,7 +73,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
     public Tela() {
         Desenho.setCenario(this);               
-        initComponents();   
+        initComponents();     
 
         this.addKeyListener(this);   /*teclado*/
         /*Cria a janela do tamanho do tabuleiro + insets (bordas) da janela*/
