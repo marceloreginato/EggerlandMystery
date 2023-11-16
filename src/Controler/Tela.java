@@ -265,7 +265,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             this.cj.desenhaTudo(faseAtual);
             this.cj.processaTudo(faseAtual);
         }
-        
+                
         g.dispose();
         g2.dispose();
         if (!getBufferStrategy().contentsLost()) {
