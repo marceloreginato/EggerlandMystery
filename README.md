@@ -32,11 +32,9 @@ This is a recreation of the first four fases of the game Eggerland Mystery, prog
 
 ## 📄 Work Organization
 
-- Trello: https://trello.com/b/O1CR4XKw/eggerlandmistery 
+- UML: https://drive.google.com/file/d/1HDSY4PaU8QXSFtyBoy-WlrXBN3FDwKHU/view?usp=sharing
 
-- Drive: https://drive.google.com/drive/folders/1jZGmg1upqm86mh_-i4Ap5uc_y1xX3w1c?usp=sharing 
-
-- Github: https://github.com/marceloreginato/SCC0604-2023
+- Github: https://github.com/marceloreginato/EggerlandMystery
 
 
 ## 👥 Project Owners
