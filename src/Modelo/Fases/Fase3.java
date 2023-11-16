@@ -46,7 +46,18 @@ public class Fase3 extends Fase{
         /*Cria moedas da fase*/
         Coletavel moeda1 = new Coletavel("moeda.png");
         moeda1.setPosicao(6, 5);
-        Desenho.acessoATelaDoJogo().addPersonagem(moeda1);  
-    }
+        Desenho.acessoATelaDoJogo().addPersonagem(moeda1);
+        
+        Coletavel moeda2 = new Coletavel("moeda.png");
+        moeda2.setPosicao(6, 6);
+        Desenho.acessoATelaDoJogo().addPersonagem(moeda2);
 
+        Coletavel moeda3 = new Coletavel("moeda.png");
+        moeda3.setPosicao(7, 5);
+        Desenho.acessoATelaDoJogo().addPersonagem(moeda3);  
+
+        Coletavel moeda4 = new Coletavel("moeda.png");
+        moeda4.setPosicao(7, 6);
+        Desenho.acessoATelaDoJogo().addPersonagem(moeda4);  
+    }
 }

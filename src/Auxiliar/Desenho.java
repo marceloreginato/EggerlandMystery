@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 import Controler.Tela;
 
 public class Desenho {
-    static Tela jCenario;
+    public static Tela jCenario;
     public static void setCenario(Tela umJCenario) {    
         jCenario = umJCenario;
     }

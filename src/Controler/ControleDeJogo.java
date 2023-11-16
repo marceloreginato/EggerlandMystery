@@ -5,6 +5,7 @@ import Modelo.Hero;
 import java.util.ArrayList; 
 import Auxiliar.Consts;
 import Auxiliar.Desenho;
+import Auxiliar.Posicao;
 
 public class ControleDeJogo {
 
@@ -46,4 +47,5 @@ public class ControleDeJogo {
             }
         }
     }
+
 }

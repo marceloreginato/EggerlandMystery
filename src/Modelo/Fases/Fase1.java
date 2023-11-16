@@ -48,11 +48,11 @@ public class Fase1 extends Fase {
             Desenho.acessoATelaDoJogo().addPersonagem(bricktop);
         }   
 
-        for(int i = 8; i < 9; i++){
+        for(int i = 6; i < 9; i+=2){
             Tijolo brick9 = new Tijolo("TijoloRoxo.png");
-            brick9.setPosicao(i, 9);
+            brick9.setPosicao(i,9);
             Desenho.acessoATelaDoJogo().addPersonagem(brick9);
-        }   
+        }  
 
         /*Cria caixas empurraveis e moedas da fase*/
         for(int z = 3; z < 10; z = z+4){

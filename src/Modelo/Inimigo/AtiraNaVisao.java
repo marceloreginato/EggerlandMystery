@@ -49,7 +49,7 @@ public class AtiraNaVisao extends InimigoAtirador{
             SkinPlantaColuna = 1;                                                       //altera variavel para verificar que um tiro ja foi dado
             super.SkinPersonagem("PlantinhaPistola.png", 'i');          //altera skin para inimigo ativado
             stopColuna = 1;
-            if(hero.getPosicao().getLinha() > this.pPosicao.getLinha())                 //verificacoes de linha entre heroi e inimigo para definir sentido do tiro
+            if(hero.getPosicao().getLinha() > this.pPosicao.getLinha() )                 //verificacoes de linha entre heroi e inimigo para definir sentido do tiro
                 this.atiraDown();
             if(hero.getPosicao().getLinha() < this.pPosicao.getLinha())
                 this.atiraUp();

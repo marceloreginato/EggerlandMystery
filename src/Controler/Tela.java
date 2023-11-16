@@ -58,7 +58,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     0: Tela de inicio (nao jogavel);
     1: Fase 1 (jogavel);
     2: Fase 2 (jogavel);
-    3: Fase 3 (jogavel);
+    3: Fase 3 (jogavel);        
     4: Fase 4 (jogavel);
     5: Tela de fim (nao jogavel);
     6: Tela de gameover (nao jogavel);
@@ -72,7 +72,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
     private Progresso progresso = new Progresso(this);      /*Define o progresso do jogo, restaura e o atualiza*/ 
 
     public Tela() {
-        Desenho.setCenario(this);           
+        Desenho.setCenario(this);               
         initComponents();   
 
         this.addKeyListener(this);   /*teclado*/
@@ -86,7 +86,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
     /*Adiciona um personagem no ambiente da fase atual*/
     public void addPersonagem(Personagem umPersonagem) {
-        faseAtual.add(umPersonagem);
+        faseAtual.add(umPersonagem);                
     } 
 
     /*Remove um personagem do ambiente da fase atual*/
@@ -137,7 +137,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
 
     protected void setVidas(int qntvidas){
         this.qntvidas = qntvidas;
-    }
+    }                       
     
     /*Remove uma vida do inventario do jogador (personagem morreu).
     Eh feito tratamento para que aconteca um GameOver caso as vidas
@@ -265,7 +265,7 @@ public class Tela extends javax.swing.JFrame implements KeyListener {
             this.cj.desenhaTudo(faseAtual);
             this.cj.processaTudo(faseAtual);
         }
-
+        
         g.dispose();
         g2.dispose();
         if (!getBufferStrategy().contentsLost()) {

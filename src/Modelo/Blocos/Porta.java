@@ -22,12 +22,12 @@ public class Porta extends Estatico {
             super.SkinPersonagem("PortaAberta.png", 'p');  //mudando skin
         }
 
-        if(Desenho.acessoATelaDoJogo().getMoedasColetadas() == 1 && Desenho.acessoATelaDoJogo().getFase() == 3){  //caso todas as moedas da fase 3 forem pegas transforma porta em coletavel e muda skin da porta
+        if(Desenho.acessoATelaDoJogo().getMoedasColetadas() == 4 && Desenho.acessoATelaDoJogo().getFase() == 3){  //caso todas as moedas da fase 3 forem pegas transforma porta em coletavel e muda skin da porta
             this.bColetavel = true;     //transformando em coletavel
             super.SkinPersonagem("PortaAberta.png", 'p');   //mudando skin
         }
 
-        if(Desenho.acessoATelaDoJogo().getMoedasColetadas() == 3 && Desenho.acessoATelaDoJogo().getFase() == 4){  //caso todas as moedas da fase 4 forem pegas transforma porta em coletavel e muda skin da porta
+        if(Desenho.acessoATelaDoJogo().getMoedasColetadas() == 4 && Desenho.acessoATelaDoJogo().getFase() == 4){  //caso todas as moedas da fase 4 forem pegas transforma porta em coletavel e muda skin da porta
             this.bColetavel = true;     //transformando em coletavel
             super.SkinPersonagem("PortaAberta.png", 'p');   //mudando skin
         }

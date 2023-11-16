@@ -22,7 +22,7 @@ public class Fase4 extends Fase {
         porta.setPosicao(Consts.RES - 3, 6);    
 
         /*Cria inimigos da fase*/
-        for(int j = 4; j < 9; j += 4){
+        for(int j = 3; j < 9; j += 5){
             AtiraNaVisao atv = new AtiraNaVisao("PlantinhaDormindo", hero);
             atv.setPosicao(Consts.RES - 8, j);
             Desenho.acessoATelaDoJogo().addPersonagem(atv);
@@ -30,7 +30,7 @@ public class Fase4 extends Fase {
     
         /*Cria Tijolos da fase*/
         for(int j = 2; j < Consts.RES - 5; j++){
-            if(j == 6)
+            if(j == 6 || j == 5)
                 continue;
             Tijolo brick = new Tijolo("TijoloRoxo.png");
             brick.setPosicao(Consts.RES - 7, j);
@@ -43,31 +43,39 @@ public class Fase4 extends Fase {
         Desenho.acessoATelaDoJogo().addPersonagem(emp1);
 
         Empurravel emp2 = new Empurravel("caixa.png");
-        emp2.setPosicao(5, 2);
+        emp2.setPosicao(Consts.RES - 7, 5);
         Desenho.acessoATelaDoJogo().addPersonagem(emp2);
 
+
         Empurravel emp3 = new Empurravel("caixa.png");
-        emp3.setPosicao(6, 2);
+        emp3.setPosicao(5, 2);
         Desenho.acessoATelaDoJogo().addPersonagem(emp3);
 
         Empurravel emp4 = new Empurravel("caixa.png");
-        emp4.setPosicao(5, Consts.RES - 6);
+        emp4.setPosicao(6, 2);
         Desenho.acessoATelaDoJogo().addPersonagem(emp4);
+
+        Empurravel emp5 = new Empurravel("caixa.png");
+        emp5.setPosicao(5, Consts.RES - 6);
+        Desenho.acessoATelaDoJogo().addPersonagem(emp5);
 
         Empurravel empmeio = new Empurravel("caixa.png");
         empmeio.setPosicao(6, Consts.RES - 6);  
         Desenho.acessoATelaDoJogo().addPersonagem(empmeio); 
 
+
         /*Cria moedas da fase*/
-        for(int j = 4; j < 9; j += 4){  
+        for(int j = 3; j < 9; j += 5){  
             Coletavel col1 = new Coletavel("moeda.png");
             col1.setPosicao(3, j);
             Desenho.acessoATelaDoJogo().addPersonagem(col1);
         }
 
-        Coletavel col2 = new Coletavel("moeda.png");
-        col2.setPosicao(Consts.RES - 8, 6);
-        Desenho.acessoATelaDoJogo().addPersonagem(col2);
+        for(int j = 5; j < 7; j++){  
+            Coletavel col2 = new Coletavel("moeda.png");
+            col2.setPosicao(Consts.RES - 8, j);
+            Desenho.acessoATelaDoJogo().addPersonagem(col2);
+        }
 
     }
 }
